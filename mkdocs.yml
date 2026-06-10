@@ -1,0 +1,57 @@
+site_name: Sonaloop Docs
+site_description: Documentation for Sonaloop — persona simulation, councils, and design-research synthesis over MCP.
+site_url: https://jhoetter.github.io/sonaloop-docs/
+repo_url: https://github.com/jhoetter/sonaloop
+repo_name: jhoetter/sonaloop
+edit_uri: https://github.com/jhoetter/sonaloop-docs/edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+  features:
+    - navigation.sections
+    - navigation.footer
+    - content.action.edit
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Concepts:
+      - Job → Framework → Format: job-framework-format.md
+      - Frameworks: frameworks.md
+      - Grounding: grounding.md
+      - Calibration: calibration.md
+      - Opt-in aggregation: opt-in-aggregation-design.md
+  - Operating:
+      - Embeddings: embeddings.md
+      - Lifecycle hooks: lifecycle-hooks.md
+      - Substrate: substrate.md
+      - Project assets: project-assets.md
+  - Live actuation:
+      - Flow walkthrough: flow-walkthrough.md
+      - Walkthrough safety: live-walkthrough-safety.md
+      - Selective live actuation: selective-live-actuation.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+plugins:
+  - search

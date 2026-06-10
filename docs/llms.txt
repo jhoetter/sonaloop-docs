@@ -1,0 +1,27 @@
+# Sonaloop
+
+> Sonaloop is an MCP server for customer-persona simulation, councils, and design-research
+> synthesis. The host agent authors all text; Sonaloop gathers context, validates and
+> persists — no server-side text-LLM calls. This file indexes the canonical documentation
+> in agent-friendly raw markdown.
+
+## Docs
+
+- [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): install one-liner, MCP registration, first project
+- [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy
+- [Frameworks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/frameworks.md): methodology frameworks a run can follow
+- [Grounding](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/grounding.md): evidence grounding and provenance
+- [Calibration](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/calibration.md): prediction calibration and Brier scoring
+- [Opt-in aggregation](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/opt-in-aggregation-design.md): sentiment/coverage aggregation model
+- [Embeddings](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/embeddings.md): semantic memory recall setup
+- [Lifecycle hooks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/lifecycle-hooks.md): events and subscriptions
+- [Substrate](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/substrate.md): queryable backend substrate for extensions
+- [Project assets](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/project-assets.md): attaching asset evidence
+- [Flow walkthrough](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/flow-walkthrough.md): live walkthrough mechanics
+- [Live walkthrough safety](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/live-walkthrough-safety.md): safety constraints for live actuation
+- [Selective live actuation](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/selective-live-actuation.md): live prototype testing
+
+## Optional
+
+- [Core repository](https://github.com/jhoetter/sonaloop): source code, CLI, web inspector
+- [Persona database](https://github.com/jhoetter/sonaloop-data): CRON-refreshed persona catalog
