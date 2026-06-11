@@ -16,7 +16,8 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Start here
 
 - [Getting started](getting-started.md) — the one-sentence install and your first project.
-- [Job → Framework → Format](job-framework-format.md) — the three-layer taxonomy the whole product aligns on.
+- [Example projects](examples.md) — two complete demo studies, loadable in one click.
+- [Job → Framework → Format](job-framework-format.md) — the three-layer taxonomy the whole product aligns on, including the A/B test, pricing and ideation run protocols.
 - [Frameworks](frameworks.md) — the methodologies a run can follow.
 
 ## Concepts & method
@@ -25,9 +26,17 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 - [Calibration](calibration.md) — prediction calibration and Brier scoring.
 - [Opt-in aggregation](opt-in-aggregation-design.md) — the sentiment/coverage aggregation model.
 
+## The inspector
+
+- [The live inspector](live-inspector.md) — the event stream, the activity feed, and the runs panel.
+- [Web editing](web-editing.md) — what the browser can and deliberately cannot edit.
+- [Keyboard, palette & tour](keyboard.md) — shortcuts, the ⌘K palette, and the opt-in tour.
+- [Feedback](feedback.md) — the built-in feedback channel and its webhook.
+
 ## Operating Sonaloop
 
 - [Embeddings](embeddings.md) — semantic memory recall setup.
+- [Persona catalog & pagination](catalog.md) — catalog search/recommend/pull and the list-pagination convention.
 - [Lifecycle hooks](lifecycle-hooks.md) — events and subscriptions (the seam cloud automation builds on).
 - [Substrate](substrate.md) — the queryable backend substrate for extensions.
 - [Project assets](project-assets.md) — attaching asset evidence.

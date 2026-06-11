@@ -7,14 +7,20 @@
 
 ## Docs
 
-- [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): install one-liner, MCP registration, first project
-- [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy
+- [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): one-sentence uvx install, MCP registration, sonaloop info diagnostics, first project
+- [Example projects](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/examples.md): shipped demo studies — list/load/remove, idempotent loading
+- [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy + the A/B test, pricing and ideation run protocols + the Adding-a-Job recipe
 - [Frameworks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/frameworks.md): methodology frameworks a run can follow
 - [Grounding](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/grounding.md): evidence grounding and provenance
 - [Calibration](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/calibration.md): prediction calibration and Brier scoring
 - [Opt-in aggregation](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/opt-in-aggregation-design.md): sentiment/coverage aggregation model
+- [The live inspector](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/live-inspector.md): event bus, SSE /api/events, activity feed, runs panel
+- [Web editing](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/web-editing.md): the inspector's write boundary — structural edits vs host-authored text
+- [Keyboard, palette & tour](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/keyboard.md): shortcuts, the command palette, the opt-in product tour
+- [Feedback](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/feedback.md): in-app feedback, /feedback inbox, CLI, SONALOOP_FEEDBACK_WEBHOOK
 - [Embeddings](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/embeddings.md): semantic memory recall setup
-- [Lifecycle hooks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/lifecycle-hooks.md): events and subscriptions
+- [Persona catalog & pagination](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/catalog.md): catalog_search/recommend/pull MCP tools + the shared pagination convention
+- [Lifecycle hooks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/lifecycle-hooks.md): events, subscriptions, and the event bus behind the live inspector
 - [Substrate](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/substrate.md): queryable backend substrate for extensions
 - [Project assets](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/project-assets.md): attaching asset evidence
 - [Flow walkthrough](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/flow-walkthrough.md): live walkthrough mechanics
