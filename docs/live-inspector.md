@@ -1,7 +1,29 @@
-# The live inspector — events, activity, runs
+# The live inspector — navigation, events, activity, runs
 
 The web inspector (`sonaloop-web`, <http://127.0.0.1:8787>) is not a static viewer: it
-follows the work as your agent records it. Three pieces make that work.
+follows the work as your agent records it.
+
+## Getting around: four items, one model
+
+The sidebar has exactly four entries — **Projects · Personas · Library · Activity**
+(Settings and the documentation hub live in the footer). One mental model runs the whole
+app: *project → phases → rows; click = peek.*
+
+- **The project is the home.** Everything a study produces — councils, reports, decisions,
+  surveys, prototypes, sessions, assets — renders as a row in its phase context on the
+  project outline. The project header carries a **run chip** (state · last activity) that
+  links to the run journal.
+- **Rows and peeks.** Every primitive renders as the same row anatomy everywhere (icon ·
+  title · status pills · right-aligned meta). Clicking a row opens a **peek** — a right-hand
+  side panel with the essence (status, clamped body, evidence chips, an *Open* action).
+  The full detail page is one more click, and every record keeps its own deep-linkable URL;
+  peeks are navigation sugar, never the only address.
+- **The Library** is the cross-project browser: one page with tabs (Councils · Reports ·
+  Prototypes · Sessions · Surveys · Hypotheses · Decisions · Notes), one search/filter bar,
+  the same rows + peeks as the project outline. The old per-kind routes (`/councils`,
+  `/decisions`, …) still resolve — they render the Library with that tab active.
+
+Three pieces make the *live* part work.
 
 ## The event bus
 
@@ -40,8 +62,10 @@ Long-running studies are driven by the governed run loop (`start_run` → `run_s
   the active runs (project, last activity). The dot turns **amber when any project is
   stalled** — the silent failure mode is deliberately loud. The widget live-updates off the
   same SSE stream and degrades gracefully to the server-rendered state without JavaScript.
-- **`/runs`** — the full page (keyboard: `g` `r`): every project's run state grouped into
-  active / stalled / finished.
+- A **run chip in each project's header** (state · last activity) linking to the journal —
+  run state belongs to the project, so it surfaces where the project lives.
+- **`/runs`** — the run journal (keyboard: `g` `r`; deliberately not a nav item): every
+  project's run state grouped into active / stalled / finished.
 - **`GET /api/runs`** — the same data as JSON (what the widget refetches).
 
 Extensions can add their own sections to the `/runs` page through the
