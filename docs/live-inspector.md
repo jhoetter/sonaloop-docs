@@ -7,20 +7,22 @@ follows the work as your agent records it.
 
 The sidebar has exactly four entries — **Projects · Personas · Library · Activity**
 (Settings and the documentation hub live in the footer). One mental model runs the whole
-app: *project → phases → rows; click = peek.*
+app: *project → phases → rows; click = slide-over.*
 
 - **The project is the home.** Everything a study produces — councils, reports, decisions,
   surveys, prototypes, sessions, assets — renders as a row in its phase context on the
   project outline. The project header carries a **run chip** (state · last activity) that
   links to the run journal.
-- **Rows and peeks.** Every primitive renders as the same row anatomy everywhere (icon ·
-  title · status pills · right-aligned meta). Clicking a row opens a **peek** — a right-hand
-  side panel with the essence (status, clamped body, evidence chips, an *Open* action).
-  The full detail page is one more click, and every record keeps its own deep-linkable URL;
-  peeks are navigation sugar, never the only address.
+- **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
+  (icon · title · status pills · right-aligned meta). Clicking a row opens its **full detail
+  page as a slide-over** (Notion-style): the list stays visible behind the panel, and the
+  address becomes the real detail URL — reloading or sharing it loads the full page. The ⤢
+  control in the panel header expands to the full page; `Esc`, the backdrop, or the browser's
+  Back button restores the list and its URL. Slide-overs are navigation sugar, never the only
+  address (middle-click and deep links go straight to the page).
 - **The Library** is the cross-project browser: one page with tabs (Councils · Reports ·
   Prototypes · Sessions · Surveys · Hypotheses · Decisions · Notes), one search/filter bar,
-  the same rows + peeks as the project outline. The old per-kind routes (`/councils`,
+  the same rows + slide-overs as the project outline. The old per-kind routes (`/councils`,
   `/decisions`, …) still resolve — they render the Library with that tab active.
 
 Three pieces make the *live* part work.

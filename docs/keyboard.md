@@ -18,15 +18,16 @@ repo: [`docs/keyboard-conventions.md`](https://github.com/jhoetter/sonaloop/blob
 | `g` `a`   | Global | Go to activity |
 | `g` `r`   | Global | Go to runs |
 | `g` `d`   | Global | Go to documentation |
-| `Esc`     | Global | Close overlays (incl. an open peek); cancel a pending chord |
+| `Esc`     | Global | Close overlays (incl. an open slide-over); cancel a pending chord |
 | `j` / `k` | Lists & project outline | Move row focus down/up |
-| `Enter`   | Lists & project outline | Open the focused row as a **peek** (side panel) |
+| `Enter`   | Lists & project outline | Open the focused row as a **slide-over** (full detail page, real URL) |
+| `o`       | Lists & project outline | Open the focused row straight as a full page |
 | `[` / `]` | Detail | Previous / next sibling record |
 
-The peek is the row's essence in a right-hand drawer (see
+The slide-over is the row's full detail page in a right-hand panel (see
 [the live inspector](live-inspector.md#getting-around-four-items-one-model)): `Enter`
-opens it, `Esc` closes it, and the *Open* action inside goes to the full detail page —
-every record keeps its own URL, so middle-click and deep links bypass the peek entirely.
+opens it (the URL becomes the real detail URL), `Esc` or Back closes it, and the ⤢ control
+expands to the full page — middle-click and deep links bypass the panel entirely.
 
 Behavior rules worth knowing:
 
