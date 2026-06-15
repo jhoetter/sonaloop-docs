@@ -34,6 +34,7 @@ nav:
       - Job → Framework → Format: job-framework-format.md
       - Frameworks: frameworks.md
       - Grounding: grounding.md
+      - Artifact inventory: artifact-inventory.md
       - Calibration: calibration.md
       - Opt-in aggregation: opt-in-aggregation-design.md
   - The inspector:

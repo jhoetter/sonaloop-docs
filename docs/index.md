@@ -23,6 +23,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Concepts & method
 
 - [Grounding](grounding.md) — evidence grounding and provenance.
+- [Artifact inventory](artifact-inventory.md) — references vs assets vs flows vs sessions.
 - [Calibration](calibration.md) — prediction calibration and Brier scoring.
 - [Opt-in aggregation](opt-in-aggregation-design.md) — the sentiment/coverage aggregation model.
 

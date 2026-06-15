@@ -12,6 +12,7 @@
 - [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy + the A/B test, pricing and ideation run protocols + the Adding-a-Job recipe
 - [Frameworks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/frameworks.md): methodology frameworks a run can follow
 - [Grounding](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/grounding.md): evidence grounding and provenance
+- [Artifact inventory](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/artifact-inventory.md): references vs assets vs flows vs sessions, and the artifact naming trap
 - [Calibration](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/calibration.md): prediction calibration and Brier scoring
 - [Opt-in aggregation](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/opt-in-aggregation-design.md): sentiment/coverage aggregation model
 - [The live inspector](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/live-inspector.md): navigation (4-item sidebar, Library browser, row slide-overs, run chip), event bus, SSE /api/events, activity feed, runs panel

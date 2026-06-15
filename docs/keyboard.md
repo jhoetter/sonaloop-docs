@@ -41,20 +41,20 @@ Behavior rules worth knowing:
 
 ## The command palette (`⌘K` / `Ctrl+K`)
 
-One registry-driven search over everything in the database — projects, personas, councils,
-reports, prototypes, sections, notes, sessions, hypotheses, decisions and surveys — plus
-**jump commands** derived from the navigation (including pages added by extensions). Type to
-filter, `Enter` to open.
+One registry-driven search over everything in the database — projects, personas, open
+questions, references, councils, reports, prototypes, flows, sections, notes, sessions,
+hypotheses, decisions, surveys and assets — plus **jump commands** derived from the
+navigation (including pages added by extensions). Type to filter, `Enter` to open.
 
 ## The product tour
 
-An optional 60-second tour walks the chrome in six anchored steps (spotlight + tooltip,
-progress dots, Back/Next/Skip; `Esc` ends it). It **never auto-starts**:
+An optional tour loads the onboarding showcase project if needed, then walks real project
+objects: open question, reference, council, survey, report, flow, prototype, session,
+hypothesis, decision, note, asset and the Library. It uses anchored spotlights + tooltips,
+progress dots, Back/Next/Skip; `Esc` ends it. It **never auto-starts**:
 
-- On a visitor's first page a one-time, dismissible toast offers it (the offer appears
-  exactly once per browser, dismissed or not).
-- **Take the tour** is prominent on the empty-database home page; **Restart tour** lives in
-  the settings popover.
+- **Take the tour** is available in the sidebar footer and prominent on the empty-database
+  home page.
 
 Steps whose target isn't on the current page are skipped automatically, so the tour works
 from anywhere.

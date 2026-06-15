@@ -9,10 +9,11 @@ The sidebar has exactly four entries — **Projects · Personas · Library · Ac
 (Settings and the documentation hub live in the footer). One mental model runs the whole
 app: *project → phases → rows; click = slide-over.*
 
-- **The project is the home.** Everything a study produces — councils, reports, decisions,
-  surveys, prototypes, sessions, assets — renders as a row in its phase context on the
-  project outline. The project header carries a **run chip** (state · last activity) that
-  links to the run journal.
+- **The project is the home.** Everything a study produces or uses — open questions,
+  references, councils, reports, flows, prototypes, sessions, surveys, hypotheses,
+  decisions, notes and assets — renders as a row in its phase context on the project
+  outline. The project header carries a **run chip** (state · last activity) that links
+  to the run journal.
 - **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
   (icon · title · status pills · right-aligned meta). Clicking a row opens its **full detail
   page as a slide-over** (Notion-style): the list stays visible behind the panel, and the
@@ -20,10 +21,13 @@ app: *project → phases → rows; click = slide-over.*
   control in the panel header expands to the full page; `Esc`, the backdrop, or the browser's
   Back button restores the list and its URL. Slide-overs are navigation sugar, never the only
   address (middle-click and deep links go straight to the page).
-- **The Library** is the cross-project browser: one page with tabs (Councils · Reports ·
-  Prototypes · Sessions · Surveys · Hypotheses · Decisions · Notes), one search/filter bar,
-  the same rows + slide-overs as the project outline. The old per-kind routes (`/councils`,
-  `/decisions`, …) still resolve — they render the Library with that tab active.
+- **The Library** is the cross-project browser: one page with tabs for open questions,
+  references, councils, reports, prototypes, flows, sessions, surveys, hypotheses,
+  decisions, notes and assets, one search/filter bar, the same rows + slide-overs as the
+  project outline. The old per-kind routes (`/councils`, `/decisions`, …) still resolve —
+  they render the Library with that tab active. Naming matters: **references** are
+  websites/external prototypes/A-B variants in the council room; **assets** are files;
+  **sessions** are usage traces.
 
 Three pieces make the *live* part work.
 
