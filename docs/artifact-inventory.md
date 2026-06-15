@@ -18,23 +18,45 @@ Use three layers:
 - **Open questions** are the research uncertainties driving a project. They live
   in the project outline, the Library's Open questions tab and
   `/open-questions/{id}` detail pages.
+- **Hypotheses** are testable assumptions with predictions. They are not
+  answers; they are framed bets that reality can validate or refute.
 - **References** are websites, external prototype links and A/B variants placed
   in a council room. They come from `add_artifact`, may carry a captured
   snapshot, and surface under `/references`. They are not uploaded files.
 - **Assets** are real files attached to a project: screenshots, documents,
-  exports and generated deliverables. They surface under `/assets` and the
-  project files lens.
-- **Flows** are ordered screenshot assets used for screen walkthroughs. They
-  surface under `/flows` and collect replayable sessions.
-- **Prototypes** are runnable local builds.
+  exports and generated deliverables. Assets can flow **in** as evidence or
+  **out** as deliverables. They surface under `/assets` and the project files
+  lens.
+- **Councils** are moderated research rounds: a mediator asks; personas answer
+  from memory. Red-team, head-to-head, price ladder and ideation are council
+  formats, not new primitives.
+- **Surveys** are structured question instruments for real responses.
+- **Prototypes** are interactive surfaces personas can actually use.
+- **Flows** are fixed screen sequences built from screenshot/image assets. They
+  are not runnable apps; use them when order, copy and drop-off matter before
+  or instead of building an interactive prototype.
 - **Sessions** are replayable usage traces against a flow, prototype or live
   URL. The compatibility fidelity value `artifact` means a screen walkthrough,
   not a generic artifact type.
-- **Councils, surveys, hypotheses, decisions, notes and reports/syntheses** are
-  also Library primitives. Their modes/statuses are subtypes or lifecycle
-  states, not separate top-level entities.
+- **Notes** are captured signals, observations or concepts.
+- **Reports / syntheses** are analyses that turn evidence into interpretation.
+- **Decisions** are evidence-backed commitments about what to do. They are not
+  answers; they are actions justified by evidence.
 - **Sections** are structural primitives: they group existing nodes and can have
   detail/export surfaces, but they are not evidence by themselves.
+
+The Library groups primitives as a user-facing work map:
+
+- **Frame**: open questions and hypotheses — what still needs to be resolved or
+  proven.
+- **Material**: references and assets — linked or stored material, whether
+  evidence in or deliverable out.
+- **Ask**: councils and surveys — ways to ask personas or real respondents.
+- **Test**: prototypes, flows and sessions — surfaces plus the recorded runs
+  through them.
+- **Capture**: notes — low-friction signals, observations and concepts.
+- **Conclude**: reports and decisions — analysis and commitments.
+- **Structure**: sections — grouping, not evidence.
 
 The Library is the cross-project browser for these primitives. The project page
 remains the primary context: the same objects appear as rows in the research
