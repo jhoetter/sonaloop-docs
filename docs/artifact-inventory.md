@@ -9,8 +9,8 @@ Use three layers:
    route, a detail page and a presence declaration.
 2. **Subtypes / formats** refine a primitive without creating a new top-level
    entity. Red-team and head-to-head are council formats; website, external
-   prototype and A/B variant are reference subtypes; a playbook can be a screen
-   walkthrough.
+   prototype and A/B variant are reference subtypes; a session can run against a
+   screen walkthrough, prototype or live URL.
 3. **Methodology `artifact_type` tags** are open planning/build tags used by the
    methodology engine and prototype renderer registry. They are not
    automatically Library primitives.
@@ -32,13 +32,10 @@ Use three layers:
   formats, not new primitives.
 - **Surveys** are structured question instruments for real responses.
 - **Prototypes** are interactive surfaces personas can actually use.
-- **Playbooks** are reusable test plans that sessions can run. The current
-  persisted format is a screen walkthrough: a fixed screen sequence built from
-  screenshot/image assets. It is not a runnable app; use it when order, copy and
-  drop-off matter before or instead of building an interactive prototype.
-- **Sessions** are replayable usage traces against a playbook/screen
-  walkthrough, prototype or live URL. The compatibility fidelity value
-  `artifact` means a screen walkthrough, not a generic artifact type.
+- **Sessions** are replayable usage traces against a screen walkthrough,
+  prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
+  script under `project["flows"]`, but that script is not a Library primitive;
+  it exists so multiple sessions can reuse the same ordered screenshot sequence.
 - **Notes** are captured signals, observations or concepts.
 - **Reports / syntheses** are analyses that turn evidence into interpretation.
 - **Decisions** are evidence-backed commitments about what to do. They are not
@@ -53,8 +50,8 @@ The Library groups primitives as a user-facing work map:
 - **Material**: references and assets — linked or stored material, whether
   evidence in or deliverable out.
 - **Ask**: councils and surveys — ways to ask personas or real respondents.
-- **Test**: prototypes, playbooks and sessions — what can be exercised, how the
-  exercise should run, and the recorded run itself.
+- **Test**: prototypes and sessions — what can be exercised and the recorded
+  run through it.
 - **Capture**: notes — low-friction signals, observations and concepts.
 - **Conclude**: reports and decisions — analysis and commitments.
 - **Structure**: sections — grouping, not evidence.
