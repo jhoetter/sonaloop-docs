@@ -10,7 +10,7 @@ line: **structure yes, generated text never.**
 | Entity | Create | Edit | Delete | Notes |
 | --- | --- | --- | --- | --- |
 | Project | ✅ web (`/projects/new`) | ✅ title/goal/description | ✅ typed-confirmation (type the project title) | container metadata only; the graph/plan stays agent-driven |
-| Persona | ❌ MCP-only (`brief_persona` → `record_persona`) | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation (type the display name) | see below |
+| Persona | ❌ MCP-only for authored profiles (`brief_persona` → `record_persona`); ✅ catalog import from `/personas/catalog` via `catalog_pull` | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation (type the display name) | catalog import is a selective pull from sonaloop-data, not browser authoring |
 | Note | ✅ web | ✅ title/text | ✅ | notes are *user/host-authored observations* — typing one in the browser **is** authoring |
 | Section | ✅ web | ✅ title/kind/note | ✅ (member nodes untouched) | a section is a view; membership editing stays MCP |
 | Council | ❌ | ❌ | ✅ delete only | statements are generated prose — never editable |
@@ -22,6 +22,12 @@ Everything in the ✅ columns goes through the **same service layer** the MCP to
 lifecycle events, hooks, the live event stream and cloud access guards all keep firing
 regardless of which surface made the change.
 
+The browser-side catalog affordance searches the curated sonaloop-data catalog and imports a
+selected slug through `catalog_pull`. With a local `sonaloop-data` checkout, the page uses the
+same facet rules and avatar files as the catalog UI. Free personas import directly. Premium
+personas remain visible but require `SONALOOP_CATALOG_TOKEN` (or a hosted request-scoped token);
+without it the service returns an in-band `skipped_premium` explanation instead of failing.
+
 ## Why persona create is MCP-only
 
 `record_persona` (the only create path) requires the complete host-authored profile JSON
@@ -29,8 +35,9 @@ produced by the `brief_persona` protocol — goals, pain points, personality, re
 success criteria — authored by the agent against the briefing instructions and validated
 server-side. There is no meaningful "structural shell" subset, and a web form asking a human
 to hand-type the full profile would bypass the briefing protocol that keeps personas
-evidence-shaped. The web therefore offers **metadata edit + delete** only; creation stays
-with the agent.
+evidence-shaped. The web therefore offers **metadata edit + delete** only for authored
+personas; catalog personas can be imported because the complete authored profile already
+exists in sonaloop-data and is pulled verbatim.
 
 ## Safety properties
 

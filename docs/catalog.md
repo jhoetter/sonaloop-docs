@@ -5,14 +5,20 @@ The curated, CRON-refreshed persona catalog lives in
 browse it, get an explainable cohort recommendation, and pull personas into your database —
 **with or without** the `sonaloop-data` package installed.
 
+The web inspector exposes the same selective pull at `/personas/catalog`: search, review
+free/premium tier labels, filter with the catalog facet rules, see avatar images, then add one
+persona with a POST-backed `catalog_pull`. This is a catalog import, not browser-side persona
+authoring.
+
 ## `catalog_search`
 
 Browse the catalog: slugs, names, roles, plus a facet summary over the filtered set.
 
 - `query` — free-text filter.
 - `facets` — `{facet: [values]}`, e.g. `{"lebensphase": ["schichtarbeit"]}`. Facet filtering
-  needs the `sonaloop-data` package with a local catalog; against the remote manifest the
-  facet filter is ignored (the response says so in `notes`).
+  needs the `sonaloop-data` package with a local catalog, except for manifest-backed
+  `tier` (`free` / `premium`), which also works against the remote manifest. Other remote
+  facet filters are ignored with an in-band `notes` entry.
 - Paginated per the shared convention below: `limit` (default 25) + opaque `cursor`.
 - **Remote fallback**: without the package, the search reads the published manifest on
   GitHub at git `ref` (default `main`) — no install required.
@@ -38,6 +44,10 @@ store — profiles, SOUL/MEMORY, lived memories, avatars — with `provenance.ca
 each persona. Re-pulls are idempotent (stable ids, upserts). Uses `sonaloop-data` when
 installed; without it, a built-in stdlib fallback pulls from the published catalog directly.
 `embed=true` re-derives embedding vectors when an embeddings provider is configured.
+
+Premium personas are visible in search but gated at pull time. Set `SONALOOP_CATALOG_TOKEN`
+to send the bearer token; without it, free personas still land and premium selections are
+returned in-band as `skipped_premium`.
 
 ## The pagination convention
 
