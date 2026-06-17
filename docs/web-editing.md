@@ -9,7 +9,7 @@ line: **structure yes, generated text never.**
 
 | Entity | Create | Edit | Delete | Notes |
 | --- | --- | --- | --- | --- |
-| Project | ✅ web (`/projects/new`) | ✅ title/goal/description | ✅ typed-confirmation (type the project title) | container metadata only; the graph/plan stays agent-driven |
+| Project | ✅ web (`/projects/new`) | ✅ title/goal/icon | ✅ typed-confirmation (type the project title) | browser edits the primary container metadata only; description remains API/MCP metadata; the graph/plan stays agent-driven; regular icons are selectable in the browser, custom SVG icons are generated/set through MCP/CLI |
 | Persona | ❌ MCP-only for authored profiles (`brief_persona` → `record_persona`); ✅ catalog import from `/personas/catalog` via `catalog_pull` | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation (type the display name) | catalog import is a selective pull from sonaloop-data, not browser authoring |
 | Note | ✅ web | ✅ title/text | ✅ | notes are *user/host-authored observations* — typing one in the browser **is** authoring |
 | Section | ✅ web | ✅ title/kind/note | ✅ (member nodes untouched) | a section is a view; membership editing stays MCP |
@@ -21,6 +21,14 @@ line: **structure yes, generated text never.**
 Everything in the ✅ columns goes through the **same service layer** the MCP tools use, so
 lifecycle events, hooks, the live event stream and cloud access guards all keep firing
 regardless of which surface made the change.
+
+Project/Job icons are structural metadata. MCP/CLI callers can pass
+`icon=<existing name>|"random"` while creating/starting a study, inspect the existing catalogue
+with `available_project_icons`, replace an icon with `set_project_icon`, or create a saved,
+sanitized custom SVG via `generate_project_icon`. Custom SVGs are written under
+`data/project-icons/…`. In the browser, clicking the project header icon opens the same
+edit dialog directly at the visual icon picker; the picker only selects from the existing
+icon catalogue.
 
 The browser-side catalog affordance searches the curated sonaloop-data catalog and imports a
 selected slug through `catalog_pull`. With a local `sonaloop-data` checkout, the page uses the
