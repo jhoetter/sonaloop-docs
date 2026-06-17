@@ -25,8 +25,8 @@ Use three layers:
   snapshot, and surface under `/references`. They are not uploaded files.
 - **Assets** are real files attached to a project: screenshots, documents,
   exports and generated deliverables. Assets can flow **in** as evidence or
-  **out** as deliverables. They surface under `/assets` and the project files
-  lens.
+  **out** as deliverables. They surface under `/assets`, `/assets/{id}` and in
+  the project outline.
 - **Councils** are moderated research rounds: a mediator asks; personas answer
   from memory. Red-team, head-to-head, price ladder and ideation are council
   formats, not new primitives.

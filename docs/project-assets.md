@@ -46,9 +46,10 @@ instruct the host to `view_asset` them first; document excerpts are inline.
 
 ## Persistence
 
-- Assets appear read-only on the project page, the Library's Assets tab (`/assets`) and
+- Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and
   `/assets/{id}` detail pages in the web inspector (thumbnails for images, served from the
-  static `/data` mount).
+  static `/data` mount). Incoming files are grouped as Assets in the outline; generated
+  documents appear as deliverables.
 - `export-snapshot` now includes research projects and copies asset binaries to
   `data/export/assets/`; `import-snapshot` restores both — the evidence survives
   the portable round-trip.
