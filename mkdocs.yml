@@ -63,3 +63,9 @@ markdown_extensions:
 
 plugins:
   - search
+
+extra_css:
+  - assets/responsive.css
+
+extra_javascript:
+  - assets/responsive.js

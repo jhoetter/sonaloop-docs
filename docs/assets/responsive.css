@@ -1,0 +1,54 @@
+.md-content,
+.md-main__inner,
+.md-typeset {
+  min-width: 0;
+}
+
+.md-typeset table:not([class]) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.md-typeset pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.md-typeset img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sl-docs-drawer-close {
+  position: fixed;
+  top: 0.45rem;
+  left: min(15.5rem, calc(100vw - 3.25rem));
+  z-index: 5;
+  display: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 0;
+  border-radius: 0.2rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  box-shadow: 0 0 0 1px var(--md-default-fg-color--lightest);
+  cursor: pointer;
+}
+
+.sl-docs-drawer-close svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+body.sl-docs-drawer-open .sl-docs-drawer-close {
+  display: grid;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset :not(pre) > code {
+    overflow-wrap: anywhere;
+  }
+}
