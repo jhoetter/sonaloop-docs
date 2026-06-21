@@ -37,7 +37,11 @@ Use three layers:
   canvases (`kind="canvas"` / `--type canvas`) for spatial maps, control rooms,
   boards and simulation-like experiences. They render with the active design
   system: Sonaloop defaults locally, or the workspace design system in Cloud,
-  including tokens, font stacks and optional brand/logo assets.
+  including tokens, font stacks and optional brand/logo assets. Generated HTML
+  carries a compiled `--proto-*` token layer, so presets and fine-grained edits
+  to color schemes, chart series, status colors, radius, spacing, density,
+  shadows and focus rings adapt the next scaffolded prototype without hardcoded
+  template branches.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;
