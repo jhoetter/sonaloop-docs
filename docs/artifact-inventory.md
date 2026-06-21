@@ -31,7 +31,13 @@ Use three layers:
   from memory. Red-team, head-to-head, price ladder and ideation are council
   formats, not new primitives.
 - **Surveys** are structured question instruments for real responses.
-- **Prototypes** are interactive surfaces personas can actually use.
+- **Prototypes** are interactive surfaces personas can actually use. Scaffolded
+  prototypes are not limited to forms or clickflows: the artifact registry can
+  render flows, dashboards, cards, comparisons, models, journeys and freeform
+  canvases (`kind="canvas"` / `--type canvas`) for spatial maps, control rooms,
+  boards and simulation-like experiences. They render with the active design
+  system: Sonaloop defaults locally, or the workspace design system in Cloud,
+  including tokens, font stacks and optional brand/logo assets.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;
