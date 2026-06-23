@@ -5,6 +5,10 @@ tracker) aligns on the three orthogonal layers below. The machine-readable compa
 [`sonaloop/taxonomy.json`](https://github.com/jhoetter/sonaloop/blob/main/sonaloop/taxonomy.json), loaded via `sonaloop.job_taxonomy`;
 keep the two in lock-step. Every repo and ticket tags itself with the layer (and id) it serves.
 
+The adjacent output contract is the **Result Schema**: the domain-neutral result shape that says
+what must exist before a Job is done. See [Result schemas](result-schemas.md). Jobs and
+methodologies reference result schemas many-to-many; do not create one methodology per schema.
+
 ## The doctor analogy
 
 > You walk into a doctor's office because **your stomach hurts** — that is the **Job**: *why

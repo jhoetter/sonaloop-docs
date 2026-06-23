@@ -10,6 +10,7 @@
 - [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): one-sentence uvx install, MCP registration, sonaloop info diagnostics, first project
 - [Example projects](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/examples.md): shipped demo studies — list/load/remove, idempotent loading
 - [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy + the A/B test, pricing and ideation run protocols + the Adding-a-Job recipe
+- [Result schemas](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/result-schemas.md): domain-neutral output contracts for Jobs and methodologies, evidence policy, live-required interruption seam
 - [Frameworks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/frameworks.md): methodology frameworks a run can follow
 - [Grounding](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/grounding.md): evidence grounding and provenance
 - [Artifact inventory](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/artifact-inventory.md): references vs assets vs flows vs sessions, and the artifact naming trap

@@ -32,6 +32,7 @@ nav:
   - Example projects: examples.md
   - Concepts:
       - Job → Framework → Format: job-framework-format.md
+      - Result schemas: result-schemas.md
       - Frameworks: frameworks.md
       - Grounding: grounding.md
       - Artifact inventory: artifact-inventory.md
