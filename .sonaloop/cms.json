@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "content": {
+    "roots": [
+      {
+        "id": "docs",
+        "label": "Sonaloop Docs",
+        "path": "docs",
+        "collections": [
+          {
+            "id": "docs",
+            "label": "Docs pages",
+            "path": ".",
+            "requiredFields": []
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "roots": [
+      {
+        "id": "docs-assets",
+        "label": "Docs assets",
+        "path": "docs/assets"
+      }
+    ]
+  },
+  "validation": {
+    "requiredFields": [],
+    "descriptionMaxLength": 160
+  },
+  "preview": {
+    "url": "https://jhoetter.github.io/sonaloop-docs/"
+  },
+  "generated": {
+    "enabled": false,
+    "outputPath": ".sonaloop/generated"
+  }
+}
