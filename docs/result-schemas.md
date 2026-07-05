@@ -11,7 +11,7 @@ They sit beside the existing model:
 - **Result schema**: the neutral shape of the final or intermediate output.
 
 The source in the core repo is
-[`sonaloop/result_schemas.json`](https://github.com/jhoetter/sonaloop/blob/main/sonaloop/result_schemas.json).
+[`sonaloop/result_schemas.json`](https://github.com/jhoetter/sonaloop-research/blob/main/sonaloop/result_schemas.json).
 
 ## Domain-neutral by design
 

@@ -1,8 +1,8 @@
 site_name: Sonaloop Docs
 site_description: Documentation for Sonaloop — persona simulation, councils, and design-research synthesis over MCP.
 site_url: https://jhoetter.github.io/sonaloop-docs/
-repo_url: https://github.com/jhoetter/sonaloop
-repo_name: jhoetter/sonaloop
+repo_url: https://github.com/jhoetter/sonaloop-research
+repo_name: jhoetter/sonaloop-research
 edit_uri: https://github.com/jhoetter/sonaloop-docs/edit/main/docs/
 
 theme:
@@ -44,6 +44,7 @@ nav:
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md
   - Operating:
+      - Cloud GitHub automations: cloud-github-automations.md
       - Embeddings: embeddings.md
       - Persona catalog & pagination: catalog.md
       - Lifecycle hooks: lifecycle-hooks.md

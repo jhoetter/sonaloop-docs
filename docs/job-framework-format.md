@@ -2,7 +2,7 @@
 
 **This is the source of truth.** The whole Sonaloop product (core app, website IA, and the
 tracker) aligns on the three orthogonal layers below. The machine-readable companion is
-[`sonaloop/taxonomy.json`](https://github.com/jhoetter/sonaloop/blob/main/sonaloop/taxonomy.json), loaded via `sonaloop.job_taxonomy`;
+[`sonaloop/taxonomy.json`](https://github.com/jhoetter/sonaloop-research/blob/main/sonaloop/taxonomy.json), loaded via `sonaloop.job_taxonomy`;
 keep the two in lock-step. Every repo and ticket tags itself with the layer (and id) it serves.
 
 The adjacent output contract is the **Result Schema**: the domain-neutral result shape that says
@@ -26,7 +26,7 @@ The three are **orthogonal axes, not competing lists**: a Job runs *through* a F
 | Layer | One-liner | What it is |
 |-------|-----------|------------|
 | **Job** | What the user wants — the use case they buy. | The outcome a customer walks in for ("how is my positioning?", "what should I charge?"). The thing sold and the thing measured. The core has **no first-class concept of it today** — the host (Claude) improvises it from a free-text goal; this taxonomy gives Jobs stable ids. |
-| **Framework** | The process the run follows end-to-end. | A constellation of steps (a DAG) taking a run from ambiguity to a buildable answer. Frameworks **already exist** in core as [`sonaloop/methodologies/*.json`](https://github.com/jhoetter/sonaloop/tree/main/sonaloop/methodologies) (keyed by `key`) and seed the plan engine. |
+| **Framework** | The process the run follows end-to-end. | A constellation of steps (a DAG) taking a run from ambiguity to a buildable answer. Frameworks **already exist** in core as [`sonaloop/methodologies/*.json`](https://github.com/jhoetter/sonaloop-research/tree/main/sonaloop/methodologies) (keyed by `key`) and seed the plan engine. |
 | **Format** | A single move inside a run. | One concrete research move at a plan step: a council, a prototype test, a head-to-head, a red-team. |
 
 ### Mislabels this model fixes

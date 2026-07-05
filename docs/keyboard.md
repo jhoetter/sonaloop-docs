@@ -3,7 +3,7 @@
 The inspector is keyboard-first. One registry declares every binding; the `?` cheat sheet
 and the client keymap are both generated from it, so the overlay can never drift from the
 real bindings. (The full cross-surface contract for other Sonaloop apps lives in the core
-repo: [`docs/keyboard-conventions.md`](https://github.com/jhoetter/sonaloop/blob/main/docs/keyboard-conventions.md).)
+repo: [`docs/keyboard-conventions.md`](https://github.com/jhoetter/sonaloop-research/blob/main/docs/keyboard-conventions.md).)
 
 ## Bindings
 

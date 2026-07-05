@@ -58,4 +58,4 @@ exists in sonaloop-data and is pulled verbatim.
   registration. Locally the guard list is empty and every call passes.
 
 The deep technical notes (form pattern, CSRF design rationale, service functions) live in
-the core repo: [`docs/web-mutations.md`](https://github.com/jhoetter/sonaloop/blob/main/docs/web-mutations.md).
+the core repo: [`docs/web-mutations.md`](https://github.com/jhoetter/sonaloop-research/blob/main/docs/web-mutations.md).

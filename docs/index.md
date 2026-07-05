@@ -52,7 +52,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 
 | Repo | What it is |
 |------|------------|
-| [sonaloop](https://github.com/jhoetter/sonaloop) | The open core — MCP server, CLI, web inspector |
+| [sonaloop](https://github.com/jhoetter/sonaloop-research) | The open core — MCP server, CLI, web inspector |
 | [sonaloop-docs](https://github.com/jhoetter/sonaloop-docs) | This documentation (canonical source) |
 | [sonaloop-data](https://github.com/jhoetter/sonaloop-data) | The persona database — a CRON-refreshed catalog |
 | [sonaloop-design](https://github.com/jhoetter/sonaloop-design) | Brand, design tokens and icons |

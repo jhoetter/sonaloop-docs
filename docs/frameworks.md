@@ -4,7 +4,7 @@ A **Framework** is the second layer of the [Job → Framework → Format taxonom
 *the process a run follows end-to-end.* A Job runs **through** a Framework **using** Formats.
 
 Frameworks already exist in the core as the methodology specs under
-[`sonaloop/methodologies/*.json`](https://github.com/jhoetter/sonaloop/tree/main/sonaloop/methodologies) (keyed by `key`); starting a study with
+[`sonaloop/methodologies/*.json`](https://github.com/jhoetter/sonaloop-research/tree/main/sonaloop/methodologies) (keyed by `key`); starting a study with
 one **seeds the plan engine** (`start_project(methodology=<id>)` / `set_project_methodology`). This
 page explains the concept; the inspector's **Methodologies** tab is the per-methodology catalogue.
 
@@ -28,9 +28,9 @@ job_taxonomy.get_framework_description("double_diamond")
 ```
 
 The same shape is exposed over MCP as **`list_frameworks`** and **`describe_framework`** (see
-[the MCP surface](https://github.com/jhoetter/sonaloop#readme)). `what` is the one-line "what shape it is", `when` is "when to use
+[the MCP surface](https://github.com/jhoetter/sonaloop-research#readme)). `what` is the one-line "what shape it is", `when` is "when to use
 it", and `stages` is the ordered diverge→converge shape. The data is read live from the methodology
-specs and joined with the canonical [`taxonomy.json`](https://github.com/jhoetter/sonaloop/blob/main/sonaloop/taxonomy.json), so ids and labels
+specs and joined with the canonical [`taxonomy.json`](https://github.com/jhoetter/sonaloop-research/blob/main/sonaloop/taxonomy.json), so ids and labels
 stay in lock-step across the core, the website IA and the tracker.
 
 ## What a Framework contains

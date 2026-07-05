@@ -31,7 +31,7 @@ testing, and an `OPENAI_API_KEY` enables avatars + semantic recall. **`sonaloop 
 prints diagnostics — data dir, DB, optional providers, MCP wiring — and the exact one-liners
 to fix whatever is missing. Every supported environment variable is listed with a one-line
 explanation in the core repo's
-[`.env.example`](https://github.com/jhoetter/sonaloop/blob/main/.env.example).
+[`.env.example`](https://github.com/jhoetter/sonaloop-research/blob/main/.env.example).
 
 ## First step: load an example project
 
