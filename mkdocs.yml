@@ -44,6 +44,7 @@ nav:
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md
   - Operating:
+      - Cloud workspaces & access: cloud-workspaces.md
       - Cloud GitHub automations: cloud-github-automations.md
       - Embeddings: embeddings.md
       - Persona catalog & pagination: catalog.md

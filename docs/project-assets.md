@@ -25,8 +25,11 @@ sonaloop asset-list <project_id>
 sonaloop asset-remove <project_id> <asset_id>
 ```
 
-Binaries land in the content-addressed store (`data/assets/<hash>.<ext>` — the
-web app serves it at `/data/assets/…`); the record lands on the project. Ids are
+Binaries land in the content-addressed store (`data/assets/<hash>.<ext>`); the
+record lands on the project. Local single-user mode serves that file at
+`/data/assets/…`. Multi-tenant Cloud instead stores it below the bound
+workspace and deliberately returns 404 for raw runtime-file routes; authorized
+agents still receive image pixels through `view_asset`. Ids are
 content-addressed per project, so re-attaching the same bytes is an idempotent
 upsert. `kind` (image | screenshot | document | file) is inferred from the
 extension. Attaching emits the `asset.attached` lifecycle event
@@ -47,9 +50,9 @@ instruct the host to `view_asset` them first; document excerpts are inline.
 ## Persistence
 
 - Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and
-  `/assets/{id}` detail pages in the web inspector (thumbnails for images, served from the
-  static `/data` mount). Incoming files are grouped as Assets in the outline; generated
-  documents appear as deliverables.
+  `/assets/{id}` detail pages in the web inspector. Local mode may render thumbnails from
+  the static `/data` mount; tenant Cloud does not expose that raw mount. Incoming files are
+  grouped as Assets in the outline; generated documents appear as deliverables.
 - `export-snapshot` now includes research projects and copies asset binaries to
   `data/export/assets/`; `import-snapshot` restores both — the evidence survives
   the portable round-trip.

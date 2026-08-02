@@ -20,6 +20,7 @@
 - [Web editing](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/web-editing.md): the inspector's write boundary — structural edits vs host-authored text
 - [Keyboard, palette & tour](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/keyboard.md): shortcuts (j/k/Enter/o/Esc row + slide-over navigation), the command palette, the opt-in product tour
 - [Feedback](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/feedback.md): in-app feedback, /feedback inbox, CLI, SONALOOP_FEEDBACK_WEBHOOK
+- [Cloud workspaces and customer access](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/cloud-workspaces.md): tenant isolation, OIDC email/password identity, exact-email invitations and no-charge workspace provisioning
 - [Cloud GitHub automations](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/cloud-github-automations.md): GitHub App setup, webhook events, reaction-test flow, result schemas and writeback targets
 - [Embeddings](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/embeddings.md): semantic memory recall setup
 - [Persona catalog & pagination](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/catalog.md): catalog_search/recommend/pull MCP tools + the shared pagination convention
