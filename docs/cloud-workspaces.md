@@ -64,10 +64,20 @@ digest, creator, expiry, status and redemption audit. Redemption requires the
 same normalized, verified email returned by the identity provider. Domain-wide
 joining and email-based auto-linking are deliberately unsupported.
 
+When Clerk delivery is configured, the Workspace form also creates a Clerk
+application invitation and sends the signup email. After the recipient verifies
+the exact address, Sonaloop redeems the one-time workspace grant, activates that
+workspace and opens its prepared Jobs view. No Stripe step is involved for a
+`comp` workspace; the copyable one-time link remains the owner fallback if email
+delivery fails or is ambiguous.
+
 ## Tenant and file boundary
 
 Postgres row-level security and the request workspace scope protect structured
-records. Runtime files live under:
+records. Every authenticated browser request binds exactly the active workspace
+as its only read and write scope; other memberships remain switcher choices and
+their projects, personas and evidence are not unioned into the active UI. Runtime
+files live under:
 
 ```text
 <SONALOOP_DATA_DIR>/workspaces/<workspace-id>/
@@ -77,9 +87,9 @@ This includes persona SOUL and memory files, avatars, assets, snapshots,
 simulations, exports, prototypes and browser-session logs. In tenant mode,
 external filesystem paths are rejected and unscoped `/data`, `/proto-files`
 and `/sessions-files` routes do not expose runtime files. Images remain
-available to authorized research agents through `view_asset`; a future
-authenticated blob route can add browser downloads without reopening raw
-filesystem mounts.
+available to authorized research agents through `view_asset`; browser previews
+and downloads resolve an opaque asset id through an authenticated,
+active-workspace-only route without reopening raw filesystem mounts.
 
 For a first customer rollout, keep command lifecycle hooks and the hosted-agent
 worker disabled until their workflows and outbound actions have been reviewed:

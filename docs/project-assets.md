@@ -28,12 +28,14 @@ sonaloop asset-remove <project_id> <asset_id>
 Binaries land in the content-addressed store (`data/assets/<hash>.<ext>`); the
 record lands on the project. Local single-user mode serves that file at
 `/data/assets/…`. Multi-tenant Cloud instead stores it below the bound
-workspace and deliberately returns 404 for raw runtime-file routes; authorized
-agents still receive image pixels through `view_asset`. Ids are
-content-addressed per project, so re-attaching the same bytes is an idempotent
-upsert. `kind` (image | screenshot | document | file) is inferred from the
-extension. Attaching emits the `asset.attached` lifecycle event
-(docs/lifecycle-hooks.md).
+workspace and deliberately returns 404 for raw runtime-file routes. Browser
+previews and downloads use `/assets/{asset-id}/content` (or `/preview`): the
+authenticated route resolves the opaque id only inside the active workspace.
+Unsafe active formats such as SVG and HTML are download-only. Authorized agents
+still receive image pixels through `view_asset`. Ids are content-addressed per
+project, so re-attaching the same bytes is an idempotent upsert. `kind` (image |
+screenshot | document | file) is inferred from the extension. Attaching emits
+the `asset.attached` lifecycle event (docs/lifecycle-hooks.md).
 
 ## The multimodal contract
 
@@ -51,8 +53,9 @@ instruct the host to `view_asset` them first; document excerpts are inline.
 
 - Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and
   `/assets/{id}` detail pages in the web inspector. Local mode may render thumbnails from
-  the static `/data` mount; tenant Cloud does not expose that raw mount. Incoming files are
-  grouped as Assets in the outline; generated documents appear as deliverables.
+  the static `/data` mount; tenant Cloud serves them through the authenticated,
+  active-workspace-only asset route and does not expose that raw mount. Incoming files
+  are grouped as Assets in the outline; generated documents appear as deliverables.
 - `export-snapshot` now includes research projects and copies asset binaries to
   `data/export/assets/`; `import-snapshot` restores both — the evidence survives
   the portable round-trip.
