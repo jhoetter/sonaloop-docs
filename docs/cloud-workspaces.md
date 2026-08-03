@@ -97,7 +97,12 @@ external filesystem paths are rejected and unscoped `/data`, `/proto-files`
 and `/sessions-files` routes do not expose runtime files. Images remain
 available to authorized research agents through `view_asset`; browser previews
 and downloads resolve an opaque asset id through an authenticated,
-active-workspace-only route without reopening raw filesystem mounts.
+active-workspace-only route without reopening raw filesystem mounts. Persona
+portraits use the same boundary at `GET /personas/<persona-id>/avatar`: the
+persona is resolved under the active RLS scope, its PNG is contained inside that
+workspace's avatar directory, and the response is `private, no-store`. Stable
+catalog persona ids therefore cannot leak a portrait or a locally revised avatar
+across a workspace switch.
 
 For a first customer rollout, keep command lifecycle hooks and the hosted-agent
 worker disabled until their workflows and outbound actions have been reviewed:

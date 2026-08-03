@@ -45,6 +45,11 @@ each persona. Re-pulls are idempotent (stable ids, upserts). Uses `sonaloop-data
 installed; without it, a built-in stdlib fallback pulls from the published catalog directly.
 `embed=true` re-derives embedding vectors when an embeddings provider is configured.
 
+The pull copies each committed `avatar.png` into the current runtime partition. In
+shared Cloud deployments the inspector never emits the stored `/data/...` path; it
+uses an authenticated, active-workspace-only `/personas/<persona-id>/avatar` URL and
+disables caching because the same stable catalog id can exist in several workspaces.
+
 Premium personas are visible in search but gated at pull time. Set `SONALOOP_CATALOG_TOKEN`
 to send the bearer token; without it, free personas still land and premium selections are
 returned in-band as `skipped_premium`.
