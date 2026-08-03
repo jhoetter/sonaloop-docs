@@ -71,6 +71,14 @@ workspace and opens its prepared Jobs view. No Stripe step is involved for a
 `comp` workspace; the copyable one-time link remains the owner fallback if email
 delivery fails or is ambiguous.
 
+An owner who prepares several customer workspaces can activate one workspace and
+choose **View as regular member**. This creates a signed, browser-session role
+preview for that active workspace: research data and actions use the normal
+`workspace_user` permissions, owner-only controls disappear, and a persistent
+banner exits the preview. The membership row is never changed. Switching
+workspaces, signing out, losing owner membership, or presenting a stale preview
+cookie ends the preview fail-closed.
+
 ## Tenant and file boundary
 
 Postgres row-level security and the request workspace scope protect structured
