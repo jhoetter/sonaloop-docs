@@ -79,6 +79,16 @@ banner exits the preview. The membership row is never changed. Switching
 workspaces, signing out, losing owner membership, or presenting a stale preview
 cookie ends the preview fail-closed.
 
+## Customer-facing onboarding surface
+
+Shared Postgres row tenancy disables the Core product tour and the browser loader
+for its bundled `onboarding-showcase` by default. A customer therefore opens the
+workspace data prepared for them rather than an onboarding demo that could add
+unrelated records. Local/single-user Core keeps the opt-in tour enabled by default;
+MCP and CLI example loading remain explicit host-controlled operations. Set
+`SONALOOP_PRODUCT_TOUR_ENABLED=1` only when a shared deployment deliberately wants
+to expose that onboarding surface.
+
 ## Tenant and file boundary
 
 Postgres row-level security and the request workspace scope protect structured

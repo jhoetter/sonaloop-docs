@@ -16,7 +16,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Start here
 
 - [Getting started](getting-started.md) — the one-sentence install and your first project.
-- [Example projects](examples.md) — two complete demo studies, loadable in one click.
+- [Example projects](examples.md) — complete demo studies, one-click in the local inspector or loadable via MCP/CLI.
 - [Job → Framework → Format](job-framework-format.md) — the three-layer taxonomy the whole product aligns on, including the A/B test, pricing and ideation run protocols.
 - [Frameworks](frameworks.md) — the methodologies a run can follow.
 
@@ -31,7 +31,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 
 - [The live inspector](live-inspector.md) — the event stream, the activity feed, and the runs panel.
 - [Web editing](web-editing.md) — what the browser can and deliberately cannot edit.
-- [Keyboard, palette & tour](keyboard.md) — shortcuts, the ⌘K palette, and the opt-in tour.
+- [Keyboard, palette & tour](keyboard.md) — shortcuts, the ⌘K palette, and the local opt-in tour.
 - [Feedback](feedback.md) — the built-in feedback channel and its webhook.
 
 ## Operating Sonaloop

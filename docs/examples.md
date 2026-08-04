@@ -23,8 +23,14 @@ Three equivalent ways:
   loads one and returns the project id + inspector URL.
 - **CLI** — `sonaloop load-example` with no slug lists what's available;
   `sonaloop load-example <slug>` loads it; `--all` loads every example.
-- **Web** — on an empty database the inspector's home page shows a **Load example** button
-  per example (one click, lands on the populated project page).
+- **Web** — on an empty local/single-user database the inspector's home page shows a
+  **Load example** button per example (one click, lands on the populated project page).
+
+Shared Postgres row-tenanted Cloud disables the product tour and the
+`onboarding-showcase` browser loader by default, so a prepared customer workspace cannot
+silently acquire demo content from that onboarding surface. MCP and CLI loading remain
+explicit, host-controlled paths. Operators can override the deployment default with
+`SONALOOP_PRODUCT_TOUR_ENABLED`.
 
 Loading replays the fixture through the real `record_*` service layer — validated shapes,
 server-side aggregates, lifecycle events — so an example project behaves exactly like a real

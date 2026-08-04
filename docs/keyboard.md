@@ -46,15 +46,21 @@ questions, references, councils, reports, prototypes, flows, sections, notes, se
 hypotheses, decisions, surveys and assets — plus **jump commands** derived from the
 navigation (including pages added by extensions). Type to filter, `Enter` to open.
 
-## The product tour
+## The product tour (local/single-user Core)
 
-An optional tour loads the onboarding showcase project if needed, then walks real project
-objects: open question, reference, council, survey, report, flow, prototype, session,
-hypothesis, decision, note, asset and the Library. It uses anchored spotlights + tooltips,
-progress dots, Back/Next/Skip; `Esc` ends it. It **never auto-starts**:
+In local/single-user Core, an optional tour loads the onboarding showcase project if
+needed, then walks real project objects: open question, reference, council, survey, report,
+flow, prototype, session, hypothesis, decision, note, asset and the Library. It uses
+anchored spotlights + tooltips, progress dots, Back/Next/Skip; `Esc` ends it. It **never
+auto-starts**:
 
-- **Take the tour** is available in the sidebar footer and prominent on the empty-database
+- **Take the tour** is available in the user menu and prominent on the empty-database
   home page.
 
 Steps whose target isn't on the current page are skipped automatically, so the tour works
 from anywhere.
+
+Shared Postgres row-tenanted Cloud disables the tour and its onboarding-showcase browser
+loader by default. This keeps prepared customer workspaces focused on their own research
+and prevents the onboarding surface from adding demo records. An operator can explicitly
+override the default with `SONALOOP_PRODUCT_TOUR_ENABLED`.

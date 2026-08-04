@@ -38,7 +38,9 @@ explanation in the core repo's
 Before running your own study, look at a finished one. Two complete demo studies ship with
 the install — a B2B positioning council and a B2C pricing study (price ladder + €19 vs €49
 head-to-head). Ask your agent to call `load_example`, run `sonaloop load-example`, or click
-**Load example** on the inspector's empty home page. Loading is idempotent and
+**Load example** on the local/single-user inspector's empty home page. Shared Postgres
+row-tenanted Cloud disables the product tour and its onboarding-showcase browser loader by
+default. Loading is idempotent and
 `remove_example` removes exactly that data again — details in [Example projects](examples.md).
 
 Start the inspector with `sonaloop-web` and open <http://127.0.0.1:8787> — it shows
