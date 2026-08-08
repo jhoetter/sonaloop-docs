@@ -166,8 +166,10 @@ model's prose claim that it is finished.
 ## Diagnose and recover without making a duplicate
 
 `project_health(project_id)` is the canonical support view shared by MCP, CLI and the inspector. It
-separates **running**, **stalled**, **engine-finished** and **output unverified**. It names the first
-unmet invariant, last successful operation, Product Understanding coverage, claim/source counts,
+separates **running**, **stalled**, **engine-finished** and **output unverified**. The normal project
+canvas keeps its compact run chip and a human-readable state. Open **Technical diagnostics** in the
+chip or in `/runs` when support detail is actually needed: there Sonaloop names the first unmet
+invariant, last successful operation, Product Understanding coverage, claim/source counts,
 repairable orphaned evidence, one safe next action and a redacted `sltrace_*` support reference.
 
 For an interrupted active run, call the returned
