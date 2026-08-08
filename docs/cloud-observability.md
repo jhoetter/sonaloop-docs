@@ -136,6 +136,43 @@ The pair shares `sonaloop_audit_event_id` and `$ai_trace_id`; it is one observed
 operation in two PostHog surfaces, not two tool executions. Dashboards that
 count tool executions should use `$mcp_tool_call` only.
 
+Audit schema v3 adds one privacy-reviewed semantic result contract. A technically
+successful `record_cohort_preflight` can expose `sonaloop_outcome` as exactly one
+of `pass`, `needs_deepening`, `needs_reselection`, `overridden`, or the fixed
+fallback `unknown`. The exporter revalidates the tool, technical status and exact
+contract version before adding the property to both projections. It never exports
+an arbitrary result `status`, rationale or malformed version string. This is
+low-cardinality structural metadata, does not authorize content capture and is
+absent on legacy receipts.
+
+Technical failures stay separate from semantic outcomes. `$mcp_error_type` and
+the paired `$ai_error.code` use PostHog's closed categories (`missing_context`,
+`validation`, `permission`, `timeout`, `rate_limited`, `api_4xx`, `api_5xx`, or
+`internal`); raw local exception codes remain in the tenant ledger.
+
+PostHog's trace and session layers have separate meanings:
+
+- `$ai_trace_id` groups one interaction's spans. A valid inbound W3C trace is
+  preserved; otherwise Cloud creates a request trace. Every observed toolcall has
+  a unique `$ai_span_id`, and its parent is retained when W3C context exists.
+- `$ai_session_id` groups the request traces belonging to one governed run, then
+  falls back to project/session/operation correlation when no run is known.
+- MCP Analytics `$session_id` represents explicit MCP session metadata, with a
+  request-local fallback. `$mcp_conversation_id` carries the governed run/project
+  grouping. Domain objects that happen to be named `session_id` are not treated as
+  protocol sessions.
+
+Cloud returns a normal single-call response `traceparent` containing the
+resulting tool span, so a capable host can continue the tree on its next request.
+If a future transport batches several toolcalls into one response, it returns the
+request-local server span instead of choosing an arbitrary child. HTTP trace context takes
+precedence over MCP `_meta`; an invalid-but-present HTTP `traceparent` starts a new
+trace instead of trusting a second source. Raw `tracestate` values are neither
+persisted nor returned; only bounded validity/count metadata enters the ledger.
+All exported trace/span identifiers are workspace-HMAC scoped. Sonaloop spans can
+therefore nest without exposing raw ids, but separately ingested raw OpenTelemetry
+spans do not automatically join this privacy-scoped tree.
+
 At the wire boundary, Sonaloop converts the ledger's ISO timestamp into the
 timezone-aware `datetime` required by PostHog's Python SDK. MCP session ids use
 the canonical `ses_<32-hex>` form. The credentialed smoke test must query both
@@ -267,7 +304,9 @@ model-token accounting. Sonaloop records only the MCP calls the host sends.
 W3C `traceparent`, `x-request-id`, `x-sonaloop-operation-id` and
 `idempotency-key` headers improve correlation when the host supports them;
 equivalent operation/session metadata can travel in MCP `_meta`. Cloud
-generates safe correlation ids when none are supplied. This makes the Sonaloop
+generates safe correlation ids when none are supplied. Calls without propagated
+W3C context remain separate interaction traces but are grouped by the governed
+run's AI session and MCP conversation. This makes the Sonaloop
 portion of a job inspectable, but it does not invent an unobserved
 `$ai_generation`. Full external-host replay requires tracing in that host and a
 shared correlation contract. Cloud-owned agent runs can provide the full
@@ -321,17 +360,24 @@ and no personal API key.
    pseudonyms externally and therefore intentionally do not equal the local
    values. Confirm a corresponding `$ai_span` has the
    same `sonaloop_audit_event_id` and `$ai_trace_id`.
-5. Confirm the MCP event has `sonaloop_capture_level=metadata`, that its
+5. Make two harmless calls tied to the same governed run without an inbound
+   `traceparent`. Confirm they have different `$ai_trace_id` values but the same
+   `$ai_session_id` on `$ai_span` and the same `$mcp_conversation_id` on
+   `$mcp_tool_call`. Then propagate the first response `traceparent` and confirm
+   the next span joins that trace with the expected `$ai_parent_id`.
+6. For a cohort-preflight canary, confirm both projections expose the same closed
+   `sonaloop_outcome`; verify that no rationale/result text is present.
+7. Confirm the MCP event has `sonaloop_capture_level=metadata`, that its
    distinct/session identities are HMAC pseudonyms, and that no raw prompt,
    workspace id, credentials or argument/result text appears.
-6. Only if Cloud-hosted tracing is part of the rollout, enable
+8. Only if Cloud-hosted tracing is part of the rollout, enable
    `SONALOOP_POSTHOG_HOSTED_ENABLED=1` and run a harmless canary automation.
    First verify a row in `cloud_hosted_telemetry_projection` and a
    `event_kind='hosted_posthog'` outbox receipt progress to `delivered`.
    Verify one `$ai_generation` per provider attempt plus any tool `$ai_span` children under the
    same trace. Keep hosted content capture at `0` for this test.
 
-For automated readback, run steps 4–6 from a restricted operator job using the
+For automated readback, run steps 4–8 from a restricted operator job using the
 optional personal key, project id and API host. Never return the personal key
 in logs, test output or a browser response.
 
