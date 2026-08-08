@@ -35,16 +35,20 @@ nav:
       - Result schemas: result-schemas.md
       - Frameworks: frameworks.md
       - Grounding: grounding.md
+      - Cohort Integrity: cohort-integrity.md
       - Artifact inventory: artifact-inventory.md
       - Calibration: calibration.md
       - Opt-in aggregation: opt-in-aggregation-design.md
   - The inspector:
       - The live inspector: live-inspector.md
+      - Reliable MCP jobs and runs: reliable-runs.md
       - Web editing: web-editing.md
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md
   - Operating:
       - Cloud workspaces & access: cloud-workspaces.md
+      - Cloud audit & PostHog observability: cloud-observability.md
+      - Secure remote screenshots: remote-screenshot-admission.md
       - Cloud GitHub automations: cloud-github-automations.md
       - Embeddings: embeddings.md
       - Persona catalog & pagination: catalog.md

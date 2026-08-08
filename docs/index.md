@@ -23,6 +23,8 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Concepts & method
 
 - [Grounding](grounding.md) — evidence grounding and provenance.
+- [Cohort Integrity](cohort-integrity.md) — independent persona depth, framed-hypothesis leakage,
+  countervoices and server-owned remediation before Reaction Tests.
 - [Artifact inventory](artifact-inventory.md) — references vs assets vs flows vs sessions.
 - [Calibration](calibration.md) — prediction calibration and Brier scoring.
 - [Opt-in aggregation](opt-in-aggregation-design.md) — the sentiment/coverage aggregation model.
@@ -30,6 +32,8 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## The inspector
 
 - [The live inspector](live-inspector.md) — the event stream, the activity feed, and the runs panel.
+- [Reliable MCP jobs and governed runs](reliable-runs.md) — retry-safe project/run creation,
+  idempotent checkpoints and engine-owned completion.
 - [Web editing](web-editing.md) — what the browser can and deliberately cannot edit.
 - [Keyboard, palette & tour](keyboard.md) — shortcuts, the ⌘K palette, and the local opt-in tour.
 - [Feedback](feedback.md) — the built-in feedback channel and its webhook.
@@ -37,6 +41,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Operating Sonaloop
 
 - [Cloud workspaces and customer access](cloud-workspaces.md) — tenant isolation, managed login, invitations and no-charge workspaces.
+- [Cloud execution audit and PostHog observability](cloud-observability.md) — tenant-bound Remote-MCP audit, privacy-safe tool traces and Cloud-hosted model generations.
 - [Embeddings](embeddings.md) — semantic memory recall setup.
 - [Persona catalog & pagination](catalog.md) — catalog search/recommend/pull and the list-pagination convention.
 - [Lifecycle hooks](lifecycle-hooks.md) — events and subscriptions (the seam cloud automation builds on).

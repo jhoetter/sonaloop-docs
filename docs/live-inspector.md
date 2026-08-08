@@ -71,8 +71,15 @@ Long-running studies are driven by the governed run loop (`start_run` → `run_s
 - A **run chip in each project's header** (state · last activity) linking to the journal —
   run state belongs to the project, so it surfaces where the project lives.
 - **`/runs`** — the run journal (keyboard: `g` `r`; deliberately not a nav item): every
-  project's run state grouped into active / stalled / finished.
+  project's run state grouped into active / stalled / engine-finished / unverified. Stalled and
+  unverified rows name the unmet invariant, last safe operation, idempotent recovery call and
+  redacted support-trace reference.
 - **`GET /api/runs`** — the same data as JSON (what the widget refetches).
+
+Jobs, councils and reports also show evidence health at the point of use: Product Understanding
+revision/coverage/verified absences/unknowns, explicit claim posture and source counts, and exact
+authorized evidence links. A long report never earns a trust badge from prose length. Explicit
+superseding or archiving preserves the prior job and its evidence rather than silently deleting it.
 
 Extensions can add their own sections to the `/runs` page through the
 `register_runs_section` seam (sonaloop-cloud uses it to show cloud run assignments).
