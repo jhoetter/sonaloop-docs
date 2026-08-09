@@ -60,10 +60,14 @@ who created it. This keeps **created by** distinct from **last acted on by** and
 connector family. The inspector shows the bounded display label on both the Jobs overview and the Job
 detail. It never renders the opaque actor id.
 
-Jobs that predate the field remain explicitly **unknown**. Sonaloop does not infer their creator from
-current ownership, project text, connector metadata, audit timing or the person viewing the workspace,
-and it does not silently backfill a plausible name. UI and support exports must preserve that unknown
-state.
+Jobs that predate the field remain explicitly **unknown** during ordinary edits, retries and support
+inspection. Sonaloop does not infer their creator from current ownership, project text, connector
+metadata, audit timing or the person viewing the workspace, and it does not silently backfill a
+plausible name. A privileged Cloud support operation may fill a legacy gap only when a current
+workspace owner explicitly attests an exact project-to-current-member mapping. That operation is
+dry-run-first, tenant-bound and audit-receipted; ambiguous, missing or conflicting assignments fail
+closed. The inspector still renders only the member's bounded display label, never the attestation
+receipt or opaque identities.
 
 `methodology="auto"` is the normal choice when the user has not selected a framework. Sonaloop
 ranks routing signals authored on the **live methodology registry**; framework vocabulary is data,

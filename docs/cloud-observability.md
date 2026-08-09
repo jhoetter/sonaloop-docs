@@ -42,7 +42,10 @@ Raw creator user ids, names and email addresses are never copied into MCP audit 
 to PostHog. Metadata-only observability continues to correlate a job through purpose-separated HMAC
 pseudonyms for workspace, request, operation, project and run; those pseudonyms must not be decoded or
 joined to manufacture a creator label. A legacy job without creator provenance remains `unknown` in
-support and replay rather than being guessed from later audit activity.
+support and replay rather than being guessed from later audit activity. An exceptional owner-attested
+legacy correction is workspace domain data in a separate local audit receipt: it is not an MCP event,
+AI span or analytics identity, and neither the approving nor target member's opaque identity is
+projected to PostHog.
 
 In addition, every authenticated Remote-MCP request gets a unique lifecycle in
 `cloud_mcp_transport_lifecycle`. The table is append-only, protected by the
