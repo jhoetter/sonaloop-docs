@@ -282,7 +282,9 @@ so one progressing job cannot mask eight that need intervention.
 Duplicate cleanup preserves history. `supersede_project(new_id, old_id, operation_id, reason)` records
 an explicit old→new relationship and marks the old job obsolete without deleting any artifact.
 `archive_project(project_id, operation_id, reason)` is also non-destructive and refuses active runs.
-Similarity of names or prose never chooses a canonical job.
+Similarity of names or prose never chooses a canonical job. Archived jobs leave the normal Jobs
+overview, `⌘K`/`Ctrl+K` project results and methodology-related job discovery, but their exact
+`/jobs/{project_id}` detail links continue to resolve with the retained evidence.
 
 ## Provider quality versus contract quality
 

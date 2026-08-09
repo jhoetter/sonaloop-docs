@@ -17,6 +17,12 @@ app: *project → phases → rows; click = slide-over.*
   than as full-width warning cards. Persisted Product Understanding and cohort-check
   evidence remains available behind one small, closed **Research setup details** row;
   archived status and explicit lineage stay compact in the header.
+- **The Projects/Jobs overview is the current working set.** Archived jobs no longer appear
+  in the normal overview, in the project results offered by `⌘K`/`Ctrl+K`, or in a
+  methodology page's related-job discovery. Archiving does not delete the job: an exact
+  `/jobs/{project_id}` detail link still resolves, including its retained evidence and
+  lineage. This keeps old retries and canaries out of everyday navigation without turning
+  archive into data loss or making an archived title discoverable by fuzzy search.
 - **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
   (icon · title · status pills · right-aligned meta). Clicking a row opens its **full detail
   page as a slide-over** (Notion-style): the list stays visible behind the panel, and the
@@ -89,6 +95,8 @@ their compact setup disclosure: Product Understanding
 revision/coverage/verified absences/unknowns, explicit claim posture and source counts, and exact
 authorized evidence links. A long report never earns a trust badge from prose length. Explicit
 superseding or archiving preserves the prior job and its evidence rather than silently deleting it.
+The archived job leaves normal overview, palette and methodology discovery, while its exact detail
+URL remains the durable hand-off for audit and support.
 
 In Cloud, tell the connected MCP host to continue an unfinished job. With an exact job id it calls
 `continue_research_job` directly; otherwise `list_unfinished_research_jobs` finds candidates. One

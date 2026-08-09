@@ -44,7 +44,11 @@ Behavior rules worth knowing:
 One registry-driven search over everything in the database — projects, personas, open
 questions, references, councils, reports, prototypes, flows, sections, notes, sessions,
 hypotheses, decisions, surveys and assets — plus **jump commands** derived from the
-navigation (including pages added by extensions). Type to filter, `Enter` to open.
+navigation (including pages added by extensions). Type to filter, `Enter` to open. Project
+results represent the current working set: archived jobs are omitted from palette search,
+just as they are from the Jobs overview and methodology-related job discovery. An archived
+job remains available when its exact `/jobs/{project_id}` detail URL is opened; the filter
+reduces navigation clutter and does not delete evidence.
 
 ## The product tour (local/single-user Core)
 
