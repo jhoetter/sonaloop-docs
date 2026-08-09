@@ -208,7 +208,9 @@ Only the engine owns successful completion. A run can become `finished` only whe
 contract is complete, required organization/conclusion/handoff artifacts exist, and two distinct,
 persisted, run-bound completeness critics pass with no missing work. Read failures are unknown
 evidence and therefore fail closed. The only terminal status values are `finished`, `stopped` and
-`capped`.
+`capped`. Repeating `run_step(run_id)` after any terminal status is a read-only terminal replay: it
+returns `kind="done"`, the persisted status and `idempotent_replay=true`, and cannot issue another
+dispatch or mutate the plan.
 
 Normal clients should not call `finish_run` to force success. Continue until `run_step` returns
 `kind="done"`. The web inspector's run state is derived from these underlying facts, not from a
@@ -226,6 +228,8 @@ canvas keeps its compact run chip and a human-readable state. Open **Technical d
 chip or in `/runs` when support detail is actually needed: there Sonaloop names the first unmet
 invariant, last successful operation, Product Understanding coverage, claim/source counts,
 repairable orphaned evidence, one safe next action and a redacted `sltrace_*` support reference.
+Completed Product Understanding/cohort evidence remains inspectable behind one closed, borderless
+setup-details row instead of interrupting the Job canvas with engineering cards.
 
 In Sonaloop Cloud, a user can simply ask their MCP host to continue an existing job. With an exact
 project id the host calls `continue_research_job` directly. Without one it first calls

@@ -13,7 +13,10 @@ app: *project → phases → rows; click = slide-over.*
   references, councils, reports, flows, prototypes, sessions, surveys, hypotheses,
   decisions, notes and assets — renders as a row in its phase context on the project
   outline. The project header carries a **run chip** (state · last activity) that links
-  to the run journal.
+  to the run journal. Missing setup is represented there as one current action rather
+  than as full-width warning cards. Persisted Product Understanding and cohort-check
+  evidence remains available behind one small, closed **Research setup details** row;
+  archived status and explicit lineage stay compact in the header.
 - **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
   (icon · title · status pills · right-aligned meta). Clicking a row opens its **full detail
   page as a slide-over** (Notion-style): the list stays visible behind the panel, and the
@@ -81,7 +84,8 @@ visible:
   redacted support-trace reference.
 - **`GET /api/runs`** — the same data as JSON (what the widget refetches).
 
-Jobs, councils and reports also show evidence health at the point of use: Product Understanding
+Councils and reports show evidence health at the point of use; Jobs keep the same detail behind
+their compact setup disclosure: Product Understanding
 revision/coverage/verified absences/unknowns, explicit claim posture and source counts, and exact
 authorized evidence links. A long report never earns a trust badge from prose length. Explicit
 superseding or archiving preserves the prior job and its evidence rather than silently deleting it.
