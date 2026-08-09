@@ -32,8 +32,9 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## The inspector
 
 - [The live inspector](live-inspector.md) — the event stream, the activity feed, and the runs panel.
-- [Reliable MCP jobs and governed runs](reliable-runs.md) — retry-safe project/run creation,
-  idempotent checkpoints and engine-owned completion.
+- [Reliable job creation and continuation](reliable-runs.md) — retry-safe frontdoor-only creation,
+  explicit unfinished-job recovery, single-active-run ownership, idempotent checkpoints and
+  engine-owned completion.
 - [Web editing](web-editing.md) — what the browser can and deliberately cannot edit.
 - [Keyboard, palette & tour](keyboard.md) — shortcuts, the ⌘K palette, and the local opt-in tour.
 - [Feedback](feedback.md) — the built-in feedback channel and its webhook.

@@ -1,4 +1,4 @@
-# Reliable MCP jobs and governed runs
+# Reliable job creation and continuation
 
 External MCP hosts can lose a response after Sonaloop has already committed a write. Sonaloop's
 job/run contract makes a retry resume the same intent rather than creating another project, run or
@@ -6,7 +6,10 @@ journal row.
 
 ## Create once, retry safely
 
-When Sonaloop Cloud exposes `begin_research_job`, that is the preferred front door. Call it exactly
+When Sonaloop Cloud exposes `begin_research_job`, that is the only project-creation front door for
+normal interactive workspace clients. The lower-level `start_project` primitive remains an
+operator/hosted-automation compatibility surface, but is deliberately absent from the normal Cloud
+tool profile. Call the front door exactly
 once per user intent with the user's verbatim request, a stable opaque `operation_id`, and an explicit
 methodology choice:
 
@@ -172,14 +175,48 @@ chip or in `/runs` when support detail is actually needed: there Sonaloop names 
 invariant, last successful operation, Product Understanding coverage, claim/source counts,
 repairable orphaned evidence, one safe next action and a redacted `sltrace_*` support reference.
 
-For an interrupted active run, call the returned
+In Sonaloop Cloud, a user can simply ask their MCP host to continue an existing job. With an exact
+project id the host calls `continue_research_job` directly. Without one it first calls
+`list_unfinished_research_jobs(query=...)`: one match is selected; several matches must be shown to
+the user for an explicit choice. Titles are never guessed or silently merged.
+
+`continue_research_job(project_id=...)` follows an explicit state table. It resumes the sole active
+run; starts one deterministic governed run when the job never started or its previous run was
+stopped/capped; and starts a separate repair run only when an engine-finished job has unverified
+output plus concrete ready plan work. One legacy exception is deliberately fail-closed: if an old
+front-door project has an operation id but no persisted run budget, continuation asks the host to
+retry the **original** `begin_research_job` call with exactly the same arguments instead of guessing
+that budget. It never creates a project, replaces an active run, or continues an
+archived/superseded or clean terminal job. Multiple active legacy runs fail closed and name the
+competing ids. Its returned `run_step(run_id)` must be repeated on that same id until the engine
+returns `kind="done"`.
+
+Core/local clients can use the lower-level equivalent returned by `project_health`: call
 `resume_project_run(project_id, run_id, operation_id?)`, then `run_step(run_id)`. Resume checks the
 explicit project/run identity and never creates a replacement, reopens a terminal run or marks it
-finished. If more than one active run exists, it asks for an explicit id instead of guessing.
+finished.
+
+Run creation also has a hard single-active-owner invariant per workspace and project. Concurrent or
+accidental second starts fail with the existing run id and an exact resume instruction. Legacy stores
+that already contain multiple active rows remain inspectable, but recovery fails closed until an
+operator explicitly reconciles them instead of guessing.
+Run creation, deletion, archiving and superseding also share one project-scoped cross-process
+lifecycle lock: a close/delete operation cannot race a new active journal onto an archived,
+superseded or vanished project. A project with an active run must be explicitly stopped or recovered
+before it is preserved as closed. Hard delete is limited to never-started containers without any run
+history; once a governed journal exists, archive the job and retain its evidence.
 
 The support view is honest about blind spots: it cannot prove that an external MCP host disconnected
 and cannot see hidden provider prompts, reasoning, permission dialogs or host-internal retries.
 Cloud can join its tenant-bound audit replay through the returned project/run/operation query.
+
+The inspector distinguishes a job whose run never started, an active run that went quiet, and a job
+whose previous run stopped or hit its cap. All three need attention. A quiet active run resumes its
+existing journal; a stopped/capped job starts one deterministic successor run; and a never-started
+job normally starts its one missing governed run (subject to the legacy missing-budget exception
+above). The global counter therefore says that jobs need attention instead of pretending every row
+is a currently stalled worker. Attention takes display priority over an unrelated active-run count,
+so one progressing job cannot mask eight that need intervention.
 
 Duplicate cleanup preserves history. `supersede_project(new_id, old_id, operation_id, reason)` records
 an explicit old→new relationship and marks the old job obsolete without deleting any artifact.
@@ -188,15 +225,27 @@ Similarity of names or prose never chooses a canonical job.
 
 ## Provider quality versus contract quality
 
-Stronger models still plan and write better, but correctness does not depend on model strength.
-Transaction order, idempotency, executable tool profiles, evidence links and completion gates are
-server-enforced. This lets Mistral, OpenAI, Anthropic, MiniMax and future hosts run the same protocol
-while their quality differences remain measurable rather than becoming duplicate jobs or false
-completion states.
+Stronger models still plan, route tools and write better. The **server-side safety invariants** do
+not depend on model strength: transaction order, idempotency, executable tool profiles, evidence
+links and completion gates are server-enforced. Host routing, orchestration and research quality
+remain model-dependent and must be qualified separately. This lets Mistral, OpenAI, Anthropic,
+MiniMax and future hosts use the same guarded protocol while their quality differences remain
+measurable rather than becoming duplicate jobs or false completion states.
 
 Cloud support can reconstruct the Sonaloop-observed side with
 `cloud_get_research_job_trace(project_id=...)`. The local replay includes retries, project/run state,
-the front door's verbatim initial request, release metadata and deterministic quality scores. The
+the front door's caller-supplied `user_request`, release metadata and deterministic quality scores. The
 request stays workspace-owned domain data; metadata-only audit/PostHog projections retain only
 privacy-reduced summaries. Replay labels unprovable facts `unknown`; it never
 pretends to contain an external host's hidden prompt, reasoning, provider retry or model response.
+
+### Live provider qualification is a separate gate
+
+`qualification-run` replays captured submissions through the deterministic harness. It proves the
+Sonaloop contract, not that a live Mistral/OpenAI/Anthropic host chose the right tool from natural
+language. A provider canary must use an isolated workspace and an ephemeral private MCP connector,
+then separately assert routing safety (same project, one governed run, idempotent repetition) and
+research completion/quality. A programmatic connector test still does not exercise Le Chat's own
+permission and retry UI, so that surface needs a small manual smoke as well. Provider credentials
+belong on the canary/operator side; they are not required in the Sonaloop production service merely
+to test an external host.

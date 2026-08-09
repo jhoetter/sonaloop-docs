@@ -61,12 +61,17 @@ Tuning knobs: `SONALOOP_EVENTS_POLL` (table-poll seconds, default 1) and
 
 ## The runs panel
 
-Long-running studies are driven by the governed run loop (`start_run` → `run_step` →
-`checkpoint_step`). The inspector keeps that visible:
+Long-running studies are driven by the governed run loop. Normal Cloud clients enter it through
+`begin_research_job` for a new job or `continue_research_job` for an existing job; Core/local hosts
+can use the lower-level `start_run` → `run_step` → `checkpoint_step` route. The inspector keeps that
+visible:
 
 - A **topbar widget** on every page: a status dot + active-run count, with a flyout listing
-  the active runs (project, last activity). The dot turns **amber when any project is
-  stalled** — the silent failure mode is deliberately loud. The widget live-updates off the
+  the active runs (project, last activity). The dot turns **amber when any project needs
+  attention** — its governed run never started, an active run went quiet, or its previous run
+  stopped/hit its cap. Those states use different copy, so the UI never claims that an unstarted or
+  stopped job is a running worker. When active and attention states coexist, the attention count
+  takes precedence instead of hiding silent failures behind unrelated progress. The widget live-updates off the
   same SSE stream and degrades gracefully to the server-rendered state without JavaScript.
 - A **run chip in each project's header** (state · last activity) linking to the journal —
   run state belongs to the project, so it surfaces where the project lives.
@@ -80,6 +85,15 @@ Jobs, councils and reports also show evidence health at the point of use: Produc
 revision/coverage/verified absences/unknowns, explicit claim posture and source counts, and exact
 authorized evidence links. A long report never earns a trust badge from prose length. Explicit
 superseding or archiving preserves the prior job and its evidence rather than silently deleting it.
+
+In Cloud, tell the connected MCP host to continue an unfinished job. With an exact job id it calls
+`continue_research_job` directly; otherwise `list_unfinished_research_jobs` finds candidates. One
+match is selected, while several require a user choice. Continuation resumes the sole active run or,
+under the strict missing/repair rules, creates one deterministic governed run and drives that id
+until the engine says `done`. Legacy front-door projects whose run budget was never persisted instead
+return `original_begin_retry_required`: the host must repeat the original `begin_research_job` call
+with exactly the same arguments, because Sonaloop will not guess the missing budget. Continuation
+never creates a replacement job.
 
 Extensions can add their own sections to the `/runs` page through the
 `register_runs_section` seam (sonaloop-cloud uses it to show cloud run assignments).

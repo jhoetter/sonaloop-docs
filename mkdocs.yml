@@ -41,7 +41,7 @@ nav:
       - Opt-in aggregation: opt-in-aggregation-design.md
   - The inspector:
       - The live inspector: live-inspector.md
-      - Reliable MCP jobs and runs: reliable-runs.md
+      - Reliable job creation & continuation: reliable-runs.md
       - Web editing: web-editing.md
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md

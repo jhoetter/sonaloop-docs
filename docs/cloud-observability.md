@@ -297,9 +297,11 @@ from PostHog's policy or enabled merely because remote content has expired.
 ## External-host limitation
 
 When a customer connects Sonaloop to an external Claude, Mistral, ChatGPT or
-other MCP host, that host owns inference. Cloud cannot see its initial user
-message, system prompt, hidden reasoning, model output, provider retries or
-model-token accounting. Sonaloop records only the MCP calls the host sends.
+other MCP host, that host owns inference. Cloud cannot see the host's original
+conversation, system prompt, hidden reasoning, model output, provider retries or
+model-token accounting. A front-door call may explicitly supply a `user_request` for
+Sonaloop to store, but that proves only what the caller submitted—not equality with an
+unobservable Mistral/Le Chat transcript. Sonaloop otherwise records only the MCP calls the host sends.
 
 W3C `traceparent`, `x-request-id`, `x-sonaloop-operation-id` and
 `idempotency-key` headers improve correlation when the host supports them;
@@ -316,7 +318,8 @@ observed generation tree because Sonaloop owns that provider call.
 depending on PostHog. It reports attempt ordinals, duplicate suppression, methodology, run/critic
 state, evidence health, release commit and audit delivery health. For jobs created through the
 retry-safe front door it also returns the workspace-owned verbatim initial request from project state;
-that text is not smuggled into metadata-only PostHog events. Any property outside the observed
+“verbatim” here means the exact `user_request` supplied to Sonaloop, not an independently observed
+copy of the provider chat. That text is not smuggled into metadata-only PostHog events. Any property outside the observed
 boundary is explicitly `unknown`, not inferred from an incomplete trace.
 
 Every replay also carries `coverage`: `local_ledger` is `complete` or `audit_gap`, content is
