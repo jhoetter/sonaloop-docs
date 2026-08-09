@@ -23,8 +23,11 @@ job = begin_research_job(
 )
 ```
 
-The call creates or repairs the project and its first run as a retry-safe saga, then returns the
-single valid `run_step` call. Reuse the exact same call and key after a timeout, reconnect,
+The call creates or repairs the project and its first run as a retry-safe saga, then returns exactly
+one valid next action. For a ready research task this is `run_step`. For a Reaction Test that still
+needs setup it is the current evidence or cohort remediation instead; the raw journal may already
+exist, but `state="needs_setup"` takes presentation and orchestration precedence. Reuse the exact
+same call and key after a timeout, reconnect,
 permission prompt or client error such as 6101. Never recover by creating a replacement project or
 run. If a weak host nevertheless assigns a fresh attempt id, Sonaloop matches the same logical
 request inside the bounded `SONALOOP_FRONT_DOOR_RETRY_WINDOW_SECONDS` window (default 30 minutes).
@@ -54,7 +57,8 @@ metadata, MCP `_meta` or an operation key.
 The first creator is immutable. An idempotent retry by the same user returns the existing attribution;
 a retry or continuation by another authorized workspace member may act on the job but cannot rewrite
 who created it. This keeps **created by** distinct from **last acted on by** and from the external MCP
-connector family.
+connector family. The inspector shows the bounded display label on both the Jobs overview and the Job
+detail. It never renders the opaque actor id.
 
 Jobs that predate the field remain explicitly **unknown**. Sonaloop does not infer their creator from
 current ownership, project text, connector metadata, audit timing or the person viewing the workspace,
@@ -135,6 +139,33 @@ step is a versioned **Product Understanding** preflight:
 3. pass the dispatch token so the record is linked and checkpointed through the replay-repairable
    dispatch sequence.
 
+A public URL in the request identifies the target only. It is not a screenshot, a captured route,
+an observed state, behaviour evidence, or permission for Sonaloop Cloud to fetch the page. A URL-only
+job therefore returns `stimulus_required` and one direct-byte screenshot admission template. If the
+host cannot supply real PNG/JPEG/WebP bytes, it asks the user for a screenshot; it must not invent an
+inventory from the URL.
+
+After each admitted screen, an exact capture review asks the host to name missing routes/states or
+deliberately finalize the inventory. A one-action host therefore cannot freeze its first screenshot
+as a complete application by accident. A later screen/revision invalidates the older review and flow
+for current setup.
+
+For a finalized remote flow, weak clients do not have to author the nested integrity artifact.
+`inspect_reaction_test_screen` delivers one exact screen at a time and writes a dispatch-bound receipt
+whose honest status is `served_to_host`; it does not pretend to prove model cognition.
+`record_manifest_product_understanding` accepts one flat `{step_index, visible_observation}` per
+delivered screen plus explicit `unknown_capabilities`. It refuses missing/mixed receipts. The server
+supplies the immutable manifest binding, revision, evidence references and coverage checklist and
+reports an exact field plus a safe retry on malformed input. Honest unknowns are valid; the URL can
+never manufacture an observed pass.
+
+If the project has no cohort, the next frame dispatch includes bounded workspace-local candidate
+summaries (id/name/role/segment) next to `select_reaction_test_cohort`; the model chooses at least two
+real IDs instead of guessing them. If too few exist, the sole action is catalog discovery first.
+Selection does not claim that Cohort Integrity passed. The normal server-owned depth, leakage and
+countervoice gate still runs after the research frame. Each remediation advances the same project
+and run under its original operation/dispatch identity.
+
 After Product Understanding, the initial frame and the final cohort-integrity gate, Reaction Test
 exposes two concrete Council dispatches in order: first-impression/comprehension and
 trust/information-gaps/action-readiness. These are methodology data, not prompt folklore. The host
@@ -186,7 +217,11 @@ model's prose claim that it is finished.
 ## Diagnose and recover without making a duplicate
 
 `project_health(project_id)` is the canonical support view shared by MCP, CLI and the inspector. It
-separates **running**, **stalled**, **engine-finished** and **output unverified**. The normal project
+separates **needs setup**, **running**, **stalled**, **engine-finished** and **output unverified**. A
+missing current Reaction-Test prerequisite takes precedence over a raw active journal, so Jobs, Job
+detail, `/runs` and the global attention indicator cannot claim background research is progressing.
+Only the current prerequisite is actionable; later dependent gates remain hidden/locked until their
+inputs exist. The normal project
 canvas keeps its compact run chip and a human-readable state. Open **Technical diagnostics** in the
 chip or in `/runs` when support detail is actually needed: there Sonaloop names the first unmet
 invariant, last successful operation, Product Understanding coverage, claim/source counts,
@@ -205,8 +240,9 @@ front-door project has an operation id but no persisted run budget, continuation
 retry the **original** `begin_research_job` call with exactly the same arguments instead of guessing
 that budget. It never creates a project, replaces an active run, or continues an
 archived/superseded or clean terminal job. Multiple active legacy runs fail closed and name the
-competing ids. Its returned `run_step(run_id)` must be repeated on that same id until the engine
-returns `kind="done"`.
+competing ids. When setup is incomplete, continuation returns that one current remediation instead
+of a misleading `run_step`; otherwise its returned `run_step(run_id)` must be repeated on that same
+id until the engine returns `kind="done"`.
 
 Core/local clients can use the lower-level equivalent returned by `project_health`: call
 `resume_project_run(project_id, run_id, operation_id?)`, then `run_step(run_id)`. Resume checks the

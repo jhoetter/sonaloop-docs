@@ -8,18 +8,34 @@ browser or filesystem path.
 
 The workspace agent follows one explicit sequence:
 
-1. start the research job and obtain the Product Understanding dispatch;
-2. call `admit_remote_screenshot` once per screen, with direct base64 bytes and a stable
-   `operation_id`;
-3. call `record_flow_manifest` with the ordered admitted asset-version ids and labels;
-4. inspect every screen through `view_asset`;
-5. call `record_product_understanding` with the exact manifest id, version, digest, target
-   revision and one coverage entry per screen;
-6. continue the governed run.
+1. start the research job; a URL-only Reaction Test returns `state="needs_setup"`,
+   `stimulus_required`, and the already-bound Product Understanding dispatch;
+2. call `admit_remote_screenshot` with direct base64 bytes and a stable `operation_id`;
+3. call `record_reaction_test_capture_review`: name a concrete missing route/state and capture the
+   next screen, or deliberately finalize the exact inventory;
+4. call `record_flow_manifest` with the ordered admitted asset-version ids and labels;
+5. execute each serialized `inspect_reaction_test_screen` action; it returns real pixels plus an
+   idempotent, manifest/step/asset-bound `served_to_host` receipt;
+6. call `record_manifest_product_understanding` with one `visible_observation` per delivered screen and any
+   important unknown capabilities; the server owns the exact manifest id/version/digest, target
+   revision, evidence refs and coverage entries and refuses missing or mixed receipts;
+7. continue the governed run.
 
 The upload tool has no URL or local-path parameter. This removes SSRF, redirect rebinding and
 host-file reads from the reachable workspace-user contract. The generic local `attach_asset`
 and browser tools remain unavailable over Remote MCP.
+
+The target URL itself is identity metadata only. Cloud does not dereference it and it cannot satisfy
+Product Understanding. Every setup response contains one action template, separates fixed arguments
+from required host input, and retains the original run/dispatch identity on retry. A malformed
+observation identifies the failing input path and points back to the same current Job action rather
+than encouraging a replacement Job.
+
+The review is bound to the exact current asset digests. Adding a screen or switching target revision
+makes the prior review/manifest stale. This avoids the common weak-host failure where the first
+screenshot becomes a complete but spartan one-screen "app". `filename` and `media_type` are required
+host inputs (PNG/JPEG/WebP) and must match the validated bytes; the action never hardcodes PNG metadata
+for a JPEG/WebP upload.
 
 ## What is checked
 

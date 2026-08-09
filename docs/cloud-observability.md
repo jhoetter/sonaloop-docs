@@ -241,6 +241,21 @@ the paired `$ai_error.code` use PostHog's closed categories (`missing_context`,
 `validation`, `permission`, `timeout`, `rate_limited`, `api_4xx`, `api_5xx`, or
 `internal`); raw local exception codes remain in the tenant ledger.
 
+Weak-host Reaction-Test inputs get stable boundary codes such as
+`REMOTE_PRODUCT_UNDERSTANDING_VALIDATION`, `REMOTE_STIMULUS_VALIDATION` and
+`REMOTE_COHORT_VALIDATION`. The client response names bounded field paths and points back to the
+same Job's current action; PostHog records only the closed `validation` category. Scanner timeouts,
+missing scanner policy, authorization, storage and contract failures retain their operational code
+and map to `timeout`, `permission` or `internal` instead. This distinction is what lets support say
+whether a malformed Mistral/Claude/OpenAI tool call or a Sonaloop-side dependency stopped the Job.
+
+The front-door tools also emit one low-cardinality, content-free setup outcome so a funnel can show
+where an external host stopped: `needs_stimulus`, `needs_capture_review`, `needs_flow_manifest`,
+`needs_screen_inspection`, `needs_product_understanding`, `needs_cohort`, or `research_ready`
+(terminal outcomes remain separate). These values contain no URL, prompt, screen label, persona id or
+human identity. They complement the durable tenant ledger; PostHog is an operational projection, not
+the runtime authority.
+
 PostHog's trace and session layers have separate meanings:
 
 - `$ai_trace_id` groups one interaction's spans. A valid inbound W3C trace is
