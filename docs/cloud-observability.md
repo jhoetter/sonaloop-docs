@@ -71,8 +71,9 @@ buffered per request and committed in a small number of transactions over a
 bounded PostgreSQL pool. Completion plus `receipt_committed` stay atomic, while
 abandonable three-second deadlines prevent an unavailable audit database from
 holding the connector response indefinitely. Audit DB calls use a dedicated
-four-worker limiter, so abandoned diagnostics cannot consume the worker budget
-used by synchronous customer tools.
+hard-bounded four-worker executor whose permit is released only when the worker
+really ends, so abandoned diagnostics cannot grow without bound or consume the
+worker budget used by synchronous customer tools.
 As with every audit write, lifecycle persistence is fail-soft: an audit outage
 cannot replace the customer's tool result. A missing phase remains a visible
 local replay gap rather than being inferred later.
