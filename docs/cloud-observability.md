@@ -65,6 +65,14 @@ The request-body receive pump stays active while the MCP SDK handles the
 request. It therefore detects an `http.disconnect` that arrives after
 `body_read`—the important case where a host uploaded a complete tool call and
 then gave up while the tool was executing or the response was being prepared.
+This narrows the server-visible causes of a host error such as Le Chat 6101; a
+failure inside the host before it sends HTTP remains unobservable. Phases are
+buffered per request and committed in a small number of transactions over a
+bounded PostgreSQL pool. Completion plus `receipt_committed` stay atomic, while
+abandonable three-second deadlines prevent an unavailable audit database from
+holding the connector response indefinitely. Audit DB calls use a dedicated
+four-worker limiter, so abandoned diagnostics cannot consume the worker budget
+used by synchronous customer tools.
 As with every audit write, lifecycle persistence is fail-soft: an audit outage
 cannot replace the customer's tool result. A missing phase remains a visible
 local replay gap rather than being inferred later.
@@ -175,6 +183,9 @@ Each durable request-lifecycle row has one separate, content-free projection:
 - `sonaloop_mcp_request_phase` carries the closed phase/status, elapsed request
   time, bounded body byte/chunk counts where applicable, HTTP status, tool/method
   labels and HMAC-scoped correlation ids.
+- Method labels come from a closed MCP vocabulary and tool labels must match the
+  server's actual tool registry. A client-controlled unknown value is omitted;
+  it cannot become a plaintext channel into the ledger or PostHog.
 - It does not claim to be an LLM generation or an additional tool execution.
   Count distinct `sonaloop_transport_lifecycle_id` values for requests; counting
   these phase events directly counts transitions, not requests.
@@ -235,6 +246,10 @@ PostHog's trace and session layers have separate meanings:
 
 Cloud returns a normal single-call response `traceparent` containing the
 resulting tool span, so a capable host can continue the tree on its next request.
+When a tool legitimately adopts an MCP `_meta.traceparent` in the absence of an
+HTTP trace, its completion span can differ from the inbound request-lifecycle
+trace. Both event families carry the same HMAC-scoped
+`sonaloop_transport_lifecycle_id`, which is the exact join in that case.
 If a future transport batches several toolcalls into one response, it returns the
 request-local server span instead of choosing an arbitrary child. HTTP trace context takes
 precedence over MCP `_meta`; an invalid-but-present HTTP `traceparent` starts a new
@@ -417,6 +432,9 @@ overall external-host coverage to a full replay. Legacy attempts without
 lifecycle rows retain `completion_receipts_only` granularity and an `unknown`
 transport assessment. These limitations are immutable facts of the captured
 boundary, not fields that PostHog can fill in later.
+If a project spans pre- and post-rollout traffic, replay reports
+`mixed_request_lifecycle_and_completion_receipts` and remains `unknown`; one new
+complete request never retroactively certifies its legacy attempts.
 
 ## Metadata-only smoke test
 
@@ -460,11 +478,12 @@ and no personal API key.
    `sonaloop_transport_lifecycle_id` is stable within the request, phase ids are
    distinct, `sonaloop_capture_level=metadata`, and the final phase agrees with
    the local lifecycle. Do not interpret `responded` as a client acknowledgement.
-5. Find one `$mcp_tool_call` with the
-   matching `$ai_trace_id`. Request, operation, project and run ids are HMAC
+5. Find one `$mcp_tool_call` with the matching
+   `sonaloop_transport_lifecycle_id`. Request, operation, project and run ids are HMAC
    pseudonyms externally and therefore intentionally do not equal the local
    values. Confirm a corresponding `$ai_span` has the
-   same `sonaloop_audit_event_id` and `$ai_trace_id`.
+   same `sonaloop_audit_event_id` and `$ai_trace_id`. Lifecycle and tool trace ids
+   also match unless the tool adopted a distinct MCP `_meta.traceparent`.
 6. If the client declared a recognized `initialize.clientInfo`, confirm later
    request phases and tool events carry the expected closed
    `$mcp_client_name`. Verify the raw bearer and raw client name/version are
