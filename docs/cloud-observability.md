@@ -34,7 +34,15 @@ contains the correlation and outcome needed to investigate the tool boundary:
 
 Authorization headers, cookies and secret-shaped fields never enter the row.
 The default policy replaces arbitrary strings with type, length and SHA-256
-digest metadata. Local content capture is a separate, explicit decision:
+digest metadata. Local content capture is a separate, explicit decision.
+
+Job creator attribution is not an analytics identity. Cloud derives the original creator from the
+authenticated active-workspace membership and keeps it with workspace-owned project provenance.
+Raw creator user ids, names and email addresses are never copied into MCP audit summaries or exported
+to PostHog. Metadata-only observability continues to correlate a job through purpose-separated HMAC
+pseudonyms for workspace, request, operation, project and run; those pseudonyms must not be decoded or
+joined to manufacture a creator label. A legacy job without creator provenance remains `unknown` in
+support and replay rather than being guessed from later audit activity.
 
 In addition, every authenticated Remote-MCP request gets a unique lifecycle in
 `cloud_mcp_transport_lifecycle`. The table is append-only, protected by the

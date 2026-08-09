@@ -44,6 +44,23 @@ Raw-content consent on an alias applies to that observed call but does not silen
 canonical job's persisted consent for later steps. Workspace owner policy and deployment kill
 switches remain independently required.
 
+### Authenticated creator attribution
+
+For Cloud jobs created after creator attribution is enabled, the creator is the authenticated user
+behind the active workspace membership at the first successful project commit. It is server-derived
+provenance: a caller cannot supply or override a creator through `user_request`, provider/model
+metadata, MCP `_meta` or an operation key.
+
+The first creator is immutable. An idempotent retry by the same user returns the existing attribution;
+a retry or continuation by another authorized workspace member may act on the job but cannot rewrite
+who created it. This keeps **created by** distinct from **last acted on by** and from the external MCP
+connector family.
+
+Jobs that predate the field remain explicitly **unknown**. Sonaloop does not infer their creator from
+current ownership, project text, connector metadata, audit timing or the person viewing the workspace,
+and it does not silently backfill a plausible name. UI and support exports must preserve that unknown
+state.
+
 `methodology="auto"` is the normal choice when the user has not selected a framework. Sonaloop
 ranks routing signals authored on the **live methodology registry**; framework vocabulary is data,
 not a hardcoded provider prompt. An explicitly named methodology or Job preset always wins. A
