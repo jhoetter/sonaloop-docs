@@ -19,7 +19,9 @@ app: *project → phases → rows; click = slide-over.*
   archived status and explicit lineage stay compact in the header.
 - **The Projects/Jobs overview is the current working set.** Archived jobs no longer appear
   in the normal overview, in the project results offered by `⌘K`/`Ctrl+K`, or in a
-  methodology page's related-job discovery. Archiving does not delete the job: an exact
+  methodology page's related-job discovery. They are also excluded from the Runs overview,
+  the global run-status widget and its `GET /api/runs` payload. Archiving does not delete the
+  job: an exact
   `/jobs/{project_id}` detail link still resolves, including its retained evidence and
   lineage. This keeps old retries and canaries out of everyday navigation without turning
   archive into data loss or making an archived title discoverable by fuzzy search.
@@ -82,21 +84,22 @@ visible:
   stopped job is a running worker. When active and attention states coexist, the attention count
   takes precedence instead of hiding silent failures behind unrelated progress. The widget live-updates off the
   same SSE stream and degrades gracefully to the server-rendered state without JavaScript.
+  Archived jobs never contribute to its rows or counters.
 - A **run chip in each project's header** (state · last activity) linking to the journal —
   run state belongs to the project, so it surfaces where the project lives.
 - **`/runs`** — the run journal (keyboard: `g` `r`; deliberately not a nav item): every
-  project's run state grouped into active / stalled / engine-finished / unverified. Stalled and
+  non-archived project's run state grouped into active / stalled / engine-finished / unverified. Stalled and
   unverified rows name the unmet invariant, last safe operation, idempotent recovery call and
   redacted support-trace reference.
-- **`GET /api/runs`** — the same data as JSON (what the widget refetches).
+- **`GET /api/runs`** — the same archive-filtered data as JSON (what the widget refetches).
 
 Councils and reports show evidence health at the point of use; Jobs keep the same detail behind
 their compact setup disclosure: Product Understanding
 revision/coverage/verified absences/unknowns, explicit claim posture and source counts, and exact
 authorized evidence links. A long report never earns a trust badge from prose length. Explicit
 superseding or archiving preserves the prior job and its evidence rather than silently deleting it.
-The archived job leaves normal overview, palette and methodology discovery, while its exact detail
-URL remains the durable hand-off for audit and support.
+The archived job leaves normal overview, palette, methodology and run-status discovery, while its
+exact detail URL remains the durable hand-off for audit and support.
 
 In Cloud, tell the connected MCP host to continue an unfinished job. With an exact job id it calls
 `continue_research_job` directly; otherwise `list_unfinished_research_jobs` finds candidates. One
