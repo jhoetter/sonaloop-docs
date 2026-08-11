@@ -167,14 +167,18 @@ graph sources when the report is scaffolded. If a structural section has no phas
 receives the graph-wide source ids from that frozen snapshot, so even structural prose has an explicit,
 bounded citation set.
 
-For a current section with a non-empty `source_study_ids`, validation stays strict: it must cite at
-least one study from that exact section list, every supplied citation must remain inside the list, and
-the studies must also exist in the frozen graph snapshot. An older persisted section whose
+For a current section with a non-empty `source_study_ids`, validation requires at least one citation
+from that exact section list as its phase anchor. Additional cross-phase citations are allowed, but
+every supplied citation must still exist in the report's immutable graph snapshot. An older persisted section whose
 `source_study_ids` is empty gets a compatibility fallback, but only to study ids already present in the
 frozen graph snapshot's build order or nodes. The empty legacy list never admits a newly added live
 project node or an arbitrary external study. Missing or foreign citations keep the report readable but
 mark project health unverified. In other words, complete bodies answer “was a report delivered?”,
 while valid section citations answer “is its prose evidence-backed?”.
+
+That graph snapshot remains unchanged during an in-place lead repair of an already authored report.
+Evidence added to the live project afterward cannot retroactively legitimize an earlier citation; use
+a new report outline when the evidence boundary genuinely needs to change.
 
 ## Reaction Test evidence contract
 
