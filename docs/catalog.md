@@ -49,6 +49,8 @@ The pull copies each committed `avatar.png` into the current runtime partition. 
 shared Cloud deployments the inspector never emits the stored `/data/...` path; it
 uses an authenticated, active-workspace-only `/personas/<persona-id>/avatar` URL and
 disables caching because the same stable catalog id can exist in several workspaces.
+Small avatar groups use the equivalent fixed 96 px `/avatar/thumbnail` derivative;
+the full PNG remains available on the persona detail.
 
 Premium personas are visible in search but gated at pull time. Set `SONALOOP_CATALOG_TOKEN`
 to send the bearer token; without it, free personas still land and premium selections are

@@ -26,7 +26,9 @@ app: *project → phases → rows; click = slide-over.*
   lineage. This keeps old retries and canaries out of everyday navigation without turning
   archive into data loss or making an archived title discoverable by fuzzy search.
 - **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
-  (icon · title · status pills · right-aligned meta). Clicking a row opens its **full detail
+  (icon · title · quiet input/output degree · right-aligned meta). A degree appears only when
+  a persisted relationship exists; hovering or focusing the row reveals the corresponding rows
+  without turning the outline into a permanent web of lines. Clicking a row opens its **full detail
   page as a slide-over** (Notion-style): the list stays visible behind the panel, and the
   address becomes the real detail URL — reloading or sharing it loads the full page. The ⤢
   control in the panel header expands to the full page; `Esc`, the backdrop, or the browser's

@@ -142,7 +142,10 @@ portraits use the same boundary at `GET /personas/<persona-id>/avatar`: the
 persona is resolved under the active RLS scope, its PNG is contained inside that
 workspace's avatar directory, and the response is `private, no-store`. Stable
 catalog persona ids therefore cannot leak a portrait or a locally revised avatar
-across a workspace switch.
+across a workspace switch. Fixed avatar and asset thumbnail routes repeat that
+authorization before deriving bounded WebP pixels. Their caches live below the
+active workspace partition; Cloud skips theme compilation for these exact binary
+paths, while the outer session and RLS middleware still executes normally.
 
 For a first customer rollout, keep command lifecycle hooks and the hosted-agent
 worker disabled until their workflows and outbound actions have been reviewed:

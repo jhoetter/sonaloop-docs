@@ -176,6 +176,12 @@ project node or an arbitrary external study. Missing or foreign citations keep t
 mark project health unverified. In other words, complete bodies answer “was a report delivered?”,
 while valid section citations answer “is its prose evidence-backed?”.
 
+The inspector uses the same provenance to connect the hand-off visibly. Deduplicated section source
+ids become `based_on` edges into the terminal report node; for historical source-less sections only,
+snapshot-valid citations provide the bounded fallback. It never infers an input from timestamps or
+from merely being present in the snapshot. The contributing synthesis is therefore marked as used,
+the report is the endpoint, and both the project outline and report detail expose the relationship.
+
 That graph snapshot remains unchanged during an in-place lead repair of an already authored report.
 Evidence added to the live project afterward cannot retroactively legitimize an earlier citation; use
 a new report outline when the evidence boundary genuinely needs to change.

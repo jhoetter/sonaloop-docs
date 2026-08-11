@@ -31,6 +31,10 @@ record lands on the project. Local single-user mode serves that file at
 workspace and deliberately returns 404 for raw runtime-file routes. Browser
 previews and downloads use `/assets/{asset-id}/content` (or `/preview`): the
 authenticated route resolves the opaque id only inside the active workspace.
+Compact Inspector cards load a bounded 640 px WebP from the fixed
+`/assets/{asset-id}/thumbnail` route after that same workspace check; opening or
+downloading the card still targets the original. Thumbnail derivatives are cached
+only inside the active workspace partition and browser responses stay `private, no-store`.
 Unsafe active formats such as SVG and HTML are download-only. Authorized agents
 still receive image pixels through `view_asset`. Ids are content-addressed per
 project, so re-attaching the same bytes is an idempotent upsert. `kind` (image |
@@ -52,9 +56,9 @@ instruct the host to `view_asset` them first; document excerpts are inline.
 ## Persistence
 
 - Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and
-  `/assets/{id}` detail pages in the web inspector. Local mode may render thumbnails from
-  the static `/data` mount; tenant Cloud serves them through the authenticated,
-  active-workspace-only asset route and does not expose that raw mount. Incoming files
+  `/assets/{id}` detail pages in the web inspector. Both modes use the opaque bounded
+  thumbnail route for compact cards; tenant Cloud serves it through the authenticated,
+  active-workspace-only boundary and does not expose the raw mount. Incoming files
   are grouped as Assets in the outline; generated documents appear as deliverables.
 - Several assets in a project or report detail render as a compact responsive gallery instead of one
   tall full-width column. Wide viewports place bounded previews horizontally and wrap as needed;
