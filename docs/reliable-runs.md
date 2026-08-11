@@ -162,10 +162,19 @@ Cloud's report-render analytics follows this same content-derived boundary: a le
 status flag alone never upgrades an unfinished report.
 
 That structural hand-off is not a shortcut around research provenance. Project reports use their
-native section citations rather than a duplicate generic claim envelope: every authored section must
-cite at least one existing study from its frozen `source_study_ids`. Missing or foreign citations keep
-the report readable but mark project health unverified. In other words, complete bodies answer
-“was a report delivered?”, while valid section citations answer “is its prose evidence-backed?”.
+native section citations rather than a duplicate generic claim envelope. New outlines freeze their
+graph sources when the report is scaffolded. If a structural section has no phase-local nodes, it
+receives the graph-wide source ids from that frozen snapshot, so even structural prose has an explicit,
+bounded citation set.
+
+For a current section with a non-empty `source_study_ids`, validation stays strict: it must cite at
+least one study from that exact section list, every supplied citation must remain inside the list, and
+the studies must also exist in the frozen graph snapshot. An older persisted section whose
+`source_study_ids` is empty gets a compatibility fallback, but only to study ids already present in the
+frozen graph snapshot's build order or nodes. The empty legacy list never admits a newly added live
+project node or an arbitrary external study. Missing or foreign citations keep the report readable but
+mark project health unverified. In other words, complete bodies answer “was a report delivered?”,
+while valid section citations answer “is its prose evidence-backed?”.
 
 ## Reaction Test evidence contract
 
