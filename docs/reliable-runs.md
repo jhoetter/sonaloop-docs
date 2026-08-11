@@ -189,6 +189,12 @@ ids become `based_on` edges into the terminal report node; for historical source
 snapshot-valid citations provide the bounded fallback. It never infers an input from timestamps or
 from merely being present in the snapshot. The contributing synthesis is therefore marked as used,
 the report is the endpoint, and both the project outline and report detail expose the relationship.
+The section-authoring brief resolves typed `council:<id>`, `synthesis:<id>` and `note:<id>` sources to
+their real summary, voices, convergence and observation content while preserving those typed ids for
+citations and edges. Large source payloads are bounded with an in-band truncation record, so omitted
+material cannot silently read as an absent finding. Large outline graphs return an aligned bounded
+source/build-order slice plus full totals and a stable digest; edge and open-question omissions are
+counted in the same response.
 
 That graph snapshot remains unchanged during an in-place lead repair of an already authored report.
 Evidence added to the live project afterward cannot retroactively legitimize an earlier citation; use
