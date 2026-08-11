@@ -230,6 +230,49 @@ connector family `mistral`; it does not prove which Mistral model handled the
 conversation, whether the host retried a provider call, or even that every
 request under that connector used the same model.
 
+At the first successful `begin_research_job`, a recognized token-bound `initialize.clientInfo` family
+can also be frozen as
+`sonaloop.ingress_client_snapshot.v1` in the private Job ingress. It contains only the closed family
+and evidence-source enum—never raw `clientInfo`, User-Agent, bearer or model text. Public Job
+projections map it to fixed labels such as **Mistral**, **ChatGPT**, **Claude** or **Codex** for a
+quiet `via …` creator byline. Unknown/ambiguity-closed observations and legacy Jobs remain unlabeled;
+exact and logical retries preserve the first snapshot. `provider_declared` and `model_declared` remain
+unverified trace declarations and are never used for this display.
+
+### Authenticated report-view analytics
+
+Cloud records `sonaloop_artifact_viewed` only after an authenticated report/synthesis route has
+successfully rendered real HTML. The server boundary covers full-page navigation, SPA navigation,
+the synthesis drawer and a Job URL whose `d=/syntheses/<id>` drawer is rendered in the initial page.
+It does not rely on browser autocapture or broad raw-URL `$pageview` events. Full-page, SPA and drawer
+representations of the same viewer/report interaction collapse within a five-minute dedupe window.
+
+The durable local projection and PostHog event contain only HMAC-pseudonymous viewer, workspace,
+project, report and revision ids plus a closed allowlist: artifact kind, view mode, structural report
+status, empty-section count, age since ready, first-view boolean and
+`sonaloop_job_creation_client_bucket`. That last field describes the connector that created the Job,
+not the viewer's browser or the inference provider. Person-profile processing is disabled. Names,
+emails, titles, URLs, query strings, report text and raw database ids are never exported. The event
+uses the existing retryable outbox; a PostHog outage cannot affect the rendered response, and local
+first-view state follows the configured telemetry retention.
+
+If the Job has an immutable authenticated `created_by.id`, Cloud may also emit the optional Boolean
+`sonaloop_viewer_is_job_creator`. It compares that id with the current OIDC subject locally. Neither
+raw identifier enters the projection or PostHog; an absent, legacy or malformed creator omits the
+property, with no email, name or display-label fallback.
+
+`sonaloop_report_status=done` is likewise content-derived rather than a copy of a legacy status flag.
+It requires a final stored state plus Core's complete report-handoff shape: a non-empty lead, at least
+one section and no empty section body. A legacy `done` scaffold with an empty section is exported as
+`running` (partial), keeps its `sonaloop_empty_section_count` and does not receive
+`sonaloop_age_since_ready_ms`. Ready-age exists only after the structural handoff is complete.
+
+This event makes future authenticated render requests queryable. It cannot reconstruct views from
+before the instrumentation was deployed, and MCP `get_synthesis` calls are operational reads rather
+than proof that a human opened the report. Even for new events, it proves an authenticated server-side render
+request—not that the browser painted the response, that the tab remained open or that the person read
+or understood the report.
+
 Audit schema v3 adds one privacy-reviewed semantic result contract. A technically
 successful `record_cohort_preflight` can expose `sonaloop_outcome` as exactly one
 of `pass`, `needs_deepening`, `needs_reselection`, `overridden`, or the fixed

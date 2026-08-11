@@ -60,6 +60,14 @@ who created it. This keeps **created by** distinct from **last acted on by** and
 connector family. The inspector shows the bounded display label on both the Jobs overview and the Job
 detail. It never renders the opaque actor id.
 
+When the first `begin_research_job` request also carries a recognized, server-observed MCP client,
+Cloud freezes a separate closed connector snapshot. The UI may then render, for example,
+**Created by Ann-Kristin · via Mistral** or **… · via ChatGPT**. The label comes from a fixed
+family-to-product mapping, not caller text. Unknown or conflicting connector observations are omitted,
+and retries through a different client cannot rewrite the first snapshot. This remains a connector
+claim only: the tooltip states that it does not prove the hidden model or inference provider. The
+caller-authored `provider` and `model` trace fields never power the byline.
+
 Jobs that predate the field remain explicitly **unknown** during ordinary edits, retries and support
 inspection. Sonaloop does not infer their creator from current ownership, project text, connector
 metadata, audit timing or the person viewing the workspace, and it does not silently backfill a
@@ -130,6 +138,34 @@ without minting a second primitive. This distinction matters in incident analysi
 
 Compatibility paths still expose the deterministic `key`/`checkpoint_step` protocol. Follow the
 dispatch response rather than inventing a second orchestration path.
+
+The inspector presents a genuine `needs_setup` gate as **Waiting for input** / **Wartet auf
+Eingabe**, with one concrete next action. It is an input request, not an error state. Archived test,
+duplicate and superseded Jobs never contribute to the global Run indicator.
+
+### Resumable report hand-off
+
+The final project report is a governed multi-write dispatch, not a side effect of reaching the end of
+the plan. `run_step` returns `step_id="__report_handoff__"` with one stable `report_id`, its exact
+`dispatch_token` and the remaining section ids. A scaffold and each partial section are progress only.
+The host authors each section through `brief_synthesis_section` → `record_synthesis_section` against
+that same report/token. Only a non-empty lead plus at least one section with every section authored
+links and checkpoints the report.
+
+If the host, connector or provider stops partway through, the next `run_step` returns the same report,
+same dispatch and first unfinished section. It does not create another Job or report, and the
+completeness critic cannot begin until the hand-off is complete. A capped run also does not manufacture
+an empty report.
+
+Cloud's report-render analytics follows this same content-derived boundary: a legacy report marked
+`done` but still carrying an empty section remains `running`/partial and has no ready-age. The stored
+status flag alone never upgrades an unfinished report.
+
+That structural hand-off is not a shortcut around research provenance. Project reports use their
+native section citations rather than a duplicate generic claim envelope: every authored section must
+cite at least one existing study from its frozen `source_study_ids`. Missing or foreign citations keep
+the report readable but mark project health unverified. In other words, complete bodies answer
+“was a report delivered?”, while valid section citations answer “is its prose evidence-backed?”.
 
 ## Reaction Test evidence contract
 
