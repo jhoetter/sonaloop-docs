@@ -153,9 +153,17 @@ that same report/token. Only a non-empty lead plus at least one section with eve
 links and checkpoints the report.
 
 If the host, connector or provider stops partway through, the next `run_step` returns the same report,
-same dispatch and first unfinished section. It does not create another Job or report, and the
-completeness critic cannot begin until the hand-off is complete. A capped run also does not manufacture
-an empty report.
+same dispatch and first unfinished section. A partial hand-off does not create another Job or report,
+and the completeness critic cannot begin until the hand-off is complete. A capped run also does not
+manufacture an empty report.
+
+The same report is resumed only while it remains the correct frozen hand-off. Once the plan has a
+current verify synthesis, that exact synthesis must exist in the report snapshot and be named by at
+least one section as an input. A fully authored report that predates the terminal synthesis is stale:
+it remains immutable and inspectable, but it no longer satisfies project completion. The next governed
+scaffold derives one stable refresh intent from the original operation and required synthesis, then
+creates one current replacement report. Transport retries converge on that replacement instead of
+creating more reports.
 
 Cloud's report-render analytics follows this same content-derived boundary: a legacy report marked
 `done` but still carrying an empty section remains `running`/partial and has no ready-age. The stored
@@ -184,7 +192,10 @@ the report is the endpoint, and both the project outline and report detail expos
 
 That graph snapshot remains unchanged during an in-place lead repair of an already authored report.
 Evidence added to the live project afterward cannot retroactively legitimize an earlier citation; use
-a new report outline when the evidence boundary genuinely needs to change.
+a new report outline when the evidence boundary genuinely needs to change. Governed final hand-off
+does this automatically when the current terminal synthesis is missing from an older report. Report
+sources are validated against the frozen/current graph's build order and nodes, not the legacy project
+study-id projection.
 
 ## Reaction Test evidence contract
 
