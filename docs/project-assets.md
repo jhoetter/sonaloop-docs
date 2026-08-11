@@ -56,6 +56,12 @@ instruct the host to `view_asset` them first; document excerpts are inline.
   the static `/data` mount; tenant Cloud serves them through the authenticated,
   active-workspace-only asset route and does not expose that raw mount. Incoming files
   are grouped as Assets in the outline; generated documents appear as deliverables.
+- Several assets in a project or report detail render as a compact responsive gallery instead of one
+  tall full-width column. Wide viewports place bounded previews horizontally and wrap as needed;
+  narrow viewports collapse to one column. A thumbnail is navigation, not replacement evidence:
+  ordering and captions remain intact, each file opens its canonical detail, and print/export restores
+  the figure's natural height. Explicitly positioned report figures and charts keep normal reading
+  width.
 - `export-snapshot` now includes research projects and copies asset binaries to
   `data/export/assets/`; `import-snapshot` restores both — the evidence survives
   the portable round-trip.

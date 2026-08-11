@@ -42,6 +42,37 @@ app: *project → phases → rows; click = slide-over.*
 
 Three pieces make the *live* part work.
 
+## Research setup without debug-wall UI
+
+Product Understanding and Cohort Integrity are methodological setup evidence, not another pair of
+report chapters. Their default presentation therefore answers the decision question first and keeps
+the audit trail one disclosure away:
+
+- **Product Understanding** starts as one closed summary: how many product areas are evidenced, how
+  many remain open, and whether verified absences or conflicts need attention. Opening it reveals the
+  target/revision, then separate evidenced and open-area lists. Raw manifest ids, versions, digests
+  and observation time live in a nested **Technical details** disclosure rather than in the reading
+  flow. Capability claims keep their exact evidence links.
+- **Cohort Integrity** starts as one closed summary: pass/attention state, cohort size, grounded
+  countervoice coverage and thin-profile count. Opening it explains the independent-context boundary;
+  overlap metrics and policy data, then the per-persona provenance basis, are nested disclosures.
+  Required remediation and explicit override limitations remain visible when they matter.
+
+Closing a disclosure changes presentation only. The complete evidence stays in the rendered detail,
+service result and exports. Completed checks use neutral, borderless disclosure rows; state comes from
+plain-language copy and semantic badges, not a decorative success rail or a full-width warning card.
+
+## Dates follow the reader, not the server
+
+Persisted timestamps and API/audit records remain canonical UTC instants. Human-facing inspector
+timestamps render as semantic `<time datetime="…">` elements and are formatted with the browser's
+locale and timezone. A user in Switzerland therefore sees the Swiss local time even when Sonaloop is
+hosted on a UTC server. The full localized instant is available in the timestamp tooltip.
+
+The same conversion runs after live/SSE updates, SPA navigation and slide-over insertion, so a newly
+arrived row cannot fall back to server time. Server-rendered UTC remains the honest no-JavaScript
+fallback; changing the UI timezone never mutates stored evidence or audit chronology.
+
 ## The event bus
 
 The MCP server, the CLI and the web inspector are separate processes sharing one SQLite

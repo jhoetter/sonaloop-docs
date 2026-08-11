@@ -76,14 +76,16 @@ provider or make a circular cohort methodologically strong.
 
 ## Inspecting and operating the gate
 
-The project and report pages show a Cohort Integrity card with:
+The project and report pages use progressive disclosure rather than turning the complete gate record
+into a report-sized card. The closed row shows pass/attention state, cohort size, grounded
+countervoice coverage and the thin-persona count. Opening it shows the independent-context boundary.
+Two nested disclosures then expose the exact check data — policy/version, independent-depth totals,
+maximum lexical and optional semantic overlap — and the per-persona provenance basis.
 
-- pass/block/stale state and policy version;
-- independent context depth and thin-persona count;
-- maximum lexical and optional semantic overlap;
-- declared countervoices;
-- required remediation tools; and
-- any override limitation.
+Required remediation and any override limitation are not hidden behind technical detail. They remain
+visible in the first expanded layer because they change what the researcher must do or how the report
+may be interpreted. Closing the row is visual compression only: the complete gate result remains in
+the rendered detail, service contract and exports.
 
 Agents use the MCP gather/write/read sequence:
 

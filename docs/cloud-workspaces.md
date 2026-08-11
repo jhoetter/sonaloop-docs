@@ -89,6 +89,36 @@ MCP and CLI example loading remain explicit host-controlled operations. Set
 `SONALOOP_PRODUCT_TOUR_ENABLED=1` only when a shared deployment deliberately wants
 to expose that onboarding surface.
 
+## Workspace-owned design system and branding
+
+Each workspace may publish one active, versioned `workspace_design_system.v2`. It is structured data,
+not arbitrary CSS: brand identity, light/dark color roles, approved font stacks/assets, spacing,
+imagery, charts and export/deck choices pass the Core validator and the Cloud publish gate. Drafts do
+not affect customer pages. Publishing switches the workspace pointer atomically; previous versions
+remain auditable and can be rolled back. Owner permission is required for design-system and asset
+writes.
+
+The application resolves the published version per request from the authenticated **active
+workspace**. Its name and logo replace the Sonaloop shell lockup; its safe tokens flow into the shell,
+new prototypes and version-snapshotted HTML/PDF/PPTX exports. Missing or invalid branding falls back
+to the Sonaloop default rather than breaking research. A path parameter or workspace cookie alone
+cannot wear another tenant's theme: membership and the active row-tenancy scope are authoritative.
+
+Brand artwork is never recolored by CSS. Supply the official positive/dark-on-light lockup as
+`brand.logo_variants.lockup` (or the configured `logo_preferred`) and, where the brand provides one,
+the official negative/light-on-dark artwork as `brand.logo_variants.lockup_dark`; `reversed` is the
+fallback dark-scheme role. The shell swaps these assets for explicit light/dark mode and for the
+browser's preferred scheme. If no negative variant exists, it keeps the positive asset rather than
+inventing one.
+
+Design assets are a separate workspace-owned library. Uploads are size- and MIME-bounded; logos
+accept sanitized SVG or PNG, images accept PNG/JPEG/WebP, and fonts accept WOFF/WOFF2. Payloads refer
+to immutable `workspace-asset:<id>@<hash>` values, never arbitrary filesystem paths or remote runtime
+URLs. Publish validation resolves every reference in the same workspace and checks its expected kind.
+At render/export time Cloud resolves bytes again under that workspace id and inlines or serves only
+the authorized rendition. Archiving a library record does not delete bytes needed by an already
+published historical version.
+
 ## Tenant and file boundary
 
 Postgres row-level security and the request workspace scope protect structured
