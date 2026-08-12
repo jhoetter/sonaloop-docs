@@ -25,6 +25,11 @@ app: *project → phases → rows; click = slide-over.*
   `/jobs/{project_id}` detail link still resolves, including its retained evidence and
   lineage. This keeps old retries and canaries out of everyday navigation without turning
   archive into data loss or making an archived title discoverable by fuzzy search.
+- **Jobs rows stay quiet but actionable.** Horizontal separators are omitted. Favorite and a
+  three-dot menu sit together at the right edge; the menu offers a title-only **Rename** and the
+  typed-confirmation **Delete job** action. Never-started containers hard-delete. Jobs with terminal
+  run history leave the working set through evidence-preserving archive, while active runs remain
+  protected until explicitly finished or stopped.
 - **Rows and slide-overs.** Every primitive renders as the same row anatomy everywhere
   (icon · title · quiet input/output degree · right-aligned meta). A degree appears only when
   a persisted relationship exists; hovering or focusing the row reveals the corresponding rows
@@ -52,16 +57,16 @@ the audit trail one disclosure away:
 
 - **Product Understanding** starts as one closed summary: how many product areas are evidenced, how
   many remain open, and whether verified absences or conflicts need attention. Opening it reveals the
-  target/revision, then separate evidenced and open-area lists. Raw manifest ids, versions, digests
-  and observation time live in a nested **Technical details** disclosure rather than in the reading
-  flow. Capability claims keep their exact evidence links.
+  target/revision, then separate evidenced and open-area lists. Raw manifest ids, record versions,
+  digests and observation time do not appear in the normal Inspector; they remain available through
+  the service result, run journal and exports. Capability claims keep their exact evidence links.
 - **Cohort Integrity** starts as one closed summary: pass/attention state, cohort size, grounded
   countervoice coverage and thin-profile count. Opening it explains the independent-context boundary;
   overlap metrics and policy data, then the per-persona provenance basis, are nested disclosures.
   Required remediation and explicit override limitations remain visible when they matter.
 
-Closing a disclosure changes presentation only. The complete evidence stays in the rendered detail,
-service result and exports. Completed checks use neutral, borderless disclosure rows; state comes from
+Closing a disclosure changes presentation only. The complete methodological record stays in the
+service result, run journal and exports. Completed checks use neutral, borderless disclosure rows; state comes from
 plain-language copy and semantic badges, not a decorative success rail or a full-width warning card.
 
 ## Dates follow the reader, not the server

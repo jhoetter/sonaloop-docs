@@ -56,7 +56,10 @@ Use three layers:
   an almost viewport-wide drawer and put the flow before generic properties and
   relations; narrow screens stack the crop above its comment. The source screenshot
   stays unchanged and opens in full resolution on click. The focus is explicitly a
-  salience hypothesis, never eye-tracking or measured attention. A screenshot thumbnail on a project or prototype enters that
+  salience hypothesis, never eye-tracking or measured attention. The concurrent comment
+  stays in the persona's demonstrated, in-the-moment language; observed action/state and
+  researcher interpretation remain separate fields. UX-method vocabulary belongs in findings
+  or friction analysis unless the loaded persona context shows natural use. A screenshot thumbnail on a project or prototype enters that
   session rather than opening a competing overlay. Full-resolution zoom lives
   inside the replay and closes by its visible control, Escape or backdrop click,
   returning the reader to the same session. Shared Cloud delivers retained step screenshots through short-lived,

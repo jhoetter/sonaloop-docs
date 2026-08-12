@@ -81,6 +81,9 @@ into a report-sized card. The closed row shows pass/attention state, cohort size
 countervoice coverage and the thin-persona count. Opening it shows the independent-context boundary.
 Two nested disclosures then expose the exact check data — policy/version, independent-depth totals,
 maximum lexical and optional semantic overlap — and the per-persona provenance basis.
+Profile age is written precisely to the audit record but presented as a rounded human duration
+(`4 hours`, `3 days`, `about 2 months before project start`) rather than fractional hours. Provenance
+uses reader-facing labels such as `from the catalog` instead of raw storage enums.
 
 Required remediation and any override limitation are not hidden behind technical detail. They remain
 visible in the first expanded layer because they change what the researcher must do or how the report

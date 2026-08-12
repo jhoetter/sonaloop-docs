@@ -33,7 +33,10 @@ flow_funnel(project, flow)                        # the segment view
   `view_asset(...)` calls. The host looks at each screen before reacting,
   records one timeline step per screen, sets `outcome.dropoff_step` where this
   persona would genuinely bail (the reason lives in that step's verdict), and
-  authors `predicted_behaviors` on the canonical likelihood scale.
+  authors `predicted_behaviors` on the canonical likelihood scale. The step
+  `monologue` is the persona's immediate first-person thought in their demonstrated
+  vocabulary—not a UX diagnosis. Observed behavior belongs in `action`/`state`;
+  analyst interpretation belongs in `friction.note`, the outcome and findings.
 - **The funnel**: `flow_funnel` aggregates every session of the flow —
   per step entered / continued / dropped, the drop reasons, the dropping
   personas, the step captions, and a `biggest_dropoff` headline:

@@ -9,7 +9,7 @@ line: **structure yes, generated text never.**
 
 | Entity | Create | Edit | Delete | Notes |
 | --- | --- | --- | --- | --- |
-| Project | ✅ web (`/projects/new`) | ✅ title/goal/icon | ✅ typed-confirmation (type the project title) | browser edits the primary container metadata only; description remains API/MCP metadata; the graph/plan stays agent-driven; regular icons are selectable in the browser, custom SVG icons are generated/set through MCP/CLI |
+| Project | ❌ create in UI (MCP/CLI owns creation) | ✅ title/goal/icon; title-only rename in the Jobs list | ✅ typed-confirmation (type the project title) | the list-row `…` menu sits beside Favorite; never-started containers hard-delete, terminal run history is removed from the working set through evidence-preserving archive; active runs remain protected |
 | Persona | ❌ MCP-only for authored profiles (`brief_persona` → `record_persona`); ✅ catalog import from `/personas/catalog` via `catalog_pull` | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation (type the display name) | catalog import is a selective pull from sonaloop-data, not browser authoring |
 | Note | ✅ web | ✅ title/text | ✅ | notes are *user/host-authored observations* — typing one in the browser **is** authoring |
 | Section | ✅ web | ✅ title/kind/note | ✅ (member nodes untouched) | a section is a view; membership editing stays MCP |
@@ -21,6 +21,12 @@ line: **structure yes, generated text never.**
 Everything in the ✅ columns goes through the **same service layer** the MCP tools use, so
 lifecycle events, hooks, the live event stream and cloud access guards all keep firing
 regardless of which surface made the change.
+
+The Jobs overview uses separator-free rows. Each remains one ordinary deep link, with Favorite
+and a quiet `…` menu as sibling controls on the right. That menu contains only **Rename** (a
+title-only dialog) and **Delete job** (the same typed confirmation as the detail page). It does not
+introduce checkboxes or imply a bulk-selection mode. If a governed journal exists, deletion means
+removing the job from the current working set while preserving its exact audit/evidence deep link.
 
 Project/Job icons are structural metadata. MCP/CLI callers can pass
 `icon=<existing name>|"random"` while creating/starting a study, inspect the existing catalogue
