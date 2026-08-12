@@ -54,7 +54,10 @@ Use three layers:
   the Inspector presents those steps as a linear reading flow with the unchanged
   large screenshot, softened surround and the persona's concurrent comment. The
   focus is explicitly a salience hypothesis, never eye-tracking or measured
-  attention. Shared Cloud delivers retained step screenshots through short-lived,
+  attention. A screenshot thumbnail on a project or prototype enters that
+  session rather than opening a competing overlay. Full-resolution zoom lives
+  inside the replay and closes by its visible control, Escape or backdrop click,
+  returning the reader to the same session. Shared Cloud delivers retained step screenshots through short-lived,
   workspace- and session-bound capabilities. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;
   it exists so multiple sessions can reuse the same ordered screenshot sequence.
