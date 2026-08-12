@@ -43,6 +43,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 
 - [Cloud workspaces and customer access](cloud-workspaces.md) — tenant isolation, managed login, invitations and no-charge workspaces.
 - [Cloud execution audit and PostHog observability](cloud-observability.md) — tenant-bound Remote-MCP audit, privacy-safe tool traces and Cloud-hosted model generations.
+- [Product telemetry](product-telemetry.md) — provider-neutral semantic events, privacy boundaries, durable delivery and current product coverage.
 - [Embeddings](embeddings.md) — semantic memory recall setup.
 - [Persona catalog & pagination](catalog.md) — catalog search/recommend/pull and the list-pagination convention.
 - [Lifecycle hooks](lifecycle-hooks.md) — events and subscriptions (the seam cloud automation builds on).

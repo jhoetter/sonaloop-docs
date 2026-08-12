@@ -48,6 +48,7 @@ nav:
   - Operating:
       - Cloud workspaces & access: cloud-workspaces.md
       - Cloud audit & PostHog observability: cloud-observability.md
+      - Product telemetry: product-telemetry.md
       - Secure remote screenshots: remote-screenshot-admission.md
       - Cloud GitHub automations: cloud-github-automations.md
       - Embeddings: embeddings.md
