@@ -13,7 +13,8 @@ app: *project → phases → rows; click = slide-over.*
   references, councils, reports, flows, prototypes, sessions, surveys, hypotheses,
   decisions, notes and assets — renders as a row in its phase context on the project
   outline. The project header carries a **run chip** (state · last activity) that links
-  to the run journal. Missing setup is represented there as one current action rather
+  to the run journal and the complete participating **persona cohort** as linked avatars;
+  dense list rows still collapse cohorts after four portraits. Missing setup is represented there as one current action rather
   than as full-width warning cards. Persisted Product Understanding and cohort-check
   evidence remains available behind one small, closed **Research setup details** row;
   archived status and explicit lineage stay compact in the header.
@@ -39,6 +40,10 @@ app: *project → phases → rows; click = slide-over.*
   control in the panel header expands to the full page; `Esc`, the backdrop, or the browser's
   Back button restores the list and its URL. Slide-overs are navigation sugar, never the only
   address (middle-click and deep links go straight to the page).
+- **Sessions disclose their visual evidence before you open them.** A session row says
+  **Screen replay**, **Some screens**, or **No screen**. In the replay itself, a missing
+  screenshot is a minimal explicit empty state; a historical `state.screen` description
+  remains readable as text but is never framed like a broken or loading image.
 - **The Library** is the cross-project browser: one page with tabs for open questions,
   references, councils, reports, prototypes, flows, sessions, surveys, hypotheses,
   decisions, notes and assets, one search/filter bar, the same rows + slide-overs as the

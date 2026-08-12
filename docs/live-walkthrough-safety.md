@@ -77,4 +77,7 @@ snapshot also writes a per-step screenshot to
 `data/sessions/<browser_session_id>/step-<n>.png` (fail-soft), referenced from the snapshot
 as `<browser_session_id>/step-<n>.png` relative to the sessions dir —
 `record_usability_session` validates those paths (containment under the data dir stays
-enforced) and the replay view serves them via `/sessions-files/`.
+enforced) and the replay view serves them via `/sessions-files/`. When the ordered browser
+snapshot count and authored step count match exactly, the recorder fills omitted screenshot
+refs from that log. It deliberately does not guess when counts differ: the session stays
+partial or text-only instead of showing a plausible but wrong screen beside a step.
