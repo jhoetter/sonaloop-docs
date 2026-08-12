@@ -41,7 +41,11 @@ Use three layers:
   carries a compiled `--proto-*` token layer, so presets and fine-grained edits
   to color schemes, chart series, status colors, radius, spacing, density,
   shadows and focus rings adapt the next scaffolded prototype without hardcoded
-  template branches.
+  template branches. In shared Cloud, the Inspector serves each static prototype
+  through a short-lived signed file capability bound to the exact active workspace
+  and prototype tree. The embedded app runs in an opaque, credentialless CSP sandbox:
+  relative CSS/JS/images still work, but prototype code receives no Sonaloop cookies,
+  cannot inherit the signed-in origin, and cannot resolve another workspace's files.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;

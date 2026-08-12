@@ -147,6 +147,18 @@ authorization before deriving bounded WebP pixels. Their caches live below the
 active workspace partition; Cloud skips theme compilation for these exact binary
 paths, while the outer session and RLS middleware still executes normally.
 
+Static prototype previews use a short-lived signed route at
+`GET /prototype-files/<capability>/<prototype-id>/<path>`. The authenticated detail
+page mints the capability for exactly its active workspace and prototype tree. It is
+not a session token and authorizes no app/API route. Each file request revalidates
+the signature, expiry, live prototype row and registered directory inside that
+workspace's prototype partition. The iframe is opaque and credentialless (no
+`allow-same-origin`): relative CSS/JS/images/fetches work, while prototype code gets
+no Sonaloop session/workspace cookies or parent/API access. Entry HTML is revalidated;
+unchanged nested files get a bounded private cache. Missing, foreign, expired, forged,
+dynamic-runner and escaping paths all return the same 404. The legacy unscoped
+`/proto-files` mount remains unavailable in Cloud.
+
 For a first customer rollout, keep command lifecycle hooks and the hosted-agent
 worker disabled until their workflows and outbound actions have been reviewed:
 
