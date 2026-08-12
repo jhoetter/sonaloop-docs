@@ -46,6 +46,9 @@ Use three layers:
   and prototype tree. The embedded app runs in an opaque, credentialless CSP sandbox:
   relative CSS/JS/images still work, but prototype code receives no Sonaloop cookies,
   cannot inherit the signed-in origin, and cannot resolve another workspace's files.
+  The detail page keeps that preview embedded by default. **Maximize** expands the
+  same sandbox across the product viewport; Escape or the host-owned close control
+  returns to the detail page without giving prototype code additional authority.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;
