@@ -50,7 +50,12 @@ Use three layers:
   same sandbox across the product viewport; Escape or the host-owned close control
   returns to the detail page without giving prototype code additional authority.
 - **Sessions** are replayable usage traces against a screen walkthrough,
-  prototype or live URL. `define_flow` stores a reusable screen-walkthrough test
+  prototype or live URL. A step may carry a screenshot-relative focus rectangle;
+  the Inspector presents those steps as a linear reading flow with the unchanged
+  large screenshot, softened surround and the persona's concurrent comment. The
+  focus is explicitly a salience hypothesis, never eye-tracking or measured
+  attention. Shared Cloud delivers retained step screenshots through short-lived,
+  workspace- and session-bound capabilities. `define_flow` stores a reusable screen-walkthrough test
   script under `project["flows"]`, but that script is not a Library primitive;
   it exists so multiple sessions can reuse the same ordered screenshot sequence.
 - **Notes** are captured signals, observations or concepts.
