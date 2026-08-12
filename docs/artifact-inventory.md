@@ -51,10 +51,12 @@ Use three layers:
   returns to the detail page without giving prototype code additional authority.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. A step may carry a screenshot-relative focus rectangle;
-  the Inspector presents those steps as a linear reading flow with the unchanged
-  large screenshot, softened surround and the persona's concurrent comment. The
-  focus is explicitly a salience hypothesis, never eye-tracking or measured
-  attention. A screenshot thumbnail on a project or prototype enters that
+  the Inspector presents those steps as a linear reading flow with a bounded,
+  focus-centred crop beside the persona's concurrent comment. Reading sessions use
+  an almost viewport-wide drawer and put the flow before generic properties and
+  relations; narrow screens stack the crop above its comment. The source screenshot
+  stays unchanged and opens in full resolution on click. The focus is explicitly a
+  salience hypothesis, never eye-tracking or measured attention. A screenshot thumbnail on a project or prototype enters that
   session rather than opening a competing overlay. Full-resolution zoom lives
   inside the replay and closes by its visible control, Escape or backdrop click,
   returning the reader to the same session. Shared Cloud delivers retained step screenshots through short-lived,
