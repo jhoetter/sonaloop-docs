@@ -159,6 +159,12 @@ unchanged nested files get a bounded private cache. Missing, foreign, expired, f
 dynamic-runner and escaping paths all return the same 404. The legacy unscoped
 `/proto-files` mount remains unavailable in Cloud.
 
+For externally hosted mockups, Remote MCP exposes the narrower
+`register_remote_prototype` admission path. It stores only validated HTTP(S)
+metadata and an optional concept-note pairing; the Cloud server does not fetch
+or execute the URL. Local-path registration, runners and browser-driving tools
+remain outside the remote workspace-user profile.
+
 For a first customer rollout, keep command lifecycle hooks and the hosted-agent
 worker disabled until their workflows and outbound actions have been reviewed:
 

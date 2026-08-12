@@ -49,6 +49,11 @@ Use three layers:
   The detail page keeps that preview embedded by default. **Maximize** expands the
   same sandbox across the product viewport; Escape or the host-owned close control
   returns to the detail page without giving prototype code additional authority.
+  A hosted HTTP(S) app can instead be admitted metadata-only with
+  `register_remote_prototype`: Sonaloop stores its URL and version, optionally
+  pairs the concept note, and never fetches or executes the remote URL. Governed
+  sessions labelled as prototype use must resolve to a same-project registered
+  prototype; a concept note or external link alone cannot satisfy that gate.
 - **Sessions** are replayable usage traces against a screen walkthrough,
   prototype or live URL. A step may carry a screenshot-relative focus rectangle;
   the Inspector presents those steps as a linear reading flow with a bounded,
