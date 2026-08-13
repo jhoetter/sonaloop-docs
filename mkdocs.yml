@@ -31,6 +31,7 @@ nav:
   - Getting started: getting-started.md
   - Example projects: examples.md
   - Concepts:
+      - Multi-Variant Development: multi-variant-development.md
       - Job → Framework → Format: job-framework-format.md
       - Result schemas: result-schemas.md
       - Frameworks: frameworks.md

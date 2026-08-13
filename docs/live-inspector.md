@@ -68,11 +68,21 @@ screens rather than a flat screenshot list:
   recolouring of evidence.
 - **Play is qualified and warm, not eager.** Its count and selector contain the verified
   Current version plus ready variants for that screen. Live sessions are created only when
-  selected and opened sessions are reused in the current tab. The standalone immutable
-  Variant presentation best-effort warms only the closest neighbouring options (up to three),
-  with two shared speculative loads and at most four retained replay documents/frames. A large
-  issue backlog therefore does not trigger an all-variant download or iframe storm, while
-  common adjacent switches avoid another cold start.
+  selected and opened sessions are reused in the current tab. Immutable Publication evidence
+  renders before optional Runner and Change discovery, so a slow live projection cannot block
+  the saved screen. While the live application hydrates, its verified capture covers the inert
+  iframe. A Preview Bridge ready message reveals it immediately; Basic Mode offers an explicit
+  **Open live app** fallback after a short grace instead of guessing readiness and exposing a
+  white shell. Historical links keep opening their exact healthy
+  Publication after the Surface advances, provided it still binds the same Observation and
+  environment. The standalone immutable Variant presentation best-effort warms only the
+  closest neighbouring options (up to three), with two shared speculative loads and at most
+  four retained replay documents/frames. A large issue backlog therefore does not trigger an
+  all-variant download or iframe storm, while common adjacent switches avoid another cold start.
+- **Attached work and Play readiness stay distinct.** The inspector shows modern Changes joined
+  through the exact Surface or route even before a Preview qualifies. It reports active variants
+  and the Play-ready subset separately; rejected and abandoned revisions remain history rather
+  than inflating the active count.
 - **The inspector floats over the full stage.** Only the inspector card is opaque; its
   surrounding layer is transparent. The Canvas continues underneath at full width, so no
   reserved grey column clips a screen behind the overlay.
