@@ -32,6 +32,7 @@ nav:
   - Example projects: examples.md
   - Concepts:
       - Multi-Variant Development: multi-variant-development.md
+      - Vision delivery roadmap: vision-roadmap.md
       - Job → Framework → Format: job-framework-format.md
       - Result schemas: result-schemas.md
       - Frameworks: frameworks.md

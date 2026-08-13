@@ -9,6 +9,7 @@
 
 - [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): one-sentence uvx install, MCP registration, sonaloop info diagnostics, first project
 - [Multi-Variant Software Development](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/multi-variant-development.md): long-term sonaloop-v4 vision, provider-neutral domain model, execution boundaries and sequenced migration path
+- [Vision delivery roadmap](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/vision-roadmap.md): dependency-ordered, exit-criteria-based roadmap from the current Canvas, Inventory, variants and Customer Runner to managed execution, evidence, delivery and provider expansion
 - [Example projects](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/examples.md): shipped demo studies — list/load/remove, idempotent loading
 - [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy + the A/B test, pricing and ideation run protocols + the Adding-a-Job recipe
 - [Result schemas](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/result-schemas.md): domain-neutral output contracts for Jobs and methodologies, evidence policy, live-required interruption seam
