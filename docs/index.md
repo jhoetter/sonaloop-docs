@@ -16,8 +16,6 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Start here
 
 - [Getting started](getting-started.md) — the one-sentence install and your first project.
-- [Multi-Variant Software Development](multi-variant-development.md) — the long-term
-  sonaloop-v4 product vision, domain boundaries and sequenced provider path.
 - [Example projects](examples.md) — complete demo studies, one-click in the local inspector or loadable via MCP/CLI.
 - [Job → Framework → Format](job-framework-format.md) — the three-layer taxonomy the whole product aligns on, including the A/B test, pricing and ideation run protocols.
 - [Frameworks](frameworks.md) — the methodologies a run can follow.
