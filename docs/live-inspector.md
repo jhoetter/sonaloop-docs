@@ -52,6 +52,31 @@ app: *project → phases → rows; click = slide-over.*
   websites/external prototypes/A-B variants in the council room; **assets** are files;
   **sessions** are usage traces.
 
+## The Workbench screen Canvas
+
+The Workbench project Canvas treats a customer capture and its code variants as related
+screens rather than a flat screenshot list:
+
+- **Screen search ignores the current filters.** `Cmd+K` on macOS or `Ctrl+K` elsewhere
+  searches every captured and variant screen in the Canvas by route, state, viewport,
+  issue and variant. Choosing a result admits any required view kind or viewport, clears
+  transient searches that hid it, then selects and centres the screen.
+- **Light and Dark are states of one logical screen.** Sonaloop stores each available
+  capture unchanged and follows the effective Workbench theme automatically. Light never
+  exposes a dark-only screen. Dark prefers real Dark evidence and falls back to the saved
+  Light capture when no Dark state exists; there is no per-card theme override and no
+  recolouring of evidence.
+- **Play is qualified and warm, not eager.** Its count and selector contain the verified
+  Current version plus ready variants for that screen. Live sessions are created only when
+  selected and opened sessions are reused in the current tab. The standalone immutable
+  Variant presentation best-effort warms only the closest neighbouring options (up to three),
+  with two shared speculative loads and at most four retained replay documents/frames. A large
+  issue backlog therefore does not trigger an all-variant download or iframe storm, while
+  common adjacent switches avoid another cold start.
+- **The inspector floats over the full stage.** Only the inspector card is opaque; its
+  surrounding layer is transparent. The Canvas continues underneath at full width, so no
+  reserved grey column clips a screen behind the overlay.
+
 Three pieces make the *live* part work.
 
 ## Research setup without debug-wall UI
