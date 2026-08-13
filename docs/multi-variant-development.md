@@ -69,6 +69,16 @@ Provider sollen nach maschinenlesbaren Fähigkeiten gewählt und unabhängig
 kombiniert werden. Ein Providerwechsel darf Variant-, Revision-, Feedback-,
 Test-, Decision- oder Delivery-Historie nicht umdeuten.
 
+Der erste ausgelieferte Environment-Schnitt bildet einen bereits verbundenen
+Customer Runner als eigene, projektgebundene Compute Environment ab. Er kann
+vorhandene, kundeneigene Compute-Ressourcen entdecken und beobachten; Identität,
+Provider-Binding und Zustandsbeobachtungen werden unveränderlich und
+idempotent protokolliert. Dieser Adapter besitzt bewusst **keine** Berechtigung
+zum Provisionieren, Platzieren, Stoppen oder Löschen von Infrastruktur.
+Unbekannte Angaben wie Region, CPU, RAM, Isolation und Netzwerk bleiben
+explizit unbekannt. Managed Environments und Runtime Placement sind spätere,
+separat zu autorisierende Ausbauschritte.
+
 ## Vier Dinge, die getrennt bleiben müssen
 
 Die Architektur unterscheidet bewusst:
