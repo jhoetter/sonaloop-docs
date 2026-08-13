@@ -51,34 +51,6 @@ Damit kann eine Variante zunächst visuell sein, über mehrere Revisionen bis zu
 einem Production Candidate reifen und auf einer anderen kompatiblen
 Infrastruktur erneut materialisiert werden.
 
-## Product Inventory als gemeinsame Produktsprache
-
-Screens und Flows beschreiben, **wo** sich eine Anwendung wie verhält. Ein
-projektübergreifendes Product Inventory beschreibt ergänzend, **woraus** ihre
-Produktsprache besteht: Farben, Typografie, Fonts, Abstände, Radien, Schatten,
-Icons, Assets, Komponenten und Komponentenvarianten.
-
-```text
-aktuelle Canvas-Captures und DOM-Evidenz
-→ automatisch erfasste Inventory-Kandidaten
-→ menschliche Curation
-→ unveränderliche Inventory Revision
-→ gepinnter Kontext für Variant und Agent
-→ Drift- und Intent-Findings
-```
-
-Automatisch erkannte Werte sind Kandidaten, keine Regeln. Erst akzeptierte
-Items gelangen in den stabilen Agent Context. Jede Grundlage behält ihre
-Provenienz bis zu Project, Surface, Observation und – soweit vorhanden – dem
-konkreten DOM-Element. Eine Variant bindet die verwendete Inventory Revision
-und ihren Content Hash, damit spätere Curation ihren historischen Kontext
-nicht verändert.
-
-Product Inventory ist nicht Compute Inventory: Das eine beschreibt
-Produktgrundlagen, das andere ausführbare Infrastruktur. Repository-,
-Storybook- oder Design-Tool-Integrationen sind zunächst zusätzliche
-Evidence-Quellen und kein austauschbarer Eigentümer des fachlichen Inventories.
-
 ## Batteries included, aber austauschbar
 
 Jede wesentliche Provider-Kategorie soll langfristig eine sonaloop-eigene
@@ -170,6 +142,3 @@ Artefakte:
 
 > Eine Idee wird zu mehreren realen Alternativen; die gewählte Alternative
 > bleibt samt Evidenz und Intention bis zur Auslieferung nachvollziehbar.
-
-Der ausführliche, exitkriterienbasierte Umsetzungsplan steht im
-[Fahrplan zur Produktvision](vision-roadmap.md).
