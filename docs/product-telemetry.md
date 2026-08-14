@@ -22,6 +22,12 @@ Core also records successful, semantically important changes:
 - asset attach/remove, note changes and section changes; and
 - governed run start and finish.
 
+Persona preparation has its own semantic receipts: task context prepared; build
+started/advanced/completed; day recorded; memory consolidated; digest and critic recorded; persona
+voice checked; and a chat-continuity proposal approved or rejected. Only structural states, counts
+and booleans are sent. Task wording, persona replies, source excerpts, continuity notes and critic
+prose are never telemetry properties.
+
 Adoption edges around the newer workflows are included without their content: custom/catalog
 persona creation starts; persona views carry only readiness and memory-depth buckets plus evidence
 presence; report exports carry format, audience and default/workspace branding/master sources;
@@ -49,6 +55,9 @@ The event contract is expressed as vendor-independent sequences:
 | Are sessions grounded? | `session_recorded` grouped by `grounded`, `visual_trace` and fidelity. |
 | Which cohort sizes complete? | `persona_count` on the job events, correlated with `run_finished`. |
 | Are thin personas visible before consequential use? | `persona_viewed` by readiness and memory-level bucket, followed by session/run events. |
+| Where does persona preparation stall? | `persona_build_started` → `persona_build_advanced` by dispatch kind → `persona_build_completed`. |
+| Was a reproducible persona context prepared? | `persona_context_prepared` by readiness and capability-gate presence, followed by a session/run. |
+| Are voice and conversation safeguards used? | `persona_voice_checked` by pass/issues and `persona_memory_proposal_reviewed` by approve/reject. No authored content is exported. |
 | Are results actually shared? | `report_exported` by format, stakeholder/detailed audience, branding source and master source. |
 | Does a published workspace identity reach generated work? | `workspace_design_published`/`workspace_design_asset_uploaded` followed by `prototype_registered` or `report_exported`. |
 

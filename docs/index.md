@@ -23,7 +23,7 @@ machine-friendly index lives at [`/llms.txt`](llms.txt).
 ## Concepts & method
 
 - [Grounding](grounding.md) — evidence grounding and provenance.
-- [Persona creation & memory](persona-memory.md) — detailed creation, visible readiness, authentic voice and careful deletion.
+- [Persona lifecycle & memory](persona-memory.md) — resumable builds, task-context snapshots, reviewed chat continuity, authentic voice and careful deletion.
 - [Cohort Integrity](cohort-integrity.md) — independent persona depth, framed-hypothesis leakage,
   countervoices and server-owned remediation before Reaction Tests.
 - [Artifact inventory](artifact-inventory.md) — references vs assets vs flows vs sessions.
