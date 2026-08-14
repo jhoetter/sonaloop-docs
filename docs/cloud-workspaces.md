@@ -104,6 +104,13 @@ new prototypes and version-snapshotted HTML/PDF/PPTX exports. Missing or invalid
 to the Sonaloop default rather than breaking research. A path parameter or workspace cookie alone
 cannot wear another tenant's theme: membership and the active row-tenancy scope are authoritative.
 
+The Deck section may also hold an approved 16:9 PowerPoint master. Sonaloop retains the uploaded
+theme, canvas, masters and layouts, discards its sample
+slide instances, and generates editable report shapes into that template. A customer master owns
+its fixed logo/cover artwork, so no duplicate Sonaloop overlay is added. Without an uploaded master,
+the polished Sonaloop deck remains the deterministic default. The report page also offers a concise
+stakeholder PDF; both exports resolve the published workspace brand at export time.
+
 Brand artwork is never recolored by CSS. Supply the official positive/dark-on-light lockup as
 `brand.logo_variants.lockup` (or the configured `logo_preferred`) and, where the brand provides one,
 the official negative/light-on-dark artwork as `brand.logo_variants.lockup_dark`; `reversed` is the
@@ -112,7 +119,9 @@ browser's preferred scheme. If no negative variant exists, it keeps the positive
 inventing one.
 
 Design assets are a separate workspace-owned library. Uploads are size- and MIME-bounded; logos
-accept sanitized SVG or PNG, images accept PNG/JPEG/WebP, and fonts accept WOFF/WOFF2. Payloads refer
+accept sanitized SVG or PNG, images accept PNG/JPEG/WebP, fonts accept WOFF/WOFF2, and deck masters
+accept inert `.pptx` packages. PowerPoint uploads reject macros, embedded/ActiveX/OLE content,
+external relationships, archive bombs and malformed packages. Payloads refer
 to immutable `workspace-asset:<id>@<hash>` values, never arbitrary filesystem paths or remote runtime
 URLs. Publish validation resolves every reference in the same workspace and checks its expected kind.
 At render/export time Cloud resolves bytes again under that workspace id and inlines or serves only

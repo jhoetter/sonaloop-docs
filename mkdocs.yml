@@ -35,6 +35,7 @@ nav:
       - Result schemas: result-schemas.md
       - Frameworks: frameworks.md
       - Grounding: grounding.md
+      - Persona creation & memory: persona-memory.md
       - Cohort Integrity: cohort-integrity.md
       - Artifact inventory: artifact-inventory.md
       - Calibration: calibration.md

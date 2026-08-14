@@ -1,16 +1,16 @@
 # Web editing — the inspector's write boundary
 
 The web inspector started strictly read-only. It now carries a **structural write path**:
-metadata and container operations are editable in the browser, while every piece of authored
-or generated text stays host-authored (the HOST-AUTHORS-ALL-TEXT invariant). The rule in one
-line: **structure yes, generated text never.**
+metadata and container operations are editable in the browser, while generated research claims
+stay host-authored. A guided custom-persona intake is the deliberate exception: a human supplies
+concrete source facts and the normal persona service validates the resulting profile and SOUL.
 
 ## The mutation boundary
 
 | Entity | Create | Edit | Delete | Notes |
 | --- | --- | --- | --- | --- |
 | Project | ❌ create in UI (MCP/CLI owns creation) | ✅ title/goal/icon; title-only rename in the Jobs list | ✅ typed-confirmation (type the project title) | the list-row `…` menu sits beside Favorite; never-started containers hard-delete, terminal run history is removed from the working set through evidence-preserving archive; active runs remain protected |
-| Persona | ❌ MCP-only for authored profiles (`brief_persona` → `record_persona`); ✅ catalog import from `/personas/catalog` via `catalog_pull` | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation (type the display name) | catalog import is a selective pull from sonaloop-data, not browser authoring |
+| Persona | ✅ detailed custom intake; ✅ catalog import; ✅ MCP/CLI | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation with impact preview | creation makes a profile and SOUL; readiness keeps missing lived memory visible |
 | Note | ✅ web | ✅ title/text | ✅ | notes are *user/host-authored observations* — typing one in the browser **is** authoring |
 | Section | ✅ web | ✅ title/kind/note | ✅ (member nodes untouched) | a section is a view; membership editing stays MCP |
 | Council | ❌ | ❌ | ✅ delete only | statements are generated prose — never editable |
@@ -42,16 +42,18 @@ same facet rules and avatar files as the catalog UI. Free personas import direct
 personas remain visible but require `SONALOOP_CATALOG_TOKEN` (or a hosted request-scoped token);
 without it the service returns an in-band `skipped_premium` explanation instead of failing.
 
-## Why persona create is MCP-only
+## Custom personas, readiness and deletion
 
-`record_persona` (the only create path) requires the complete host-authored profile JSON
-produced by the `brief_persona` protocol — goals, pain points, personality, relationships,
-success criteria — authored by the agent against the briefing instructions and validated
-server-side. There is no meaningful "structural shell" subset, and a web form asking a human
-to hand-type the full profile would bypass the briefing protocol that keeps personas
-evidence-shaped. The web therefore offers **metadata edit + delete** only for authored
-personas; catalog personas can be imported because the complete authored profile already
-exists in sonaloop-data and is pulled verbatim.
+`/personas/new` asks for work/life context, tools, goals, constraints, recurring friction,
+success criteria, working and communication style, risk posture, relationships and optional
+observed evidence. It calls the same `record_persona` service as MCP. The detail view then shows
+a structural readiness score over profile, grounding, memory, continuity and capabilities.
+A strong profile can therefore remain visibly thin until independent evidence and ordinary,
+consolidated days have built real continuity. See [Persona creation & memory](persona-memory.md).
+
+Deleting a persona first shows the impact: personal profile/SOUL/memory is removed and active
+project cohorts are detached, while historical councils and recorded sessions remain as research
+evidence. MCP uses the same boundary as a two-step, state-bound confirmation token.
 
 ## Safety properties
 

@@ -13,6 +13,7 @@
 - [Result schemas](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/result-schemas.md): domain-neutral output contracts for Jobs and methodologies, evidence policy, live-required interruption seam
 - [Frameworks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/frameworks.md): methodology frameworks a run can follow
 - [Grounding](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/grounding.md): evidence grounding and provenance
+- [Persona creation & memory](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/persona-memory.md): detailed UI/MCP creation, structural readiness, governed memory onboarding, authentic voice and impact-aware deletion
 - [Cohort Integrity](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/cohort-integrity.md): server-owned Reaction Test gate for independent persona depth/provenance, framed-hypothesis leakage, countervoices, remediation and explicit report limitations, presented as compact progressive disclosure without removing audit evidence
 - [Artifact inventory](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/artifact-inventory.md): references vs assets vs flows vs sessions, linear persona reading flows, runnable and metadata-only remote prototype forms, and authenticated workspace-bound Cloud file delivery
 - [Calibration](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/calibration.md): prediction calibration and Brier scoring

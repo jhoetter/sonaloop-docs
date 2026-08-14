@@ -53,6 +53,17 @@ In a council brief, every project asset rides each participant's
 `agent_context` as an `EVIDENCE ASSETS IN THE ROOM` block: image assets
 instruct the host to `view_asset` them first; document excerpts are inline.
 
+## Sharing report deliverables
+
+The report header offers **Share PDF** and **Download PowerPoint**. The PDF is a concise
+stakeholder edition: it keeps the conclusion and section structure, limits supporting prose and
+points detailed evidence back to Sonaloop. PowerPoint stays editable. Both are recorded as outgoing
+project assets with synthesis provenance, and a re-export supersedes the prior file.
+
+Cloud applies the synthesis owner's published workspace branding. If the workspace has an approved
+16:9 PowerPoint master, its canvas, theme, masters and layouts are used and its sample slide
+instances are discarded. Otherwise Sonaloop's polished default deck is used.
+
 ## Persistence
 
 - Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and

@@ -22,6 +22,13 @@ Core also records successful, semantically important changes:
 - asset attach/remove, note changes and section changes; and
 - governed run start and finish.
 
+Adoption edges around the newer workflows are included without their content: custom/catalog
+persona creation starts; persona views carry only readiness and memory-depth buckets plus evidence
+presence; report exports carry format, audience and default/workspace branding/master sources;
+design publishing and safe asset uploads carry structural kinds; and prototype registration records
+whether workspace branding was inherited. Persona prose, report text, filenames and images are never
+telemetry properties.
+
 Command-palette search records a query-length bucket and result count. The search term is
 never an analytics property.
 
@@ -41,6 +48,9 @@ The event contract is expressed as vendor-independent sequences:
 | Do searches help? | `search_used` by surface, input-length bucket and result count, followed by a detail view. |
 | Are sessions grounded? | `session_recorded` grouped by `grounded`, `visual_trace` and fidelity. |
 | Which cohort sizes complete? | `persona_count` on the job events, correlated with `run_finished`. |
+| Are thin personas visible before consequential use? | `persona_viewed` by readiness and memory-level bucket, followed by session/run events. |
+| Are results actually shared? | `report_exported` by format, stakeholder/detailed audience, branding source and master source. |
+| Does a published workspace identity reach generated work? | `workspace_design_published`/`workspace_design_asset_uploaded` followed by `prototype_registered` or `report_exported`. |
 
 These definitions can be implemented as PostHog insights today and moved unchanged to another
 exporter later.
