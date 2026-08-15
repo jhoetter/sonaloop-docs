@@ -86,6 +86,9 @@ impact and requires the display name. It removes profile, SOUL, personal memory/
 then detaches the persona from active cohorts. Historical councils and recorded sessions remain as
 research evidence. A linked active research run blocks deletion. MCP deletion is deliberately
 stricter: inspect the impact first, then pass its state-bound confirmation token to the delete call.
-Agent edits can first call `preview_persona_update` and then apply against the returned persona
-version with a reason. Immutable ids and provenance cannot be patched; identity evolution needs
-resolving source references.
+Agent edits first call `preview_persona_update`. The side-effect-free preview returns the exact diff,
+linked-history impact, identity/routine risk and the guarantee that past sessions and frozen context
+snapshots do not change. Name, source description, identity traits, segment, demographics, role and
+company context require the preview's state-bound confirmation token when applying the exact patch;
+a changed patch or persona version invalidates it. Routine edits remain one-step. Immutable ids and
+provenance cannot be patched; identity evolution through lived time needs resolving source references.

@@ -83,6 +83,11 @@ properties. Product identifiers have dedicated typed fields. Cloud resolves them
 active tenant before producing separate HMAC pseudonyms for viewer, workspace, project and
 subject.
 
+Every project-scoped event also carries a provider-neutral, content-free workflow trace id. It is
+stable across the job's creation requests, run, sessions, reports and exports, while W3C transport
+trace ids still identify individual requests. Cloud turns the raw `sltrace_*` into a workspace-HMAC
+pseudonym before exposing `sonaloop_workflow_trace_id` to PostHog.
+
 PostHog receives `sonaloop_<event>` names, `$process_person_profile=false`, pseudonymous
 identifiers and closed structural values such as counts, booleans, modes and statuses. It
 does not receive names, email addresses, titles, URLs, prompts, search terms or authored

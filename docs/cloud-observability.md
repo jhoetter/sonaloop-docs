@@ -26,11 +26,18 @@ Every Remote-MCP `tools/call` produces an append-only row in
 `cloud_mcp_execution_audit` and its delivery receipt in one database transaction. Each row is bound to exactly one workspace and
 contains the correlation and outcome needed to investigate the tool boundary:
 
-- audit, request, trace and operation ids;
+- audit, request, transport-trace, operation and stable workflow-trace ids;
 - tool name, MCP profile, status, error code and duration;
 - project and run ids when the call produced or referenced them;
 - client, server and protocol version metadata; and
 - bounded, recursively redacted argument/result summaries and their digests.
+
+The two trace identities have different scopes. A W3C/HTTP transport trace belongs to one request.
+The deterministic `sltrace_*` workflow id belongs to one research project and is stamped on its run,
+sessions, assets, reports, exports, MCP response metadata and semantic product events. Use
+`cloud_get_research_job_trace(workflow_trace_id=...)` to resolve the complete locally observable job;
+use `trace_id=...` for one transport attempt. Raw workflow ids remain in tenant-local domain/audit
+state; PostHog receives only the workspace-HMAC pseudonym `sonaloop_workflow_trace_id`.
 
 Authorization headers, cookies and secret-shaped fields never enter the row.
 The default policy replaces arbitrary strings with type, length and SHA-256

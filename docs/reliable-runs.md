@@ -295,7 +295,11 @@ model's prose claim that it is finished.
 ## Diagnose and recover without making a duplicate
 
 `project_health(project_id)` is the canonical support view shared by MCP, CLI and the inspector. It
-separates **needs setup**, **running**, **stalled**, **engine-finished** and **output unverified**. A
+separates **needs setup**, **running**, **stalled**, **expired but resumable**, **engine-finished** and
+**output unverified**. An active journal becomes stalled after six quiet hours and is projected as
+expired after 24 hours. Expiry is not persisted as a terminal status: the run stays `active`, its
+journal is preserved and the same run remains the safe continuation. It never implies unverified
+evidence; `unverified` is reserved for an output that fails the evidence or hand-off contract. A
 missing current Reaction-Test prerequisite takes precedence over a raw active journal, so Jobs, Job
 detail, `/runs` and the global attention indicator cannot claim background research is progressing.
 Only the current prerequisite is actionable; later dependent gates remain hidden/locked until their
@@ -303,7 +307,7 @@ inputs exist. The normal project
 canvas keeps its compact run chip and a human-readable state. Open **Technical diagnostics** in the
 chip or in `/runs` when support detail is actually needed: there Sonaloop names the first unmet
 invariant, last successful operation, Product Understanding coverage, claim/source counts,
-repairable orphaned evidence, one safe next action and a redacted `sltrace_*` support reference.
+repairable orphaned evidence, one safe next action and a stable `sltrace_*` workflow reference.
 Completed Product Understanding/cohort evidence remains inspectable behind one closed, borderless
 setup-details row instead of interrupting the Job canvas with engineering cards.
 
@@ -369,7 +373,11 @@ MiniMax and future hosts use the same guarded protocol while their quality diffe
 measurable rather than becoming duplicate jobs or false completion states.
 
 Cloud support can reconstruct the Sonaloop-observed side with
-`cloud_get_research_job_trace(project_id=...)`. The local replay includes retries, project/run state,
+`cloud_get_research_job_trace(project_id=...)` or the stable
+`cloud_get_research_job_trace(workflow_trace_id="sltrace_…")`. A W3C/HTTP transport trace identifies
+one request; the content-free workflow trace follows one job across creation retries, later MCP
+calls, its run, sessions, assets, reports and exports. Legacy projects derive the same value without
+a migration. The local replay includes retries, project/run state,
 the front door's caller-supplied `user_request`, release metadata and deterministic quality scores. The
 request stays workspace-owned domain data; metadata-only audit/PostHog projections retain only
 privacy-reduced summaries. Replay labels unprovable facts `unknown`; it never
