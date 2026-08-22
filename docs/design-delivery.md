@@ -22,13 +22,21 @@ Sonaloop keeps the reusable presentation structure:
 
 Concrete slides from the uploaded file are removed immediately. The stored template has
 zero content slides. Uploads with macros, embedded objects, ActiveX, or external links are
-rejected. The settings page reports how many source slides were discarded and which
-layout roles were detected: title, section, content, and closing.
+rejected. Sonaloop inspects theme colors and fonts, placeholder geometry, and the available
+slide purposes. The settings page shows a simple **Ready** or **Limited** result plus the
+purposes the template supports; technical details stay in the advanced deck settings.
 
-New PowerPoint exports then choose the closest matching company layout for every generated
-slide. They preserve the master's background and theme-font inheritance. Sonaloop does not
-place its own canvas, logo, footer, or forced font over a company master. The published
-workspace palette still applies to editable report shapes and charts.
+New PowerPoint exports choose the closest company layout for cover, agenda, section,
+content, comparison, image, and closing slides. Layout names are recognized in common
+languages; opaque agency names fall back to the portable structure of their title, body,
+picture, and multi-column placeholders. Report text and images populate native placeholders
+where available, while editable shapes and charts are fitted to the layout's content grid.
+
+The master owns the exported presentation's backgrounds, fixed artwork, fonts, and colors.
+Sonaloop derives chart and card colors from its theme and layout artwork; it does not layer
+the separate workspace web palette on top. It also does not add its own canvas, logo,
+footer, or forced font. Every export runs a content-free fidelity check for unchanged master
+parts, slide bounds, layout usage, placeholder use, font overrides, and off-theme colors.
 
 Replacing a master affects only new exports. Existing files do not change.
 

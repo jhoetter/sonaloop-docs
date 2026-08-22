@@ -105,11 +105,15 @@ to the Sonaloop default rather than breaking research. A path parameter or works
 cannot wear another tenant's theme: membership and the active row-tenancy scope are authoritative.
 
 The Deck section may also hold an approved 16:9 PowerPoint master. Sonaloop retains the uploaded
-theme, canvas, masters and layouts, discards its sample
-slide instances, and generates editable report shapes into that template. A customer master owns
-its fixed logo/cover artwork, so no duplicate Sonaloop overlay is added. Without an uploaded master,
-the polished Sonaloop deck remains the deterministic default. The report page also offers a concise
-stakeholder PDF; both exports resolve the published workspace brand at export time.
+theme, canvas, masters, layouts and placeholders, discards its sample slide instances, and maps
+cover, agenda, section, content, comparison, image and closing slides to the closest native layout.
+Opaque layout names are classified from placeholder structure. A customer master owns its fixed
+artwork, theme fonts and presentation palette, so no duplicate Sonaloop overlay or separate web
+palette is added. Upload inspection reports simple compatibility; every export records a fidelity
+check for unchanged master parts, bounds, layout/placeholder use, font overrides and off-theme
+colors. Without an uploaded master, the polished Sonaloop deck remains the deterministic default.
+The report page also offers a concise stakeholder PDF; both exports resolve the published workspace
+brand at export time.
 
 Brand artwork is never recolored by CSS. Supply the official positive/dark-on-light lockup as
 `brand.logo_variants.lockup` (or the configured `logo_preferred`) and, where the brand provides one,
