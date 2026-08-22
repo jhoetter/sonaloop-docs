@@ -64,6 +64,10 @@ Cloud applies the synthesis owner's published workspace branding. If the workspa
 16:9 PowerPoint master, its canvas, theme, masters and layouts are used and its sample slide
 instances are discarded. Otherwise Sonaloop's polished default deck is used.
 
+Downloads remain available while the underlying governed research run is active. They are delivery
+projections of evidence already recorded: generating one neither consumes nor completes the run's
+current dispatch, while incoming evidence and token-bearing run outputs keep the strict trace contract.
+
 ## Persistence
 
 - Assets appear read-only in the project outline, the Library's Assets tab (`/assets`) and
