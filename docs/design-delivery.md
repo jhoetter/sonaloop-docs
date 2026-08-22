@@ -27,7 +27,7 @@ slide purposes. The settings page shows a simple **Ready** or **Limited** result
 purposes the template supports; technical details stay in the advanced deck settings.
 
 New PowerPoint exports choose the closest company layout for cover, agenda, section,
-content, comparison, image, and closing slides. Layout names are recognized in common
+content, comparison, personas, stimulus screens, image, and closing slides. Layout names are recognized in common
 languages; opaque agency names fall back to the portable structure of their title, body,
 picture, and multi-column placeholders. Report text and images populate native placeholders
 where available, while editable shapes and charts are fitted to the layout's content grid.
@@ -38,11 +38,34 @@ the separate workspace web palette on top. It also does not add its own canvas, 
 footer, or forced font. Every export runs a content-free fidelity check for unchanged master
 parts, slide bounds, layout usage, placeholder use, font overrides, and off-theme colors.
 
-The deck is a stakeholder projection rather than an engine trace. Internal plan-phase
-headings are translated into plain result chapters unless the report provides an explicit
-presentation heading. Generic cover boilerplate is replaced by the conclusion, while slide
-footers show only how many sources are available in the full report. Full prose, source
-identities, citations, and audit detail remain in Sonaloop.
+## Build the presentation story
+
+The master supplies the brand, but it does not write the presentation. Once a report is
+complete, Sonaloop gathers its method, findings, personas, screenshots, evidence, and
+limitations. The connected AI host uses those inputs and the method's presentation profile
+to create a reusable deck plan.
+
+The short main story normally moves from conclusion to visual evidence to the concrete
+decision or next action. Depending on the method, this can include:
+
+- the actual stimuli side by side;
+- the participating personas on one overview slide;
+- a before-and-after preference or confidence shift;
+- an annotated screen with the exact revision;
+- quotes, charts, risks, and recommended next steps.
+
+Detailed persona profiles, individual response matrices, method notes, limitations, and a
+source index move to the appendix. Sonaloop does not create filler agendas for short decks
+or finish with an empty thank-you slide.
+
+Every slide has native PowerPoint speaker notes. They can hold the key takeaway, full talk
+track, source references, limitations, backup details, transition to the next slide, and
+suggested timing. The slide itself can therefore stay visual and concise without losing the
+researcher's reasoning.
+
+This makes the deck a stakeholder projection rather than an engine trace. It does not copy
+report sections one-for-one. Full prose, source identities, citations, and audit detail
+remain in Sonaloop, while evidence references keep the presentation traceable.
 
 Replacing a master affects only new exports. Existing files do not change.
 
