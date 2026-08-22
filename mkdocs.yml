@@ -57,6 +57,7 @@ nav:
       - Lifecycle hooks: lifecycle-hooks.md
       - Substrate: substrate.md
       - Project assets: project-assets.md
+      - Reports & design hand-offs: design-delivery.md
   - Live actuation:
       - Flow walkthrough: flow-walkthrough.md
       - Walkthrough safety: live-walkthrough-safety.md

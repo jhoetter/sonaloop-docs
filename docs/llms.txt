@@ -33,6 +33,7 @@
 - [Lifecycle hooks](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/lifecycle-hooks.md): events, subscriptions, and the event bus behind the live inspector
 - [Substrate](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/substrate.md): queryable backend substrate for extensions
 - [Project assets](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/project-assets.md): attaching asset evidence and its responsive project/report gallery presentation
+- [Reports, PowerPoint masters, and design hand-offs](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/design-delivery.md): customer result-first job states, sanitized workspace PPTX masters, semantic layout selection, and provider-neutral multi-MCP delivery to Figma/design/code tools without destination credentials
 - [Flow walkthrough](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/flow-walkthrough.md): live walkthrough mechanics
 - [Live walkthrough safety](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/live-walkthrough-safety.md): safety constraints for live actuation and exact ordered screenshot-to-step capture
 - [Selective live actuation](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/selective-live-actuation.md): live prototype testing

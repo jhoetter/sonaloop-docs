@@ -1,5 +1,12 @@
 # The live inspector — navigation, events, activity, runs
 
+!!! note "Customer result surface"
+    The normal shared-Cloud customer experience is result-first. When a durable report,
+    synthesis, prototype, outcome, or deliverable exists, a job reads **Result ready** even
+    if an underlying agent run later paused or expired. Global attention/run widgets, run
+    chips, journals, setup plans, and engine-health language remain on the owner/operator
+    surface. A real missing customer choice still appears as **Input required**.
+
 The web inspector (`sonaloop-web`, <http://127.0.0.1:8787>) is not a static viewer: it
 follows the work as your agent records it.
 
