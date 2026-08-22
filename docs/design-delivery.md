@@ -38,6 +38,12 @@ the separate workspace web palette on top. It also does not add its own canvas, 
 footer, or forced font. Every export runs a content-free fidelity check for unchanged master
 parts, slide bounds, layout usage, placeholder use, font overrides, and off-theme colors.
 
+The deck is a stakeholder projection rather than an engine trace. Internal plan-phase
+headings are translated into plain result chapters unless the report provides an explicit
+presentation heading. Generic cover boilerplate is replaced by the conclusion, while slide
+footers show only how many sources are available in the full report. Full prose, source
+identities, citations, and audit detail remain in Sonaloop.
+
 Replacing a master affects only new exports. Existing files do not change.
 
 ## Customer-facing result states
