@@ -67,6 +67,8 @@ instances are discarded. Otherwise Sonaloop's polished default deck is used.
 Downloads remain available while the underlying governed research run is active. They are delivery
 projections of evidence already recorded: generating one neither consumes nor completes the run's
 current dispatch, while incoming evidence and token-bearing run outputs keep the strict trace contract.
+The whole card for a generated deliverable downloads the file directly and its attachment event does
+not show a redundant live “open asset” alert. Incoming evidence keeps the inspector/detail flow.
 
 ## Persistence
 

@@ -46,17 +46,20 @@ limitations. The connected AI host uses those inputs and the method's presentati
 to create a reusable deck plan.
 
 The short main story normally moves from conclusion to visual evidence to the concrete
-decision or next action. Depending on the method, this can include:
+decision or next action. Pacing defaults to one slide per 60–90 seconds, so a ten-minute
+readout is normally six to eight core slides. Related proof belongs in one dense visual
+frame instead of a sequence of sparse finding slides. Depending on the method, this can include:
 
+- a decision dashboard that combines the decision, strength/denominator, and reasons;
 - the actual stimuli side by side;
 - the participating personas on one overview slide;
 - a before-and-after preference or confidence shift;
-- an annotated screen with the exact revision;
+- the current screen beside an editable replacement-copy/UI proposal;
 - quotes, charts, risks, and recommended next steps.
 
-Detailed persona profiles, individual response matrices, method notes, limitations, and a
-source index move to the appendix. Sonaloop does not create filler agendas for short decks
-or finish with an empty thank-you slide.
+Individual response matrices, method notes, limitations, and a source index move to a short
+appendix. Detailed persona profiles are added only when they help the decision. Sonaloop does
+not create filler agendas for short decks or finish with an empty thank-you slide.
 
 Every slide has native PowerPoint speaker notes. They can hold the key takeaway, full talk
 track, source references, limitations, backup details, transition to the next slide, and
