@@ -31,6 +31,9 @@ content, comparison, personas, stimulus screens, image, and closing slides. Layo
 languages; opaque agency names fall back to the portable structure of their title, body,
 picture, and multi-column placeholders. Report text and images populate native placeholders
 where available, while editable shapes and charts are fitted to the layout's content grid.
+PowerPoint-native text fitting prevents long localized copy from spilling out. Empty content
+and picture placeholders are removed, so the deck opens in edit mode without insertion prompts;
+narrow branded footer fields receive only a compact label that cannot collide with fixed artwork.
 
 The master owns the exported presentation's backgrounds, fixed artwork, fonts, and colors.
 Sonaloop derives chart and card colors from its theme and layout artwork; it does not layer
@@ -45,8 +48,9 @@ complete, Sonaloop gathers its method, findings, personas, screenshots, evidence
 limitations. The connected AI host uses those inputs and the method's presentation profile
 to create a reusable deck plan.
 
-The short main story normally moves from conclusion to visual evidence to the concrete
-decision or next action. Pacing defaults to one slide per 60–90 seconds, so a ten-minute
+The cover first tells a cold reader what artifact or journey was tested, for whom, and which
+decision the test informs. The short main story then moves from conclusion to visual evidence
+to the concrete decision or next action. Pacing defaults to one slide per 60–90 seconds, so a ten-minute
 readout is normally six to eight core slides. Related proof belongs in one dense visual
 frame instead of a sequence of sparse finding slides. Depending on the method, this can include:
 
@@ -60,6 +64,10 @@ frame instead of a sequence of sparse finding slides. Depending on the method, t
 Individual response matrices, method notes, limitations, and a source index move to a short
 appendix. Detailed persona profiles are added only when they help the decision. Sonaloop does
 not create filler agendas for short decks or finish with an empty thank-you slide.
+
+Headlines are written to stand alone outside the research team: normally four to nine words,
+never more than 12 words or 68 characters. Unexplained pronouns, internal process labels, and
+bare variant letters are avoided until the compared stimuli have been introduced.
 
 Every slide has native PowerPoint speaker notes. They can hold the key takeaway, full talk
 track, source references, limitations, backup details, transition to the next slide, and
