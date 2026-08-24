@@ -65,8 +65,8 @@ Individual response matrices, method notes, limitations, and a source index move
 appendix. Detailed persona profiles are added only when they help the decision. Sonaloop does
 not create filler agendas for short decks or finish with an empty thank-you slide.
 
-Headlines are written to stand alone outside the research team: normally four to nine words,
-never more than 12 words or 68 characters. Unexplained pronouns, internal process labels, and
+Headlines are written to stand alone outside the research team: normally three to eight words,
+never more than 10 words or 56 characters. Unexplained pronouns, internal process labels, and
 bare variant letters are avoided until the compared stimuli have been introduced.
 
 Every slide has native PowerPoint speaker notes. They can hold the key takeaway, full talk
