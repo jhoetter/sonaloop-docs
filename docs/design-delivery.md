@@ -26,6 +26,13 @@ rejected. Sonaloop inspects theme colors and fonts, placeholder geometry, and th
 slide purposes. The settings page shows a simple **Ready** or **Limited** result plus the
 purposes the template supports; technical details stay in the advanced deck settings.
 
+The same page accepts an optional **PowerPoint style reference**. Upload a typical,
+well-designed presentation when the master alone does not explain rules such as “yellow is
+used for markers, never text.” Sonaloop analyzes color usage, explicit type sizes, images,
+charts, tables, and visual density before removing every concrete example slide. It stores
+the derived rules plus a sanitized zero-slide package—not the example content. The master
+continues to own geometry; the style reference owns semantic usage guidance.
+
 New PowerPoint exports choose the closest company layout for cover, agenda, section,
 content, comparison, personas, stimulus screens, image, and closing slides. Layout names are recognized in common
 languages; opaque agency names fall back to the portable structure of their title, body,
@@ -40,6 +47,9 @@ Sonaloop derives chart and card colors from its theme and layout artwork; it doe
 the separate workspace web palette on top. It also does not add its own canvas, logo,
 footer, or forced font. Every export runs a content-free fidelity check for unchanged master
 parts, slide bounds, layout usage, placeholder use, font overrides, and off-theme colors.
+Bright accent colors remain available for rules, markers, fills, and charts. If an accent
+does not meet readable text contrast—or the style reference establishes that it is never a
+text color—generated text uses the master's ink color while non-text artwork is preserved.
 
 ## Build the presentation story
 
@@ -78,6 +88,12 @@ This makes the deck a stakeholder projection rather than an engine trace. It doe
 report sections one-for-one. Full prose, source identities, citations, and audit detail
 remain in Sonaloop, while evidence references keep the presentation traceable.
 
+The stakeholder PDF renders this same reviewed story rather than a shortened list of
+internal research phases. Compared stimuli stay together, personas appear as compact
+profiles, and the synthetic-persona interpretation note stays at the end. Reports created
+before a delivery story exists still show their available input screens and cohort before
+the authored report sections.
+
 Replacing a master affects only new exports. Existing files do not change.
 
 ## Customer-facing result states
@@ -97,10 +113,12 @@ The read-only `get_design_handoff` MCP tool returns a bounded
 `sonaloop.design_handoff.v1` bundle for one project. It includes:
 
 - the research goal and selected reports;
-- compact persona context;
+- the reviewed delivery story, when available;
+- compact persona context and lazy portrait access;
 - findings and persona voices with evidence references;
 - open questions, behavioral predictions, and decisions;
 - existing concepts, prototypes, flow screens, visual asset handles, and usability results;
+- evidence-linked editable revision proposals;
 - the active workspace's brand, colors, typography, layout, and chart tokens; and
 - a generic destination workflow.
 

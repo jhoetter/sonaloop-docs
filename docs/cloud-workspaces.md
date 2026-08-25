@@ -115,6 +115,12 @@ colors. Without an uploaded master, the polished Sonaloop deck remains the deter
 The report page also offers a concise stakeholder PDF; both exports resolve the published workspace
 brand at export time.
 
+Workspace → Templates can additionally hold a PowerPoint **style reference** made from real
+example slides. Sonaloop analyzes semantic color usage, explicit type sizes and visual density,
+then removes every concrete slide before storage. The resulting rules complement the master:
+the master supplies geometry and fixed brand artwork; the reference can establish usage rules
+such as keeping a bright accent on markers/fills while using readable ink for generated text.
+
 Brand artwork is never recolored by CSS. Supply the official positive/dark-on-light lockup as
 `brand.logo_variants.lockup` (or the configured `logo_preferred`) and, where the brand provides one,
 the official negative/light-on-dark artwork as `brand.logo_variants.lockup_dark`; `reversed` is the
