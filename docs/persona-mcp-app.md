@@ -67,5 +67,29 @@ It contains no Persona rendering or business workflow. Its opaque iframe uses th
 same forwarded port. It is an integration example; production cloud identity,
 tenant provisioning and policy remain the customer's deployment responsibility.
 
+## Use the reference agent
+
+The reference host defaults to GPT-5.6 Terra, with reasoning effort set to `none`
+for interactive requests. `OPENAI_MODEL` can select another supported model; an
+unavailable model produces an error instead of a silent fallback. The API key
+stays on the server.
+
+Sending a message immediately clears and refocuses the composer. You can write
+the next draft while the reply streams. Text, tool progress, any required action
+approval and the interactive card appear in the order they occur. Tool details
+can be expanded; later text does not replace a card you are editing. Scrolling
+up keeps your reading position, and the down-arrow returns to the latest reply.
+
+Stop prevents further model work and tool dispatch. A native action that has
+already started may finish; its actual result remains visible. Stop does not undo
+a saved change. After an interruption, the host retrieves the known request
+status without resending the action. If the status cannot be reached, use
+**Status prüfen**; an unknown outcome is not a reason to repeat a write.
+
+Chat sessions belong to the current browser cookie and live in the host process.
+The reference implementation retains at most 20 sessions and 40 turns per process;
+it is not persistent conversation storage. Restarting the host loses that chat
+history, while native Research data remains in its own store.
+
 For implementation details see the Research repository's
 `docs/persona-surface-contract.md` and the example host README.
