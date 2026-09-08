@@ -36,6 +36,7 @@ nav:
       - Frameworks: frameworks.md
       - Grounding: grounding.md
       - Persona lifecycle & memory: persona-memory.md
+      - Shared Persona card & MCP App: persona-mcp-app.md
       - Cohort Integrity: cohort-integrity.md
       - Artifact inventory: artifact-inventory.md
       - Calibration: calibration.md

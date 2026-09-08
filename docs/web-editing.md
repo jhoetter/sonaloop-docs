@@ -10,7 +10,7 @@ concrete source facts and the normal persona service validates the resulting pro
 | Entity | Create | Edit | Delete | Notes |
 | --- | --- | --- | --- | --- |
 | Project | ❌ create in UI (MCP/CLI owns creation) | ✅ title/goal/icon; title-only rename in the Jobs list | ✅ typed-confirmation (type the project title) | the list-row `…` menu sits beside Favorite; never-started containers hard-delete, terminal run history is removed from the working set through evidence-preserving archive; active runs remain protected |
-| Persona | ✅ detailed custom intake; ✅ catalog import; ✅ MCP/CLI | ✅ metadata: name, role title, segment, industry | ✅ typed-confirmation with impact preview | creation makes a profile and SOUL; readiness keeps missing lived memory visible |
+| Persona | ✅ detailed custom intake; ✅ catalog import; ✅ MCP/CLI | ✅ explicit profile edits in the shared card; native avatar prompt/generation | ✅ typed-confirmation with impact preview | same native record and services in product and MCP App; readiness keeps missing lived memory visible |
 | Note | ✅ web | ✅ title/text | ✅ | notes are *user/host-authored observations* — typing one in the browser **is** authoring |
 | Section | ✅ web | ✅ title/kind/note | ✅ (member nodes untouched) | a section is a view; membership editing stays MCP |
 | Council | ❌ | ❌ | ✅ delete only | statements are generated prose — never editable |
@@ -57,7 +57,13 @@ evidence. MCP uses the same boundary as a two-step, state-bound confirmation tok
 
 ## Safety properties
 
-- Every form is **CSRF-protected** (stateless double-submit cookie) and follows
+The [shared Persona card](persona-mcp-app.md) uses JSON actions with the same native
+CSRF/access checks, a required current version and a durable operation ID. These
+actions keep their confirmed state on failure and inspect uncertain outcomes before
+retrying. They are a deliberate profile/avatar editing path; research claims,
+historical sessions and generated report prose are not authored by this card.
+
+- Every HTML form is **CSRF-protected** (stateless double-submit cookie) and follows
   POST → 303 See Other, so a browser refresh never re-submits.
 - Destructive actions live in one consistent **danger zone**; projects and personas require
   typing the entity's name to confirm (re-checked server-side).

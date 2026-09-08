@@ -7,6 +7,8 @@
 
 ## Docs
 
+- [Shared Persona card and MCP App](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/persona-mcp-app.md): one customer-owned view in native product and MCP Apps, direct edits and native avatars, operation replay and conflict handling, portable package and generic local reference host
+
 - [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): one-sentence uvx install, MCP registration, sonaloop info diagnostics, first project
 - [Example projects](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/examples.md): shipped demo studies — list/load/remove, idempotent loading
 - [Job → Framework → Format taxonomy](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/job-framework-format.md): the three-layer source-of-truth taxonomy + the A/B test, pricing and ideation run protocols + the Adding-a-Job recipe
