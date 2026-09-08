@@ -74,6 +74,18 @@ for interactive requests. `OPENAI_MODEL` can select another supported model; an
 unavailable model produces an error instead of a silent fallback. The API key
 stays on the server.
 
+Before you confirm creation, a compatible MCP Apps host can show the same Persona
+card as **Draft · not saved yet**. This uses the proposed tool arguments; no Persona
+has been created. The preview is passive so the displayed proposal stays identical
+to the action you approve. It has no native ID, saved version or generated portrait.
+Only the real creation result activates editing and image generation in that card.
+Declining leaves a cancelled proposal; it does not save a Persona.
+
+The customer App uses standard `tool-input`, `tool-result` and `tool-cancelled`
+notifications. Hosts that only render completed tool results cannot show the
+pre-execution preview. This is a host capability, not a need for another Persona
+component or another data store.
+
 Sending a message immediately clears and refocuses the composer. You can write
 the next draft while the reply streams. Text, tool progress, any required action
 approval and the interactive card appear in the order they occur. Tool details
