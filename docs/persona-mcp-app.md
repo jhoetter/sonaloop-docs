@@ -54,6 +54,12 @@ manifest records source and artifact hashes, component/DTO versions, actions,
 states and fallback. The same customer release can run without a capture or
 governance service being online.
 
+The MCP also exposes this manifest as the read-only JSON resource
+`sonaloop://ui/persona/manifest`; tools reference it through
+`sonaloop/uiManifestUri`. A catalog can associate the declaration with the exact
+customer source revision. The manifest is inspectable evidence, not an execution
+permission or a claim that a particular client has rendered the card.
+
 `examples/mcp-app-host` is a separate local reference host that can be copied and
 installed independently. It discovers an explicitly allowed MCP tool set, provides
 a direct tool test and optionally calls an OpenAI model using a server-side key.
