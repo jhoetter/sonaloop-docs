@@ -9,6 +9,15 @@ a portrait prompt and generate an image. An image prompt guides that operation;
 it does not silently rewrite the Persona's profile. Image generation needs the
 customer's configured provider key and may incur provider charges.
 
+Text MCP clients can also call `generate_avatar` directly. They may pass up to
+four `reference_persona_ids` whose existing workspace portraits guide the shared
+illustration language, crop, lighting and finish. Sonaloop resolves every reference
+inside the active workspace and tells the image model to create a new fictional
+identity rather than copying faces, hair, clothing or other identifying features.
+Reference-guided generation uses OpenAI's Images edit endpoint; the default model is
+`gpt-image-2.5-sunburst` and can be changed with `OPENAI_IMAGE_MODEL`. Provider
+credentials stay server-side and normal workspace entitlement checks still apply.
+
 The card preserves unsaved input when saving fails. If the Persona changed
 elsewhere, refresh its current state before applying another edit. If an image
 operation's outcome is unknown, inspect its status instead of starting another

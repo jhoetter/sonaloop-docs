@@ -224,7 +224,11 @@ The binding key is a domain-separated workspace/token HMAC.
 Raw bearer tokens and raw `clientInfo` name/version values are never stored or
 exported. The local binding retains only lengths and protected fingerprints;
 PostHog receives the closed family and its classification source. A user-agent
-family is only a fallback, and an unrecognized or ambiguous declaration remains
+family is a per-request fallback. When one bearer was reused by different
+`initialize` declarations, its durable binding remains ambiguity-closed, while a
+recognized wire User-Agent can still classify that individual analytics event with
+`family_source=user_agent`. That fallback never qualifies as evidence for immutable
+Job-creator attribution. If the User-Agent is also unrecognized, the call remains
 `unknown`.
 
 The local bearer binding is keyed with `SONALOOP_CLOUD_SECRET`; exported

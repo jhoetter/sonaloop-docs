@@ -47,6 +47,20 @@ supporting material from the product prompt. `persona_build_step`, `get_persona_
 Product-task language must never be written backwards into pre-project memory. Reaction Tests add a
 separate Cohort Integrity gate for independence, leakage and countervoices; readiness does not waive it.
 
+## Simulating one calendar month
+
+For an explicit month such as August 2026, start with
+`begin_persona_month_simulation(persona_id, month="2026-08")`. This single entry
+returns the SOUL, current projects, open threads, prior-month digest, world context,
+anti-steering instruction and exact month-bundle contract. Author the returned
+bundle, then call `record_month_bundle` once. Sonaloop persists the period plan,
+3–4 representative working days, their activities and memory deltas, and the month
+digest through the complete simulation and consolidation loop.
+
+Use `brief_day` → `record_day` for one specific day. The month front door keeps an
+MCP host from discovering or chaining dozens of daily calls when the user's requested
+unit is already a calendar month.
+
 ## Ready for this task, reproducible later
 
 Global readiness is not enough for every assignment. `persona_task_readiness` checks whether the
