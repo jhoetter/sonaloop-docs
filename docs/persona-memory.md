@@ -89,6 +89,19 @@ pending `record_memory_proposal`, but a reviewer must approve or reject it with 
 notes are available only as future chat continuity and are clearly marked as synthetic conversation,
 not evidence, lived experience, durable facts or identity change. This prevents self-reinforcing drift.
 
+## Adopting requested chat material
+
+When a user explicitly wants details from a persona conversation in the official profile and
+timeline, start with `begin_persona_enrichment(persona_id, request, source_chat_id)`. It loads the
+current routine fields, existing experience dates and the selected saved conversation, then returns
+one bounded authoring contract. `record_persona_enrichment` accepts a **minimal** patch to routine
+fields such as personality, relationships and tools, plus up to eight concrete dated lived days.
+
+The write validates every day before changing the persona, rejects occupied dates by default and
+does not permit name, role, demographics or other identity changes. The resulting profile additions
+and experiences remain labelled synthetic unless independent evidence is attached. A stored chat by
+itself still changes nothing; the explicit enrichment call is the adoption decision.
+
 Memory inspection is also side-effect free: `get_persona_memory` only renders. Writing a file is the
 separate, workspace-contained `export_persona_memory` operation. Old episodes are archived
 reversibly by pruning rather than silently destroyed.
@@ -100,9 +113,11 @@ impact and requires the display name. It removes profile, SOUL, personal memory/
 then detaches the persona from active cohorts. Historical councils and recorded sessions remain as
 research evidence. A linked active research run blocks deletion. MCP deletion is deliberately
 stricter: inspect the impact first, then pass its state-bound confirmation token to the delete call.
-Agent edits first call `preview_persona_update`. The side-effect-free preview returns the exact diff,
-linked-history impact, identity/routine risk and the guarantee that past sessions and frozen context
-snapshots do not change. Name, source description, identity traits, segment, demographics, role and
-company context require the preview's state-bound confirmation token when applying the exact patch;
-a changed patch or persona version invalidates it. Routine edits remain one-step. Immutable ids and
+Agent edits may call `preview_persona_update` first. The side-effect-free preview returns the exact
+diff, linked-history impact, identity/routine risk and the guarantee that past sessions and frozen
+context snapshots do not change. If a weak MCP host calls `update_persona` directly for a name,
+source description, identity trait, segment, demographic, role or company-context change, the same
+tool now returns that preview and the exact state-bound retry arguments without mutating anything.
+Reusing the identical patch and reason with those arguments applies the requested update; changing
+the patch or persona version invalidates the token. Routine edits remain one-step. Immutable ids and
 provenance cannot be patched; identity evolution through lived time needs resolving source references.
