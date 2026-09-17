@@ -44,6 +44,7 @@ nav:
       - The live inspector: live-inspector.md
       - Reliable job creation & continuation: reliable-runs.md
       - Web editing: web-editing.md
+      - Editable website source: website-source-generation.md
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md
   - Operating:
