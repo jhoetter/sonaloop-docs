@@ -7,6 +7,7 @@
 
 ## Docs
 
+- [Website capture and editable Source](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/web-source-capture.md): conservative multi-route template inference with route-keyed content, verified layered hero-video controls, DOM-first inspection and explicit qualification boundaries
 - [Shared Persona card and MCP App](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/persona-mcp-app.md): one customer-owned view in native product and MCP Apps, direct edits and native GPT Image 2.5 avatars with workspace style references, operation replay and conflict handling, portable package and generic local reference host
 
 - [Getting started](https://raw.githubusercontent.com/jhoetter/sonaloop-docs/main/docs/getting-started.md): one-sentence uvx install, MCP registration, sonaloop info diagnostics, first project
