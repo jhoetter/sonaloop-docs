@@ -48,6 +48,7 @@ nav:
       - Keyboard, palette & tour: keyboard.md
       - Feedback: feedback.md
   - Operating:
+      - Website capture & editable Source: web-source-capture.md
       - Cloud workspaces & access: cloud-workspaces.md
       - Cloud audit & PostHog observability: cloud-observability.md
       - Product telemetry: product-telemetry.md
