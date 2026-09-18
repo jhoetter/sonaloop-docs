@@ -19,6 +19,14 @@ remain explicit per-route data. Repeated page structures can similarly become a
 named page template. Supported YouTube captures use one validated,
 click-to-load component under `components/media/`.
 
+Large repeated static navigation rows inside a proven component are written as
+typed data plus one ordinary JSX `.map()`, rather than dozens of copied links.
+The generator applies this only when the output is materially smaller and the
+DOM order, stable keys, route state, and source identities can all be preserved.
+An exact screen-reader-only “current” marker is represented by native
+`aria-current`; other structural differences remain separate components. This
+keeps shared headers readable without treating every route as a new design.
+
 The detector is conservative. Forms, frames, canvas content, embedded
 applications, observed interactive states, and structurally different regions
 remain separate. A smaller file count is useful, but it is never accepted as
