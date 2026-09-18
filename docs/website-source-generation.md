@@ -50,6 +50,18 @@ It cannot change capture scope, weaken a behavior boundary, certify its own
 output, or merge a candidate. Structural equivalence and acceptance remain
 deterministic and independently checked.
 
+## Promoting a complete regeneration
+
+A fresh whole-site generation stays on its review branch until its build and
+browser checks pass. Ordinary **Compare** uses a native three-way merge and
+preserves independent customer changes. Two complete generator revisions may
+overlap in too many files for a meaningful per-hunk merge. For that explicit
+case, **Fully replace** can promote the verified generated tree to main after a
+loss warning. Only a server-verified site-generation branch can use this action;
+normal work branches cannot. Sonaloop checks both exact branch heads in one Git
+transaction and retains both prior commits as parents. Importing alone, building
+a preview, and promoting are separate actions, and none publishes the website.
+
 ## What the inspector preserves
 
 Shared code does not collapse rendered elements into one inspector row. Each
